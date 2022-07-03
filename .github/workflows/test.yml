@@ -1,0 +1,38 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  elixir_tests:
+    name: Elixir Tests
+    if: github.ref != 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        elixir: [1.12.2]
+        otp: [24.0.5]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{ matrix.otp }}
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles('mix.lock') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-
+      - name: Install dependencies
+        run: mix deps.get
+      - name: Run tests
+        run: mix test --trace --slowest 10

@@ -1,0 +1,29 @@
+defmodule PhoenixUI.Components.LinkTest do
+  use PhoenixUI.Case, async: true
+
+  setup do
+    [assigns: %{text: "text"}]
+  end
+
+  describe "link/1" do
+    test "should render with defaults", %{assigns: assigns} do
+      markup = ~H"""
+      <.link>
+        <%= @text %>
+      </.link>
+      """
+
+      html = rendered_to_string(markup)
+
+      assert html =~ "<a class=\"link "
+      assert html =~ assigns.text
+      assert html =~ "</a>"
+    end
+  end
+
+  describe "classes/0" do
+    test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
+      assert [_ | _] = PhoenixUI.Components.Link.classes()
+    end
+  end
+end

@@ -1,0 +1,56 @@
+defmodule PhoenixUI.Components.Autocomplete do
+  @moduledoc """
+  Provides text filter component.
+  """
+  alias PhoenixUI.Components.TextFilter
+
+  import PhoenixUI.Components.Menu
+
+  use PhoenixUI, :live_component
+
+  @default_debounce 300
+  @default_end_icon "x"
+  @default_label false
+  @default_start_icon "search"
+
+  @impl true
+  def render(assigns) do
+    ~H"""
+    <div>
+      <.live_component module={TextFilter} {@text_filter_attrs} />
+      <.menu extend_class="mb-6">
+        <%= for option <- @options do %>
+          <.menu_item>
+            <%= option %>
+          </.menu_item>
+        <% end %>
+      </.menu>
+    </div>
+    """
+  end
+
+  @impl true
+  def update(assigns, socket) do
+    {
+      :ok,
+      socket
+      |> assign(assigns)
+      |> build_text_filter_attrs()
+      |> apply_options()
+    }
+  end
+
+  defp apply_options(socket) do
+    socket.assigns[:set_options].(socket.assigns[:value], socket)
+  end
+
+  ### Text Filter Attrs ##########################
+
+  defp build_text_filter_attrs(%Socket{assigns: assigns} = socket) do
+    attrs =
+      assigns
+      |> assigns_to_attributes([:text_filter_attrs, :set_options])
+
+    assign(socket, text_filter_attrs: attrs)
+  end
+end
