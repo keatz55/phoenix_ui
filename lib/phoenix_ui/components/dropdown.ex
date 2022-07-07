@@ -1,10 +1,28 @@
 defmodule PhoenixUI.Components.Dropdown do
+  @moduledoc """
+  Provides dropdown component.
+  """
   import PhoenixUI.Components.Menu
 
   use PhoenixUI, :component
 
   @default_variant "elevated"
 
+  @doc """
+  Renders dropdown component.
+
+  ## Examples
+
+      ```
+      <.dropdown id="basic_dropdown">
+        <:toggle>
+          Toggle Dropdown
+        </:toggle>
+        content
+      </.drawer>
+      ```
+
+  """
   @spec dropdown(Socket.assigns()) :: Rendered.t()
   def dropdown(raw_assigns) do
     assigns = assign_new(raw_assigns, :variant, fn -> @default_variant end)

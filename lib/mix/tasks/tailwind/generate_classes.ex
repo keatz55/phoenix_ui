@@ -1,4 +1,7 @@
 defmodule Mix.Tasks.Tailwind.GenerateClasses do
+  @moduledoc """
+  Mix task for generating, parsing, and referencing all Phoenix UI classes.
+  """
   use Mix.Task
 
   def run(_) do
