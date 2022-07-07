@@ -300,63 +300,92 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - block
   - boder-slate-200
   - border
+  - border-amber-200
   - border-amber-500
   - border-amber-600
+  - border-blue-200
   - border-blue-500
   - border-blue-600
+  - border-cyan-200
   - border-cyan-500
   - border-cyan-600
+  - border-danger-200
   - border-danger-500
   - border-danger-600
+  - border-emerald-200
   - border-emerald-500
   - border-emerald-600
+  - border-error-200
   - border-error-500
   - border-error-600
+  - border-fuchsia-200
   - border-fuchsia-500
   - border-fuchsia-600
+  - border-gray-200
   - border-gray-500
   - border-gray-600
+  - border-green-200
   - border-green-500
   - border-green-600
+  - border-indigo-200
   - border-indigo-500
   - border-indigo-600
+  - border-info-200
   - border-info-500
   - border-info-600
+  - border-lime-200
   - border-lime-500
   - border-lime-600
+  - border-neutral-200
   - border-neutral-500
   - border-neutral-600
+  - border-orange-200
   - border-orange-500
   - border-orange-600
+  - border-pink-200
   - border-pink-500
   - border-pink-600
+  - border-primary-200
   - border-primary-500
   - border-primary-600
+  - border-purple-200
   - border-purple-500
   - border-purple-600
+  - border-red-200
   - border-red-500
   - border-red-600
+  - border-rose-200
   - border-rose-500
   - border-rose-600
+  - border-secondary-200
   - border-secondary-500
   - border-secondary-600
+  - border-sky-200
   - border-sky-500
   - border-sky-600
+  - border-slate-200
   - border-slate-500
   - border-slate-600
   - border-solid
+  - border-stone-200
   - border-stone-500
   - border-stone-600
+  - border-success-200
   - border-success-500
   - border-success-600
+  - border-teal-200
   - border-teal-500
   - border-teal-600
+  - border-violet-200
   - border-violet-500
   - border-violet-600
+  - border-warning-200
   - border-warning-500
   - border-warning-600
+  - border-yellow-200
   - border-yellow-500
   - border-yellow-600
+  - border-zinc-200
   - border-zinc-500
   - border-zinc-600
   - bottom-0
@@ -370,6 +399,7 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - card-header
   - card-media
   - closed
+  - collapse
   - container
   - cursor-pointer
   - dark:bg-amber-400
@@ -437,36 +467,64 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - dark:bg-zinc-400
   - dark:bg-zinc-600
   - dark:border-amber-300
+  - dark:border-amber-500
   - dark:border-blue-300
+  - dark:border-blue-500
   - dark:border-cyan-300
+  - dark:border-cyan-500
   - dark:border-danger-300
+  - dark:border-danger-500
   - dark:border-emerald-300
+  - dark:border-emerald-500
   - dark:border-error-300
+  - dark:border-error-500
   - dark:border-fuchsia-300
+  - dark:border-fuchsia-500
   - dark:border-gray-300
+  - dark:border-gray-500
   - dark:border-green-300
+  - dark:border-green-500
   - dark:border-indigo-300
+  - dark:border-indigo-500
   - dark:border-info-300
+  - dark:border-info-500
   - dark:border-lime-300
+  - dark:border-lime-500
   - dark:border-neutral-300
+  - dark:border-neutral-500
   - dark:border-orange-300
+  - dark:border-orange-500
   - dark:border-pink-300
+  - dark:border-pink-500
   - dark:border-primary-300
+  - dark:border-primary-500
   - dark:border-purple-300
+  - dark:border-purple-500
   - dark:border-red-300
+  - dark:border-red-500
   - dark:border-rose-300
+  - dark:border-rose-500
   - dark:border-secondary-300
+  - dark:border-secondary-500
   - dark:border-sky-300
+  - dark:border-sky-500
   - dark:border-slate-300
   - dark:border-slate-500
   - dark:border-slate-700
   - dark:border-stone-300
+  - dark:border-stone-500
   - dark:border-success-300
+  - dark:border-success-500
   - dark:border-teal-300
+  - dark:border-teal-500
   - dark:border-violet-300
+  - dark:border-violet-500
   - dark:border-warning-300
+  - dark:border-warning-500
   - dark:border-yellow-300
+  - dark:border-yellow-500
   - dark:border-zinc-300
+  - dark:border-zinc-500
   - dark:hover:bg-amber-200
   - dark:hover:bg-amber-200/25
   - dark:hover:bg-blue-200
@@ -714,6 +772,7 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - disabled:text-warning-500
   - disabled:text-yellow-500
   - disabled:text-zinc-500
+  - divider
   - duration-100
   - duration-1000
   - duration-150
@@ -823,6 +882,7 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - h-[9.5rem]
   - h-[9.75rem]
   - h-[9rem]
+  - heroicon
   - hidden
   - hover:bg-amber-200
   - hover:bg-amber-200/50
@@ -1053,6 +1113,7 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - left-4
   - left-full
   - lg:text-lg
+  - link
   - max-h-0
   - max-h-[75%]
   - max-w-0
@@ -1075,12 +1136,14 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - mb-5
   - ml-2
   - ml-3
+  - ml-4
   - mr-3
   - mt-0
   - mt-3
   - mt-5
   - mt-6
   - mt-8
+  - mx-4
   - mx-auto
   - my-6
   - object-cover
@@ -1325,6 +1388,7 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - tracking-wider
   - transition
   - transition-all
+  - typography
   - uppercase
   - w-10
   - w-12

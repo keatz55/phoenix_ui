@@ -10,6 +10,7 @@ defmodule PhoenixUI.MixProject do
       description: description(),
       docs: docs(),
       elixir: "~> 1.12",
+      elixirc_options: [warnings_as_errors: true],
       elixirc_paths: elixirc_paths(Mix.env()),
       name: "Phoenix UI",
       package: package(),

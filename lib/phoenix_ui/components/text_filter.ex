@@ -2,7 +2,7 @@ defmodule PhoenixUI.Components.TextFilter do
   @moduledoc """
   Provides text filter component.
   """
-  import PhoenixUI.Components.{Heroicon, TextInput}
+  import PhoenixUI.Components.TextInput
 
   use PhoenixUI, :live_component
 
@@ -84,8 +84,8 @@ defmodule PhoenixUI.Components.TextFilter do
   defp apply_end_icon(attrs, _assigns), do: attrs
 
   defp phx_change(%{on_change: str}) when is_bitstring(str), do: str
-  defp phx_change(assigns), do: "handle_change"
+  defp phx_change(_assigns), do: "handle_change"
 
   defp phx_click(%{on_clear: str}) when is_bitstring(str), do: str
-  defp phx_click(assigns), do: "handle_clear"
+  defp phx_click(_assigns), do: "handle_clear"
 end

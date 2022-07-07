@@ -8,11 +8,6 @@ defmodule PhoenixUI.Components.Autocomplete do
 
   use PhoenixUI, :live_component
 
-  @default_debounce 300
-  @default_end_icon "x"
-  @default_label false
-  @default_start_icon "search"
-
   @impl true
   def render(assigns) do
     ~H"""
