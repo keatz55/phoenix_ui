@@ -4,7 +4,8 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
   """
   use Mix.Task
 
-  def run(_) do
+  @impl true
+  def run(_args) do
     Application.put_env(:phoenix, :json_library, Jason)
     File.mkdir_p!("lib/phoenix_ui/tailwind")
     file = File.open!("lib/phoenix_ui/tailwind/generated_classes.ex", [:write])
@@ -19,7 +20,7 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
     |> Path.wildcard()
     |> Enum.map(&convert_path_to_module/1)
     |> Enum.filter(&generatable?/1)
-    |> Enum.map(&apply(&1, :classes, []))
+    |> Enum.map(& &1.classes())
     |> List.flatten()
     |> Enum.uniq()
     |> Enum.sort()

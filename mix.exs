@@ -8,6 +8,7 @@ defmodule PhoenixUI.MixProject do
       app: :phoenix_ui,
       deps: deps(),
       description: description(),
+      dialyzer: [plt_add_apps: [:mix], plt_file: {:no_warn, "priv/plts/dialyzer.plt"}],
       docs: docs(),
       elixir: "~> 1.12",
       elixirc_options: [warnings_as_errors: true],
@@ -29,6 +30,7 @@ defmodule PhoenixUI.MixProject do
     [
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:doctor, "~> 0.18.0", only: :dev},
       {:ex_doc, "~> 0.24", only: :dev, runtime: false},
       {:jason, "~> 1.2", optional: true},
       {:phoenix_live_view, "~> 0.17.9", optional: true},

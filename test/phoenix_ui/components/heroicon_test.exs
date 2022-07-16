@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.HeroiconTest do
+  alias PhoenixUI.Components.Heroicon
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -19,7 +21,7 @@ defmodule PhoenixUI.Components.HeroiconTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Heroicon.classes()
+      assert [_ | _] = Heroicon.classes()
     end
   end
 end

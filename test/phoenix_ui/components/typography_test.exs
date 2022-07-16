@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.TypographyTest do
+  alias PhoenixUI.Components.Typography
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -23,7 +25,7 @@ defmodule PhoenixUI.Components.TypographyTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Typography.classes()
+      assert [_ | _] = Typography.classes()
     end
   end
 end

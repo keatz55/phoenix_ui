@@ -1,7 +1,9 @@
-name: Test
+name: PhoenixUI CI
 
 on:
   pull_request:
+    branches: [main]
+  push:
     branches: [main]
 
 concurrency:
@@ -11,7 +13,6 @@ concurrency:
 jobs:
   elixir_tests:
     name: Elixir Tests
-    if: github.ref != 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,11 +29,22 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            deps
             _build
+            deps
+            priv/plts/
           key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles('mix.lock') }}
           restore-keys: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-
       - name: Install dependencies
         run: mix deps.get
+      - name: Mix Formatter
+        run: mix format --check-formatted
+      - name: Check for compiler warnings
+        run: mix compile --warnings-as-errors
+      - name: Credo strict checks
+        run: mix credo --strict
       - name: Run tests
         run: mix test --trace --slowest 10
+      - name: Doctor documentation checks
+        run: mix doctor
+      - name: Dialyzer checks
+        run: mix dialyzer

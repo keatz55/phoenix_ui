@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.AvatarTest do
+  alias PhoenixUI.Components.Avatar
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -20,7 +22,7 @@ defmodule PhoenixUI.Components.AvatarTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Avatar.classes()
+      assert [_ | _] = Avatar.classes()
     end
   end
 end

@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.AccordionTest do
+  alias PhoenixUI.Components.Accordion
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -30,7 +32,7 @@ defmodule PhoenixUI.Components.AccordionTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Accordion.classes()
+      assert [_ | _] = Accordion.classes()
     end
   end
 end

@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.BadgeTest do
+  alias PhoenixUI.Components.Badge
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -23,7 +25,7 @@ defmodule PhoenixUI.Components.BadgeTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Badge.classes()
+      assert [_ | _] = Badge.classes()
     end
   end
 end
