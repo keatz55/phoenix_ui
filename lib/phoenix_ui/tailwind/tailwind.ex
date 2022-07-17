@@ -45,12 +45,39 @@ defmodule PhoenixUI.Tailwind do
 
   @transition_durations [75, 100, 150, 200, 300, 500, 700, 1_000]
 
+  @doc """
+  Returns a list of supported tailwind colors.
+
+  ## Examples
+
+      iex> colors()
+      ["amber", "blue", ...]
+
+  """
   @spec colors :: [String.t()]
   def colors, do: @colors
 
+  @doc """
+  Returns a list of supported tailwind widths.
+
+  ## Examples
+
+      iex> max_widths()
+      ["2xl", "3xl", ...]
+
+  """
   @spec max_widths :: [String.t()]
   def max_widths, do: @max_widths
 
+  @doc """
+  Returns a list of supported tailwind transition durations.
+
+  ## Examples
+
+      iex> transition_durations()
+      [75, 100, ...]
+
+  """
   @spec transition_durations :: [integer()]
   def transition_durations, do: @transition_durations
 end

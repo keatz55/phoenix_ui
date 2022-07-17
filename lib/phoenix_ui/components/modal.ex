@@ -78,6 +78,18 @@ defmodule PhoenixUI.Components.Modal do
 
   ### JS Interactions ##########################
 
+  @doc """
+  Hide modal matching selector.
+
+  ## Examples
+
+      iex> hide_modal(selector)
+      %JS{}
+
+      iex> hide_modal(js, selector)
+      %JS{}
+
+  """
   @spec hide_modal(String.t()) :: struct()
   def hide_modal(selector), do: hide_modal(%JS{}, selector)
 
@@ -88,6 +100,18 @@ defmodule PhoenixUI.Components.Modal do
     |> hide_backdrop("#{selector}_modal_backdrop")
   end
 
+  @doc """
+  Show modal matching selector.
+
+  ## Examples
+
+      iex> show_modal(selector)
+      %JS{}
+
+      iex> show_modal(js, selector)
+      %JS{}
+
+  """
   @spec show_modal(String.t()) :: struct()
   def show_modal(selector), do: show_modal(%JS{}, selector)
 

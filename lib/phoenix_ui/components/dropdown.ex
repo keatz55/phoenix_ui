@@ -48,7 +48,33 @@ defmodule PhoenixUI.Components.Dropdown do
   ### Actions
   #############################################################################################
 
+  @doc """
+  Closes dropdown matching selector.
+
+  ## Examples
+
+      iex> hide_drawer(selector)
+      %JS{}
+
+      iex> hide_drawer(js, selector)
+      %JS{}
+
+  """
+  @spec close_dropdown(String.t()) :: struct()
   def close_dropdown(id), do: JS.hide(%JS{}, to: "##{id} .dropdown-menu")
 
+  @doc """
+  Toggles dropdown matching selector.
+
+  ## Examples
+
+      iex> hide_drawer(selector)
+      %JS{}
+
+      iex> hide_drawer(js, selector)
+      %JS{}
+
+  """
+  @spec toggle_dropdown(String.t()) :: struct()
   def toggle_dropdown(id), do: JS.toggle(%JS{}, to: "##{id} .dropdown-menu")
 end

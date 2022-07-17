@@ -63,6 +63,18 @@ defmodule PhoenixUI.Components.Collapse do
 
   ### JS Interactions ##########################
 
+  @doc """
+  Closes collapse by selector.
+
+  ## Examples
+
+      iex> close_collapse(selector)
+      %JS{}
+
+      iex> close_collapse(js, selector)
+      %JS{}
+
+  """
   @spec close_collapse(String.t()) :: struct()
   def close_collapse(selector), do: close_collapse(%JS{}, selector)
 
@@ -71,6 +83,18 @@ defmodule PhoenixUI.Components.Collapse do
     JS.remove_attribute(js, "open", to: selector)
   end
 
+  @doc """
+  Opens collapse by selector.
+
+  ## Examples
+
+      iex> open_collapse(selector)
+      %JS{}
+
+      iex> open_collapse(js, selector)
+      %JS{}
+
+  """
   @spec open_collapse(String.t()) :: struct()
   def open_collapse(selector), do: open_collapse(%JS{}, selector)
 
