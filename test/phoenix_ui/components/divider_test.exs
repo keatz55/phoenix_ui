@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.DividerTest do
+  alias PhoenixUI.Components.Divider
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -19,7 +21,7 @@ defmodule PhoenixUI.Components.DividerTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Divider.classes()
+      assert [_ | _] = Divider.classes()
     end
   end
 end

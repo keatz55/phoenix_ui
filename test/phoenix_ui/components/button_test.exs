@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.ButtonTest do
+  alias PhoenixUI.Components.Button
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -24,7 +26,7 @@ defmodule PhoenixUI.Components.ButtonTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Button.classes()
+      assert [_ | _] = Button.classes()
     end
   end
 end

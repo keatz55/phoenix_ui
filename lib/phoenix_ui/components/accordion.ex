@@ -84,6 +84,18 @@ defmodule PhoenixUI.Components.Accordion do
 
   ### JS Interactions ##########################
 
+  @doc """
+  Closes accordion by selector.
+
+  ## Examples
+
+      iex> close_accordion(selector)
+      %JS{}
+
+      iex> close_accordion(js, selector)
+      %JS{}
+
+  """
   @spec close_accordion(String.t()) :: struct()
   def close_accordion(selector), do: close_accordion(%JS{}, selector)
 
@@ -95,6 +107,18 @@ defmodule PhoenixUI.Components.Accordion do
     |> close_collapse("##{selector} .accordion-panel")
   end
 
+  @doc """
+  Opens accordion by selector.
+
+  ## Examples
+
+      iex> open_accordion(selector)
+      %JS{}
+
+      iex> open_accordion(js, selector)
+      %JS{}
+
+  """
   @spec open_accordion(String.t()) :: struct()
   def open_accordion(selector), do: open_accordion(%JS{}, selector)
 

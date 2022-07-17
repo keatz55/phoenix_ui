@@ -1,46 +1,23 @@
 defmodule PhoenixUI.Components.Grid do
   @moduledoc """
-  Provides a container component.
-
-  ## Import
-
-  ```elixir
-  alias PhoenixUI.Components.Container
-  # or
-  alias PhoenixUI.Components.{
-    ...
-    Container
-  }
-  ```
-
-  ## Variants
-
-  - fixed
-  - fluid
-
-  ## Supported Assigns
-
-  - elevation - keyword list of options you would normally pass to a `live_redirect` function
-  - square - true or false
-  - All HTML div attributes
-  - All Phoenix LiveView bindings
+  Provides grid component.
   """
   import PhoenixUI.Components.Element
 
-  use Phoenix.Component
+  use PhoenixUI, :component
 
   @default_columns 12
   @default_element "div"
 
   @doc """
-  Renders container component
+  Renders grid component.
 
   ## Examples
 
       ```
-      <.container>
+      <.grid>
         Content
-      </.container>
+      </.grid>
       ```
 
   """
@@ -59,52 +36,57 @@ defmodule PhoenixUI.Components.Grid do
     """
   end
 
-  defp build_grid_attrs(assigns) do
-    framework = PhoenixUI.Theme.css_framework()
+  @doc """
+  Returns all possible component classes for Tailwind CSS JIT compilation.
 
-    class =
-      ~w(
-        #{column_spacing_css(framework, assigns)}
-        #{columns_css(framework, assigns)}
-        #{default_css(framework, assigns)}
-        #{row_spacing_css(framework, assigns)}
-        #{Map.get(assigns, :extend_class)}
-      )
-      |> Enum.join(" ")
-      |> String.trim()
+  ## Examples
+
+      iex> classes()
+      ["class1", "class2", ...]
+
+  """
+  @spec classes :: [String.t()]
+  def classes do
+    generate_all_classes(&grid/1,
+      column_spacing: 1..12,
+      columns: 1..12,
+      row_spacing: 1..12,
+      spacing: 1..12
+    )
+  end
+
+  ### Grid Attrs ##########################
+
+  defp build_grid_attrs(assigns) do
+    class = build_class(~w(
+      grid
+      #{classes(:column_spacing, assigns)}
+      #{classes(:columns, assigns)}
+      #{classes(:row_spacing, assigns)}
+      #{Map.get(assigns, :extend_class)}
+    ))
 
     attrs =
       assigns
-      |> Map.drop([
-        :__changed__,
-        :__slot__,
-        :columns,
-        :element,
-        :extend_class,
-        :inner_block,
-        :spacing
-      ])
-      |> Map.put_new(:class, class)
-      |> Map.put(:variant, assigns[:element])
+      |> assigns_to_attributes([:columns, :element, :extend_class, :spacing])
+      |> Keyword.put_new(:class, class)
+      |> Keyword.put(:variant, assigns[:element])
 
     assign(assigns, :grid_attrs, attrs)
   end
 
-  # Column Spacing CSS
-  defp column_spacing_css(:tailwind, %{column_spacing: val}), do: "gap-y-#{val}"
-  defp column_spacing_css(:tailwind, %{spacing: val}), do: "gap-y-#{val}"
-  defp column_spacing_css(_css_framework, _assigns), do: nil
+  ### CSS Classes ##########################
 
-  # Columns CSS
-  defp columns_css(:tailwind, %{columns: val}), do: "grid-cols-#{val}"
-  defp columns_css(_css_framework, _assigns), do: nil
+  # Column Spacing
+  defp classes(:column_spacing, %{column_spacing: val}), do: "gap-y-#{val}"
+  defp classes(:column_spacing, %{spacing: val}), do: "gap-y-#{val}"
 
-  # Default CSS
-  defp default_css(:tailwind, _assigns), do: "grid"
-  defp default_css(_css_framework, _assigns), do: nil
+  # Columns
+  defp classes(:columns, %{columns: val}), do: "grid-cols-#{val}"
 
-  # Row Spacing CSS
-  defp row_spacing_css(:tailwind, %{row_spacing: val}), do: "gap-x-#{val}"
-  defp row_spacing_css(:tailwind, %{spacing: val}), do: "gap-x-#{val}"
-  defp row_spacing_css(_css_framework, _assigns), do: nil
+  # Row Spacing
+  defp classes(:row_spacing, %{row_spacing: val}), do: "gap-x-#{val}"
+  defp classes(:row_spacing, %{spacing: val}), do: "gap-x-#{val}"
+
+  defp classes(_rule_group, _assigns), do: nil
 end

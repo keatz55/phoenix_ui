@@ -69,6 +69,18 @@ defmodule PhoenixUI.Components.Drawer do
 
   ### JS Interactions ##########################
 
+  @doc """
+  Hides drawer matching selector.
+
+  ## Examples
+
+      iex> hide_drawer(selector)
+      %JS{}
+
+      iex> hide_drawer(js, selector)
+      %JS{}
+
+  """
   @spec hide_drawer(String.t()) :: struct()
   def hide_drawer(selector), do: hide_drawer(%JS{}, selector)
 
@@ -79,6 +91,18 @@ defmodule PhoenixUI.Components.Drawer do
     |> hide_backdrop("#{selector}_drawer_backdrop")
   end
 
+  @doc """
+  Shows drawer matching selector.
+
+  ## Examples
+
+      iex> show_drawer(selector)
+      %JS{}
+
+      iex> show_drawer(js, selector)
+      %JS{}
+
+  """
   @spec show_drawer(String.t()) :: struct()
   def show_drawer(selector), do: show_drawer(%JS{}, selector)
 

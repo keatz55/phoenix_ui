@@ -10,7 +10,7 @@ defmodule PhoenixUI.Components.Chip do
   @default_color "slate"
   @default_delete_icon_name "x-circle"
   @default_element "div"
-  @default_icon_clor "inherit"
+  @default_icon_color "inherit"
   @default_size "md"
   @default_variant "filled"
 

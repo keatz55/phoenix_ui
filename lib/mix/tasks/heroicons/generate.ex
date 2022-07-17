@@ -1,8 +1,11 @@
 defmodule Mix.Tasks.Heroicons.Generate do
+  @moduledoc """
+  Mix task for generating heroicon component from downloaded heroicon repo svgs.
+  """
   use Mix.Task
 
-  # TODO: auto git pull latest icons
-  def run(_) do
+  @impl true
+  def run(_args) do
     outline_icon_markup = load_markup("outline")
     solid_icon_markup = load_markup("solid")
 
@@ -118,11 +121,11 @@ defmodule Mix.Tasks.Heroicons.Generate do
       """)
     end)
 
-    file
-    |> IO.binwrite("""
+    IO.binwrite(file, """
     end
     """)
-    |> File.close()
+
+    File.close(file)
 
     Mix.Task.run("format")
   end

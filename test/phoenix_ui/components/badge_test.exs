@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.BackdropTest do
-  alias PhoenixUI.Components.Backdrop
+defmodule PhoenixUI.Components.BadgeTest do
+  alias PhoenixUI.Components.Badge
 
   use PhoenixUI.Case, async: true
 
@@ -7,21 +7,25 @@ defmodule PhoenixUI.Components.BackdropTest do
     [assigns: %{}]
   end
 
-  describe "backdrop/1" do
+  describe "badge/1" do
     test "should render with defaults", %{assigns: assigns} do
       markup = ~H"""
-      <.backdrop id="basic-backdrop" />
+      <.badge content="99+">
+        <.heroicon color="slate" name="mail"/>
+      </.badge>
       """
 
       html = rendered_to_string(markup)
 
-      assert html =~ "<div class=\"backdrop "
+      assert html =~ "<div class=\"badge-wrapper "
+      assert html =~ "<div class=\"badge "
+      assert html =~ "99+"
     end
   end
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = Backdrop.classes()
+      assert [_ | _] = Badge.classes()
     end
   end
 end

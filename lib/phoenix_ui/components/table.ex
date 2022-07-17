@@ -1,22 +1,26 @@
 defmodule PhoenixUI.Components.Table do
   @moduledoc """
-  Provides a table component.
+  Provides a table components.
   """
   import PhoenixUI.Components.Paper
 
   use PhoenixUI, :component
 
   @doc """
-  Renders table component
+  Renders table component.
 
   ## Examples
 
       ```
-      <.table
-        elevation={3}
-        square={true}
-      >
-        content
+      <.table>
+        <.tr>
+          <.th>Month</.th>
+          <.th>Savings</.th>
+        </.tr>
+        <.tr>
+          <.td>January</.td>
+          <.td>$100</.td>
+        </.tr>
       </.table>
       ```
 
@@ -28,6 +32,23 @@ defmodule PhoenixUI.Components.Table do
     |> generate_markup()
   end
 
+  @doc """
+  Renders body in table.
+
+  ## Examples
+
+      ```
+      <.table>
+        <.tbody>
+          <.tr>
+            <.td>Cell A</.td>
+            <.td>Cell B</.td>
+          </.tr>
+        </.tbody>
+      </.table>
+      ```
+
+  """
   @spec tbody(Socket.assigns()) :: Rendered.t()
   def tbody(assigns) do
     ~H"""
@@ -37,6 +58,21 @@ defmodule PhoenixUI.Components.Table do
     """
   end
 
+  @doc """
+  Renders standard data cell in table.
+
+  ## Examples
+
+      ```
+      <.table>
+        <.tr>
+          <.td>Cell A</.td>
+          <.td>Cell B</.td>
+        </.tr>
+      </.table>
+      ```
+
+  """
   @spec td(Socket.assigns()) :: Rendered.t()
   def td(assigns) do
     ~H"""
@@ -46,6 +82,23 @@ defmodule PhoenixUI.Components.Table do
     """
   end
 
+  @doc """
+  Renders footer in table.
+
+  ## Examples
+
+      ```
+      <.table>
+        <.tfoot>
+          <.tr>
+            <.th>Sum</.th>
+            <.th>$180</.th>
+          </.tr>
+        </.tfoot>
+      </.table>
+      ```
+
+  """
   @spec tfoot(Socket.assigns()) :: Rendered.t()
   def tfoot(assigns) do
     ~H"""
@@ -55,6 +108,23 @@ defmodule PhoenixUI.Components.Table do
     """
   end
 
+  @doc """
+  Renders header cell in table.
+
+  ## Examples
+
+      ```
+      <.table>
+        <.thead>
+          <.tr>
+            <.th>Month</.th>
+            <.th>Savings</.th>
+          </.tr>
+        </.thead>
+      </.table>
+      ```
+
+  """
   @spec th(Socket.assigns()) :: Rendered.t()
   def th(raw_assigns) do
     attrs = Map.drop(raw_assigns, [:__changed__, :inner_block])
@@ -70,6 +140,20 @@ defmodule PhoenixUI.Components.Table do
     """
   end
 
+  @doc """
+  Renders header in table.
+
+  ## Examples
+
+      ```
+      <.table>
+        <.thead>
+          ...
+        </.thead>
+      </.table>
+      ```
+
+  """
   @spec thead(Socket.assigns()) :: Rendered.t()
   def thead(assigns) do
     ~H"""
@@ -79,6 +163,20 @@ defmodule PhoenixUI.Components.Table do
     """
   end
 
+  @doc """
+  Renders row in table.
+
+  ## Examples
+
+      ```
+      <.table>
+        <.tr>
+          ...
+        </.tr>
+      </.table>
+      ```
+
+  """
   @spec tr(Socket.assigns()) :: Rendered.t()
   def tr(assigns) do
     ~H"""

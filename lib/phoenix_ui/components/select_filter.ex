@@ -2,7 +2,7 @@ defmodule PhoenixUI.Components.SelectFilter do
   @moduledoc """
   Provides select filter component.
   """
-  import PhoenixUI.Components.{Heroicon, Select}
+  import PhoenixUI.Components.Select
 
   use Phoenix.LiveComponent
 

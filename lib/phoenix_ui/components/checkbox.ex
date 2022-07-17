@@ -3,7 +3,7 @@ defmodule PhoenixUI.Components.Checkbox do
   Provides checkbox component.
   """
   import Phoenix.HTML.Form, only: [checkbox: 3, humanize: 1]
-  import PhoenixUI.Components.{ErrorTag, FormGroup, HelperText, Label, TextInput}
+  import PhoenixUI.Components.{ErrorTag, FormGroup, HelperText, Label}
 
   use PhoenixUI, :component
 

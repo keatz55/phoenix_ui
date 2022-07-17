@@ -62,6 +62,18 @@ defmodule PhoenixUI.Components.Backdrop do
 
   ### JS Interactions ##########################
 
+  @doc """
+  Hides backdrop by selector.
+
+  ## Examples
+
+      iex> hide_backdrop(selector)
+      %JS{}
+
+      iex> hide_backdrop(js, selector)
+      %JS{}
+
+  """
   @spec hide_backdrop(String.t()) :: struct()
   def hide_backdrop(selector), do: hide_backdrop(%JS{}, selector)
 
@@ -70,6 +82,18 @@ defmodule PhoenixUI.Components.Backdrop do
     JS.remove_attribute(js, "open", to: selector)
   end
 
+  @doc """
+  Shows backdrop by selector.
+
+  ## Examples
+
+      iex> show_backdrop(selector)
+      %JS{}
+
+      iex> show_backdrop(js, selector)
+      %JS{}
+
+  """
   @spec show_backdrop(String.t()) :: struct()
   def show_backdrop(selector), do: show_backdrop(%JS{}, selector)
 

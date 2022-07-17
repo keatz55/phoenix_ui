@@ -1,4 +1,6 @@
 defmodule PhoenixUI.Components.AlertTest do
+  alias PhoenixUI.Components.Alert
+
   use PhoenixUI.Case, async: true
 
   setup do
@@ -23,7 +25,7 @@ defmodule PhoenixUI.Components.AlertTest do
 
   describe "classes/0" do
     test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = PhoenixUI.Components.Alert.classes()
+      assert [_ | _] = Alert.classes()
     end
   end
 end

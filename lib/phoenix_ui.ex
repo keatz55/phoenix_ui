@@ -51,6 +51,15 @@ defmodule PhoenixUI do
     end
   end
 
+  @doc """
+  Helper macro for creating a PhoenixUI component.
+
+  ## Examples
+
+      use PhoenixUI, :component
+
+  """
+  @spec component() :: Macro.t()
   def component do
     quote generated: true, location: :keep do
       alias Phoenix.LiveView.{JS, Rendered, Socket}
@@ -62,6 +71,15 @@ defmodule PhoenixUI do
     end
   end
 
+  @doc """
+  Helper macro for creating a PhoenixUI live_component.
+
+  ## Examples
+
+      use PhoenixUI, :live_component
+
+  """
+  @spec live_component() :: Macro.t()
   def live_component do
     quote generated: true, location: :keep do
       alias Phoenix.LiveView.Socket
