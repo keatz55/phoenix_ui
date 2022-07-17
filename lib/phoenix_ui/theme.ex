@@ -27,7 +27,7 @@ defmodule PhoenixUI.Theme do
       ["2xl", "3xl", ...]
 
   """
-  @spec max_widths :: [integer()]
+  @spec max_widths :: [String.t()]
   def max_widths, do: Tailwind.max_widths()
 
   @doc """

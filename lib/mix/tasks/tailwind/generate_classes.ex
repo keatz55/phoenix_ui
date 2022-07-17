@@ -30,14 +30,14 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
       """)
     end)
 
-    file
-    |> IO.binwrite("""
+    IO.binwrite(file, """
       \"\"\"
     end
     """)
-    |> File.close()
 
-    # Mix.Task.run("format")
+    File.close(file)
+
+    Mix.Task.run("format")
   end
 
   defp convert_path_to_module(path) do

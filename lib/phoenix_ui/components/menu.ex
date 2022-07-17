@@ -108,6 +108,4 @@ defmodule PhoenixUI.Components.Menu do
 
   # Menu Item - Spacing
   defp classes(:menu_item, :spacing, _assigns), do: "py-2 px-4"
-
-  defp classes(_element, _rule_group, _assigns), do: nil
 end

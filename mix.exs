@@ -8,7 +8,10 @@ defmodule PhoenixUI.MixProject do
       app: :phoenix_ui,
       deps: deps(),
       description: description(),
-      dialyzer: [plt_add_apps: [:mix], plt_file: {:no_warn, "priv/plts/dialyzer.plt"}],
+      dialyzer: [
+        plt_add_apps: [:mix, :phoenix_html, :phoenix_live_view, :phoenix],
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ],
       docs: docs(),
       elixir: "~> 1.12",
       elixirc_options: [warnings_as_errors: true],

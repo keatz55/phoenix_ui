@@ -121,11 +121,11 @@ defmodule Mix.Tasks.Heroicons.Generate do
       """)
     end)
 
-    file
-    |> IO.binwrite("""
+    IO.binwrite(file, """
     end
     """)
-    |> File.close()
+
+    File.close(file)
 
     Mix.Task.run("format")
   end
