@@ -19,8 +19,8 @@ defmodule PhoenixUI.Helpers do
   def build_class(class_list), do: class_list |> Enum.join(" ") |> String.trim()
 
   @doc """
-  Generates all possible component assigns permutations, renders ever possible component, and
-  scrapes and returns a list of all possible classnames.
+  Generates all possible component assigns permutations, renders ever possible
+  component, scrapes, and returns a list of all possible classnames.
 
   ## Examples
 
