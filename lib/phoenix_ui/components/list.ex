@@ -86,7 +86,7 @@ defmodule PhoenixUI.Components.List do
 
   defp build_list_attrs(assigns) do
     extend_class = build_class(~w(
-      py-1
+      list py-1
       #{Map.get(assigns, :extend_class)}
     ))
 

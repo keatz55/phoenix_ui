@@ -116,7 +116,13 @@ defmodule PhoenixUI.Components.Collapse do
 
     attrs =
       assigns
-      |> assigns_to_attributes([:element, :max_size, :extend_class, :orientation])
+      |> assigns_to_attributes([
+        :element,
+        :max_size,
+        :extend_class,
+        :orientation,
+        :transition_duration
+      ])
       |> Keyword.put_new(:class, class)
       |> Keyword.put(:variant, assigns[:element])
 

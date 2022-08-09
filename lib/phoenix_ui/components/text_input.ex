@@ -39,10 +39,20 @@ defmodule PhoenixUI.Components.TextInput do
     ~H"""
     <.form_group extend_class={assigns[:extend_class]}>
       <%= if assigns[:form] && assigns[:label] == nil do %>
-        <.label field={assigns[:field]} form={assigns[:form]}/>
+        <.label
+          field={@field}
+          form={@form}
+          phx_feedback_for={Phoenix.HTML.Form.input_name(@form, @field)}
+          invalid?={assigns[:invalid?]}
+        />
       <% end %>
       <%= if assigns[:form] && assigns[:label] do %>
-        <.label field={assigns[:field]} form={assigns[:form]}>
+        <.label
+          field={@field}
+          form={@form}
+          phx_feedback_for={Phoenix.HTML.Form.input_name(@form, @field)}
+          invalid?={assigns[:invalid?]}
+        >
           <%= @label %>
         </.label>
       <% end %>
@@ -83,6 +93,7 @@ defmodule PhoenixUI.Components.TextInput do
       placeholder-slate-400 dark:placeholder-slate-400 transition-all ease-in-out duration-200
       #{classes(:background, assigns)}
       #{classes(:end_icon, assigns)}
+      #{classes(:invalid, assigns)}
       #{classes(:rounded, assigns)}
       #{classes(:start_icon, assigns)}
       #{classes(:variant, assigns)}
@@ -146,6 +157,9 @@ defmodule PhoenixUI.Components.TextInput do
   defp classes(:end_icon, %{end_icon: _}), do: "pr-12"
   defp classes(:end_icon, _assigns), do: "pr-3"
 
+  # Invalid
+  defp classes(:invalid, %{invalid?: true}), do: "invalid"
+
   # Rounded
   defp classes(:rounded, %{variant: "underline"}), do: nil
   defp classes(:rounded, %{variant: "unstyled"}), do: nil
@@ -157,7 +171,10 @@ defmodule PhoenixUI.Components.TextInput do
 
   # Variant - Simple
   defp classes(:variant, %{variant: "simple"}) do
-    "border border-slate-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-opacity-50 focus:ring-blue-200"
+    """
+    border border-slate-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-opacity-50 focus:ring-blue-200
+    invalid:border-red-500 invalid:focus:border-red-300 invalid:focus:ring-red-200
+    """
   end
 
   # Variant - Solid

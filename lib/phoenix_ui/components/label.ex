@@ -54,6 +54,7 @@ defmodule PhoenixUI.Components.Label do
     class = build_class(~w(
       label flex items-center
       #{classes(:color, assigns)}
+      #{classes(:invalid, assigns)}
       #{classes(:margin, assigns)}
       #{Map.get(assigns, :extend_class)}
     ))
@@ -69,11 +70,12 @@ defmodule PhoenixUI.Components.Label do
   ### CSS Classes ##########################
 
   # Color
-  defp classes(:color, %{invalid?: true}), do: "text-red-500"
-
   defp classes(:color, _assigns) do
-    "text-slate-600 dark:text-slate-300 disabled:text-slate-500 dark:disabled:text-slate-400 invalid:text-red-500"
+    "text-slate-600 dark:text-slate-300 disabled:text-slate-500 dark:disabled:text-slate-400 dark:invalid:text-red-500 invalid:text-red-500"
   end
+
+  # Invalid
+  defp classes(:invalid, %{invalid?: true}), do: "invalid"
 
   # Margin
   defp classes(:margin, %{margin: true}), do: "mb-2"
