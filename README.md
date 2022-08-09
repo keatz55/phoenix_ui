@@ -29,6 +29,8 @@ Documentation can be found at [https://hexdocs.pm/phoenix_ui](https://hexdocs.pm
 Add a new path pattern to `assets/tailwind.config.js` so Tailwind can import and utilize Phoenix UI css classes:
 
 ```diff
++const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: [
     './js/**/*.js',
@@ -39,7 +41,12 @@ module.exports = {
 +    "../deps/phoenix_ui/**/*.*ex",
   ],
   darkMode: "class",
-  plugins: [],
+  plugins: [
++    # Enables more explicit form error styling.
++    plugin(function({ addVariant }) {
++      addVariant('invalid', '&.invalid:not(.phx-no-feedback)')
++    })
+  ],
   theme: {
     extend: {},
   },
