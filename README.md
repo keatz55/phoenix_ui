@@ -42,7 +42,7 @@ module.exports = {
   ],
   darkMode: "class",
   plugins: [
-+    # Enables more explicit form error styling.
++    # Enables explicit form error styling.
 +    plugin(function({ addVariant }) {
 +      addVariant('invalid', '&.invalid:not(.phx-no-feedback)')
 +    })

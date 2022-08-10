@@ -62,10 +62,14 @@ defmodule PhoenixUI.Components.Label do
     attrs =
       assigns
       |> assigns_to_attributes([:extend_class, :field, :form, :invalid?, :margin])
+      |> Keyword.put_new(:phx_feedback_for, phx_feedback_for(assigns))
       |> Keyword.put_new(:class, class)
 
     assign(assigns, :label_attrs, attrs)
   end
+
+  defp phx_feedback_for(%{field: field, form: form}), do: input_name(form, field)
+  defp phx_feedback_for(_assigns), do: nil
 
   ### CSS Classes ##########################
 

@@ -39,20 +39,10 @@ defmodule PhoenixUI.Components.TextInput do
     ~H"""
     <.form_group extend_class={assigns[:extend_class]}>
       <%= if assigns[:form] && assigns[:label] == nil do %>
-        <.label
-          field={@field}
-          form={@form}
-          phx_feedback_for={Phoenix.HTML.Form.input_name(@form, @field)}
-          invalid?={assigns[:invalid?]}
-        />
+        <.label field={@field} form={@form} invalid?={assigns[:invalid?]}/>
       <% end %>
       <%= if assigns[:form] && assigns[:label] do %>
-        <.label
-          field={@field}
-          form={@form}
-          phx_feedback_for={Phoenix.HTML.Form.input_name(@form, @field)}
-          invalid?={assigns[:invalid?]}
-        >
+        <.label field={@field} form={@form} invalid?={assigns[:invalid?]}>
           <%= @label %>
         </.label>
       <% end %>
@@ -173,23 +163,26 @@ defmodule PhoenixUI.Components.TextInput do
   defp classes(:variant, %{variant: "simple"}) do
     """
     border border-slate-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-opacity-50 focus:ring-blue-200
-    invalid:border-red-500 invalid:focus:border-red-300 invalid:focus:ring-red-200
+    invalid:border-red-500 invalid:focus:border-red-300 invalid:focus:ring-red-300
     """
   end
 
   # Variant - Solid
   defp classes(:variant, %{variant: "solid"}) do
-    "shadow-sm border border-transparent focus:border-slate-500"
+    "shadow-sm border border-transparent focus:border-slate-500 invalid:border-red-500"
   end
 
   # Variant - Underline
   defp classes(:variant, %{variant: "underline"}) do
-    "border-b-2 border-slate-300 shadow-sm focus:border-slate-600"
+    "border-b-2 border-slate-300 shadow-sm focus:border-slate-600 invalid:border-red-300 invalid:focus:border-red-600"
   end
 
   # Variant - Unstyled
   defp classes(:variant, %{variant: "unstyled"}) do
-    "border border-slate-300 shadow-sm ring-0 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+    """
+    border border-slate-300 shadow-sm ring-0 focus:ring-1 focus:ring-blue-500 focus:border-blue-500
+    invalid:border-red-300 invalid:focus:ring-red-500 invalid:focus:border-red-500
+    """
   end
 
   # Width

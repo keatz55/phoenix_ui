@@ -2,8 +2,6 @@ defmodule PhoenixUI.Components.Button do
   @moduledoc """
   Provides button component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
   @default_color "blue"
@@ -40,9 +38,9 @@ defmodule PhoenixUI.Components.Button do
       |> build_btn_attrs()
 
     ~H"""
-    <.element {@btn_attrs}>
+    <.dynamic_tag {@btn_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -83,7 +81,7 @@ defmodule PhoenixUI.Components.Button do
       assigns
       |> assigns_to_attributes([:color, :element, :extend_class, :size, :square, :variant])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put_new(:variant, assigns[:element])
+      |> Keyword.put_new(:name, assigns[:element])
 
     assign(assigns, :btn_attrs, attrs)
   end

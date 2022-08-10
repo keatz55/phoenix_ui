@@ -2,8 +2,6 @@ defmodule PhoenixUI.Components.Typography do
   @moduledoc """
   Provides typography component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
   @default_variant "p"
@@ -30,9 +28,9 @@ defmodule PhoenixUI.Components.Typography do
       |> build_typography_attrs()
 
     ~H"""
-    <.element {@typography_attrs}>
+    <.dynamic_tag {@typography_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -57,7 +55,7 @@ defmodule PhoenixUI.Components.Typography do
   ### Typography Attrs ##########################
 
   defp build_typography_attrs(assigns) do
-    variant = assigns[:element] || assigns[:variant]
+    dynamic_tag_name = assigns[:element] || assigns[:variant]
 
     class = build_class(~w(
       typography
@@ -73,7 +71,7 @@ defmodule PhoenixUI.Components.Typography do
       assigns
       |> assigns_to_attributes([:align, :color, :element, :extend_class, :variant])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, variant)
+      |> Keyword.put(:name, dynamic_tag_name)
 
     assign(assigns, :typography_attrs, attrs)
   end
