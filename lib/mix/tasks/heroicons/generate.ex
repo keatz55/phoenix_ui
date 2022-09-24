@@ -19,9 +19,10 @@ defmodule Mix.Tasks.Heroicons.Generate do
       \"\"\"
       use PhoenixUI, :component
 
-      @default_color "inherit"
-      @default_size "md"
-      @default_variant "solid"
+      attr(:color, :string, default: "inherit")
+      attr(:name, :string, required: true)
+      attr(:size, :string, default: "md")
+      attr(:variant, :string, default: "solid")
 
       @doc \"\"\"
       Renders heroicon component.
@@ -36,10 +37,13 @@ defmodule Mix.Tasks.Heroicons.Generate do
       @spec heroicon(Socket.assigns()) :: Rendered.t()
       def heroicon(assigns) do
         assigns
-        |> assign_new(:color, fn -> @default_color end)
-        |> assign_new(:size, fn -> @default_size end)
-        |> assign_new(:variant, fn -> @default_variant end)
-        |> build_icon_attrs()
+        |> assign_class(~w(
+          heroicon inline-block
+          #\{classes(:color, assigns)\}
+          #\{classes(:size, assigns)\}
+          #\{Map.get(assigns, :extend_class)\}
+        ))
+        |> assign_rest([:color, :extend_class, :name, :size, :variant])
         |> render_markup()
       end
 
@@ -60,24 +64,6 @@ defmodule Mix.Tasks.Heroicons.Generate do
           size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
           variant: ["outline", "solid"]
         )
-      end
-
-      ### Icon Attrs ##########################
-
-      defp build_icon_attrs(assigns) do
-        class = build_class(~w(
-          heroicon inline-block
-          #\{classes(:color, assigns)\}
-          #\{classes(:size, assigns)\}
-          #\{Map.get(assigns, :extend_class)\}
-        ))
-
-        attrs =
-          assigns
-          |> assigns_to_attributes([:color, :extend_class, :name, :size, :variant])
-          |> Keyword.put_new(:class, class)
-
-        assign(assigns, :icon_attrs, attrs)
       end
 
       ### CSS Classes ##########################
@@ -147,7 +133,7 @@ defmodule Mix.Tasks.Heroicons.Generate do
         file
         |> File.read!()
         |> String.trim()
-        |> String.replace("<svg", "<svg {@icon_attrs}")
+        |> String.replace("<svg", "<svg {@rest}")
       }
     end)
   end
