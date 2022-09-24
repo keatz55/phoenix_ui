@@ -2,12 +2,10 @@ defmodule PhoenixUI.Components.FormGroup do
   @moduledoc """
   Provides form group component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_element "div"
-  @default_margin true
+  attr(:element, :string, default: "div")
+  attr(:margin, :boolean, default: true)
 
   @doc """
   Renders form group component.
@@ -28,17 +26,13 @@ defmodule PhoenixUI.Components.FormGroup do
 
   """
   @spec form_group(Socket.assigns()) :: Rendered.t()
-  def form_group(raw_assigns) do
-    assigns =
-      raw_assigns
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:margin, fn -> @default_margin end)
-      |> build_form_group_attrs()
+  def form_group(prev_assigns) do
+    assigns = build_form_group_attrs(prev_assigns)
 
     ~H"""
-    <.element {@form_group_attrs}>
+    <.dynamic_tag {@form_group_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -55,7 +49,7 @@ defmodule PhoenixUI.Components.FormGroup do
       assigns
       |> assigns_to_attributes([:element, :extend_class, :margin])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :form_group_attrs, attrs)
   end
