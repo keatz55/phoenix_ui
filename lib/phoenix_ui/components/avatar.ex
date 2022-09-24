@@ -2,15 +2,15 @@ defmodule PhoenixUI.Components.Avatar do
   @moduledoc """
   Provides avatar component.
   """
-  import PhoenixUI.Components.{Element, Heroicon}
+  import PhoenixUI.Components.Heroicon, only: [heroicon: 1]
 
   use PhoenixUI, :component
 
-  @default_border false
-  @default_color "slate"
-  @default_element "div"
-  @default_size "md"
-  @default_variant "circular"
+  attr(:border, :boolean, default: false)
+  attr(:color, :string, default: "slate")
+  attr(:element, :string, default: "div")
+  attr(:size, :string, default: "md")
+  attr(:variant, :string, default: "circular")
 
   @doc """
   Renders avatar component.
@@ -25,11 +25,6 @@ defmodule PhoenixUI.Components.Avatar do
   @spec avatar(Socket.assigns()) :: Rendered.t()
   def avatar(assigns) do
     assigns
-    |> assign_new(:border, fn -> @default_border end)
-    |> assign_new(:color, fn -> @default_color end)
-    |> assign_new(:element, fn -> @default_element end)
-    |> assign_new(:size, fn -> @default_size end)
-    |> assign_new(:variant, fn -> @default_variant end)
     |> build_avatar_attrs()
     |> generate_markup()
   end
@@ -58,38 +53,38 @@ defmodule PhoenixUI.Components.Avatar do
 
   defp generate_markup(%{src: src} = assigns) when not is_nil(src) do
     ~H"""
-    <.element {@avatar_attrs}>
+    <.dynamic_tag {@avatar_attrs}>
       <img alt={assigns[:alt]} class="avatar-image object-cover h-full w-full" src={@src} />
-    </.element>
+    </.dynamic_tag>
     """
   end
 
   defp generate_markup(%{inner_block: inner_block} = assigns) when not is_nil(inner_block) do
     ~H"""
-    <.element {@avatar_attrs}>
+    <.dynamic_tag {@avatar_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
   defp generate_markup(%{name: name} = assigns) when not is_nil(name) do
     ~H"""
-    <.element {@avatar_attrs}>
+    <.dynamic_tag {@avatar_attrs}>
       <%= build_initials(@name) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
   defp generate_markup(assigns) do
     ~H"""
-    <.element {@avatar_attrs}>
+    <.dynamic_tag {@avatar_attrs}>
       <.heroicon
         extend_class="absolute scale-125 top-[15%]"
         name="user"
         size={icon_size_mapping(@size)}
-        variant="solid"
+        variant="mini"
       />
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -119,7 +114,7 @@ defmodule PhoenixUI.Components.Avatar do
         :src,
         :variant
       ])
-      |> Keyword.put(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
       |> Keyword.put_new(:class, class)
 
     assign(assigns, :avatar_attrs, attrs)

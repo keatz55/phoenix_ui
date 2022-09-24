@@ -2,16 +2,19 @@ defmodule PhoenixUI.Components.AvatarGroup do
   @moduledoc """
   Provides avatar_group component.
   """
-  import PhoenixUI.Components.{Avatar, Element}
+  import PhoenixUI.Components.Avatar, only: [avatar: 1]
 
   use PhoenixUI, :component
 
-  @default_border true
-  @default_color "slate"
-  @default_max 5
-  @default_size "md"
-  @default_spacing "md"
-  @default_variant "circular"
+  attr(:border, :boolean, default: true)
+  attr(:color, :string, default: "slate")
+  attr(:element, :string, default: "div")
+  attr(:max, :integer, default: 5)
+  attr(:size, :string, default: "md")
+  attr(:spacing, :string, default: "md")
+  attr(:variant, :string, default: "circular")
+
+  slot(:avatar, required: true)
 
   @doc """
   Renders avatar_group component.
@@ -29,22 +32,16 @@ defmodule PhoenixUI.Components.AvatarGroup do
 
   """
   @spec avatar_group(Socket.assigns()) :: Rendered.t()
-  def avatar_group(raw) do
+  def avatar_group(pre_assigns) do
     assigns =
-      raw
-      |> assign_new(:border, fn -> @default_border end)
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:max, fn -> @default_max end)
-      |> assign_new(:size, fn -> @default_size end)
-      |> assign_new(:spacing, fn -> @default_spacing end)
-      |> assign_new(:variant, fn -> @default_variant end)
+      pre_assigns
       |> calc_total()
       |> calc_extra()
       |> build_avatar_group_attrs()
       |> normalize_avatars()
 
     ~H"""
-    <.element {@avatar_group_attrs}>
+    <.dynamic_tag {@avatar_group_attrs}>
       <%= if (@total - @max) > 0 do %>
         <.avatar
           border={@border}
@@ -59,7 +56,7 @@ defmodule PhoenixUI.Components.AvatarGroup do
       <%= for avatar <- @avatar do %>
         <.avatar {avatar} />
       <% end %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -114,7 +111,7 @@ defmodule PhoenixUI.Components.AvatarGroup do
         :variant
       ])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:element, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :avatar_group_attrs, attrs)
   end
