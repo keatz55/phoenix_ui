@@ -25,7 +25,15 @@ defmodule PhoenixUI.Components.Avatar do
   @spec avatar(Socket.assigns()) :: Rendered.t()
   def avatar(assigns) do
     assigns
-    |> build_avatar_attrs()
+    |> assign_class(~w(
+      avatar relative overflow-hidden font-semibold
+      inline-flex items-center justify-center
+      #{classes(:border, assigns)}
+      #{classes(:color, assigns)}
+      #{classes(:size, assigns)}
+      #{classes(:variant, assigns)}
+    ))
+    |> assign_rest([:alt, :border, :color, :element, :extend_class, :name, :size, :src, :variant])
     |> generate_markup()
   end
 
@@ -53,7 +61,7 @@ defmodule PhoenixUI.Components.Avatar do
 
   defp generate_markup(%{src: src} = assigns) when not is_nil(src) do
     ~H"""
-    <.dynamic_tag {@avatar_attrs}>
+    <.dynamic_tag name={@element} {@rest}>
       <img alt={assigns[:alt]} class="avatar-image object-cover h-full w-full" src={@src} />
     </.dynamic_tag>
     """
@@ -61,7 +69,7 @@ defmodule PhoenixUI.Components.Avatar do
 
   defp generate_markup(%{inner_block: inner_block} = assigns) when not is_nil(inner_block) do
     ~H"""
-    <.dynamic_tag {@avatar_attrs}>
+    <.dynamic_tag name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
@@ -69,7 +77,7 @@ defmodule PhoenixUI.Components.Avatar do
 
   defp generate_markup(%{name: name} = assigns) when not is_nil(name) do
     ~H"""
-    <.dynamic_tag {@avatar_attrs}>
+    <.dynamic_tag name={@element} {@rest}>
       <%= build_initials(@name) %>
     </.dynamic_tag>
     """
@@ -77,7 +85,7 @@ defmodule PhoenixUI.Components.Avatar do
 
   defp generate_markup(assigns) do
     ~H"""
-    <.dynamic_tag {@avatar_attrs}>
+    <.dynamic_tag name={@element} {@rest}>
       <.heroicon
         extend_class="absolute scale-125 top-[15%]"
         name="user"
@@ -86,38 +94,6 @@ defmodule PhoenixUI.Components.Avatar do
       />
     </.dynamic_tag>
     """
-  end
-
-  ### Avatar Attrs ##########################
-
-  defp build_avatar_attrs(assigns) do
-    class = build_class(~w(
-      avatar relative overflow-hidden font-semibold
-      inline-flex items-center justify-center
-      #{classes(:border, assigns)}
-      #{classes(:color, assigns)}
-      #{classes(:size, assigns)}
-      #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([
-        :alt,
-        :border,
-        :color,
-        :element,
-        :extend_class,
-        :name,
-        :size,
-        :src,
-        :variant
-      ])
-      |> Keyword.put(:name, assigns[:element])
-      |> Keyword.put_new(:class, class)
-
-    assign(assigns, :avatar_attrs, attrs)
   end
 
   ### CSS Classes ##########################

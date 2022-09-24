@@ -32,16 +32,19 @@ defmodule PhoenixUI.Components.AvatarGroup do
 
   """
   @spec avatar_group(Socket.assigns()) :: Rendered.t()
-  def avatar_group(pre_assigns) do
+  def avatar_group(prev_assigns) do
+    spacing = spacing_mapping(prev_assigns[:spacing])
+
     assigns =
-      pre_assigns
+      prev_assigns
+      |> assign_class(~w(avatar-group inline-flex flex-row-reverse items-center pl-#{spacing} ))
+      |> assign_rest([:avatar, :border, :color, :element, :extend_class, :size, :variant])
       |> calc_total()
       |> calc_extra()
-      |> build_avatar_group_attrs()
       |> normalize_avatars()
 
     ~H"""
-    <.dynamic_tag {@avatar_group_attrs}>
+    <.dynamic_tag name={@element} {@rest}>
       <%= if (@total - @max) > 0 do %>
         <.avatar
           border={@border}
@@ -87,33 +90,6 @@ defmodule PhoenixUI.Components.AvatarGroup do
 
   defp calc_extra(%{max: max, total: total} = assigns) do
     assign_new(assigns, :extra, fn -> total - max end)
-  end
-
-  ### Avatar Group Attrs ##########################
-
-  defp build_avatar_group_attrs(assigns) do
-    spacing = spacing_mapping(assigns[:spacing])
-
-    class = build_class(~w(
-      avatar-group inline-flex flex-row-reverse items-center pl-#{spacing}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([
-        :avatar,
-        :border,
-        :color,
-        :element,
-        :extend_class,
-        :size,
-        :variant
-      ])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :avatar_group_attrs, attrs)
   end
 
   ### Normalize Avatars ##########################
