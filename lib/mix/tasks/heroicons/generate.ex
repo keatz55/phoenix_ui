@@ -6,8 +6,9 @@ defmodule Mix.Tasks.Heroicons.Generate do
 
   @impl true
   def run(_args) do
-    outline_icon_markup = load_markup("outline")
-    solid_icon_markup = load_markup("solid")
+    mini_icon_markup = load_markup("20/solid")
+    outline_icon_markup = load_markup("24/outline")
+    solid_icon_markup = load_markup("24/solid")
 
     file = File.open!("lib/phoenix_ui/components/heroicon.ex", [:write])
 
@@ -107,6 +108,12 @@ defmodule Mix.Tasks.Heroicons.Generate do
     |> Enum.each(fn icon ->
       IO.binwrite(file, """
       # #{icon}
+      defp render_markup(%{name: "#{icon}", variant: "mini"} = assigns) do
+        ~H\"\"\"
+        #{Map.get(mini_icon_markup, icon)}
+        \"\"\"
+      end
+
       defp render_markup(%{name: "#{icon}", variant: "outline"} = assigns) do
         ~H\"\"\"
         #{Map.get(outline_icon_markup, icon)}
