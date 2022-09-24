@@ -21,7 +21,10 @@ defmodule PhoenixUI.Helpers do
   def assign_class(assigns, class_list) do
     assign_new(assigns, :class, fn ->
       if extend_class = Map.get(assigns, :extend_class) do
-        [extend_class | class_list] |> Enum.reverse() |> Enum.join(" ") |> String.trim()
+        [extend_class | Enum.reverse(class_list)]
+        |> Enum.reverse()
+        |> Enum.join(" ")
+        |> String.trim()
       else
         class_list |> Enum.join(" ") |> String.trim()
       end
@@ -61,7 +64,7 @@ defmodule PhoenixUI.Helpers do
 
   """
   @spec assign_rest(Socket.assigns()) :: Socket.assigns()
-  @spec assign_rest(Socket.assigns(), []) :: Socket.assigns()
+  @spec assign_rest(Socket.assigns(), [atom()]) :: Socket.assigns()
   def assign_rest(assigns, exclude \\ []) do
     assign(assigns, :rest, assigns_to_attributes(assigns, exclude))
   end
