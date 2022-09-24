@@ -10,6 +10,7 @@ defmodule PhoenixUI do
       alias PhoenixUI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
 
       import PhoenixUI.Components.Divider, only: [divider: 1]
+      import PhoenixUI.Components.Link, only: [a: 1]
 
       import PhoenixUI.Components.{
         Accordion,
@@ -36,7 +37,6 @@ defmodule PhoenixUI do
         Heroicon,
         HiddenInput,
         Label,
-        A,
         List,
         Menu,
         Modal,

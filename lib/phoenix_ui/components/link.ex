@@ -1,4 +1,4 @@
-defmodule PhoenixUI.Components.A do
+defmodule PhoenixUI.Components.Link do
   @moduledoc """
   Provides a component.
   """
@@ -25,10 +25,10 @@ defmodule PhoenixUI.Components.A do
       raw
       |> assign_new(:color, fn -> @default_color end)
       |> assign_new(:disabled, fn -> @default_disabled end)
-      |> build_a_attrs()
+      |> build_link_attrs()
 
     ~H"""
-    <.link {@a_attrs}>
+    <.link {@link_attrs}>
       <%= render_slot(@inner_block) %>
     </.link>
     """
@@ -45,7 +45,7 @@ defmodule PhoenixUI.Components.A do
   """
   @spec classes :: [String.t()]
   def classes do
-    generate_all_classes(&link/1,
+    generate_all_classes(&a/1,
       color: Theme.colors(),
       disabled: [false, true]
     )
@@ -53,7 +53,7 @@ defmodule PhoenixUI.Components.A do
 
   ### Link Attrs ##########################
 
-  defp build_a_attrs(assigns) do
+  defp build_link_attrs(assigns) do
     class = build_class(~w(
       link transition-all ease-in-out duration-300 cursor-pointer
       #{classes(:color, assigns)}
@@ -65,7 +65,7 @@ defmodule PhoenixUI.Components.A do
       |> assigns_to_attributes([:color, :extend_class])
       |> Keyword.put_new(:class, class)
 
-    assign(assigns, :a_attrs, attrs)
+    assign(assigns, :link_attrs, attrs)
   end
 
   ### CSS Classes ##########################

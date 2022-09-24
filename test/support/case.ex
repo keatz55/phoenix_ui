@@ -4,9 +4,9 @@ defmodule PhoenixUI.Case do
 
   using do
     quote do
+      use Phoenix.Component
       use PhoenixUI
 
-      import Phoenix.LiveView.Helpers
       import Phoenix.LiveViewTest
 
       @moduletag capture_log: true

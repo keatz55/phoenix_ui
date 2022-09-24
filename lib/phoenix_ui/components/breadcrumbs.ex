@@ -2,11 +2,11 @@ defmodule PhoenixUI.Components.Breadcrumbs do
   @moduledoc """
   Provides breadcrumbs component.
   """
-  import PhoenixUI.Components.{Heroicon, A}
+  import PhoenixUI.Components.{Heroicon, Link}
 
   use PhoenixUI, :component
 
-  @default_a_color "slate"
+  @default_link_color "slate"
   @default_separator "chevron-right"
 
   @doc """
@@ -30,17 +30,17 @@ defmodule PhoenixUI.Components.Breadcrumbs do
       |> assign_new(:separator, fn -> @default_separator end)
       |> build_nav_attrs()
       |> build_separator_attrs()
-      |> normalize_as()
+      |> normalize_links()
 
     ~H"""
     <nav {@nav_attrs}>
       <ol class="flex items-center space-x-2" role="list">
-        <%= for a <- @a do %>
+        <%= for link <- @a do %>
           <li class="flex items-center">
-            <.a {a}>
-              <%= render_slot(a) %>
+            <.a {link}>
+              <%= render_slot(link) %>
             </.a>
-            <%= if !a[:"aria-current"] do %>
+            <%= if !link[:"aria-current"] do %>
               <.heroicon {@separator_attrs} />
             <% end %>
           </li>
@@ -102,19 +102,19 @@ defmodule PhoenixUI.Components.Breadcrumbs do
 
   ### Normalize Links ##########################
 
-  defp normalize_as(assigns) do
-    as =
+  defp normalize_links(assigns) do
+    links =
       assigns
       |> Map.get(:a, [])
       |> Enum.reverse()
-      |> Enum.reduce([], fn a, acc ->
-        updated = a |> Map.put_new(:color, @default_a_color) |> apply_aria_current(acc)
+      |> Enum.reduce([], fn link, acc ->
+        updated = link |> Map.put_new(:color, @default_link_color) |> apply_aria_current(acc)
         [updated | acc]
       end)
 
-    assign(assigns, :a, as)
+    assign(assigns, :a, links)
   end
 
-  defp apply_aria_current(a, []), do: Map.put(a, :"aria-current", "page")
-  defp apply_aria_current(a, _acc), do: a
+  defp apply_aria_current(link, []), do: Map.put(link, :"aria-current", "page")
+  defp apply_aria_current(link, _acc), do: link
 end
