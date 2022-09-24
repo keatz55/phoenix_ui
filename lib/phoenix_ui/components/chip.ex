@@ -2,17 +2,18 @@ defmodule PhoenixUI.Components.Chip do
   @moduledoc """
   Provides chip component.
   """
-  import PhoenixUI.Components.{Avatar, Element, Heroicon}
+  import PhoenixUI.Components.{Avatar, Heroicon}
 
   use PhoenixUI, :component
 
   @default_avatar_size 2
-  @default_color "slate"
   @default_delete_icon_name "x-circle"
-  @default_element "div"
   @default_icon_color "inherit"
-  @default_size "md"
-  @default_variant "filled"
+
+  attr(:color, :string, default: "slate")
+  attr(:element, :string, default: "div")
+  attr(:size, :string, default: "md")
+  attr(:variant, :string, default: "filled")
 
   @doc """
   Renders chip component.
@@ -25,20 +26,16 @@ defmodule PhoenixUI.Components.Chip do
 
   """
   @spec chip(Socket.assigns()) :: Rendered.t()
-  def chip(raw) do
+  def chip(prev_assigns) do
     assigns =
-      raw
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:size, fn -> @default_size end)
-      |> assign_new(:variant, fn -> @default_variant end)
+      prev_assigns
       |> build_chip_attrs()
       |> build_avatar_attrs()
       |> build_icon_attrs()
       |> build_delete_icon_attrs()
 
     ~H"""
-    <.element {@chip_attrs}>
+    <.dynamic_tag {@chip_attrs}>
       <%= if assigns[:avatar] do %>
         <.avatar {@avatar_attrs} />
       <% end %>
@@ -51,7 +48,7 @@ defmodule PhoenixUI.Components.Chip do
           <.heroicon {@delete_icon_attrs} />
         </div>
       <% end %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -100,7 +97,7 @@ defmodule PhoenixUI.Components.Chip do
         :variant
       ])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put_new(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :chip_attrs, attrs)
   end

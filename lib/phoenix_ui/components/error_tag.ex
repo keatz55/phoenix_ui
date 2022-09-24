@@ -3,12 +3,11 @@ defmodule PhoenixUI.Components.ErrorTag do
   Provides error tag component.
   """
   import Phoenix.HTML.Form
-  import PhoenixUI.Components.Element
 
   use PhoenixUI, :component
 
-  @default_color "red"
-  @default_variant "p"
+  attr(:color, :string, default: "red")
+  attr(:variant, :string, default: "p")
 
   @doc """
   Renders error tag component.
@@ -21,19 +20,17 @@ defmodule PhoenixUI.Components.ErrorTag do
 
   """
   @spec error_tag(Socket.assigns()) :: Rendered.t()
-  def error_tag(raw_assigns) do
+  def error_tag(prev_assigns) do
     assigns =
-      raw_assigns
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:variant, fn -> @default_variant end)
+      prev_assigns
       |> build_error_attrs()
       |> translate_errors()
 
     ~H"""
     <%= for error <- @errors do %>
-      <.element {@error_attrs}>
+      <.dynamic_tag {@error_attrs}>
         <%= error %>
-      </.element>
+      </.dynamic_tag>
     <% end %>
     """
   end
@@ -49,8 +46,9 @@ defmodule PhoenixUI.Components.ErrorTag do
     attrs =
       assigns
       |> assigns_to_attributes([:field, :form, :extend_class])
-      |> Keyword.put(:phx_feedback_for, input_name(form, field))
       |> Keyword.put(:extend_class, extend_class)
+      |> Keyword.put(:name, assigns[:variant])
+      |> Keyword.put(:phx_feedback_for, input_name(form, field))
 
     assign(assigns, :error_attrs, attrs)
   end

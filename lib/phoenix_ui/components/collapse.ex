@@ -2,15 +2,13 @@ defmodule PhoenixUI.Components.Collapse do
   @moduledoc """
   Provides collapse component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_element "div"
-  @default_max_size "5000px"
-  @default_open false
-  @default_orientation "vertical"
-  @default_transition_duration 300
+  attr(:element, :string, default: "div")
+  attr(:max_size, :string, default: "5000px")
+  attr(:open, :boolean, default: false)
+  attr(:orientation, :string, default: "vertical")
+  attr(:transition_duration, :integer, default: 300)
 
   @doc """
   Renders collapse component.
@@ -25,20 +23,13 @@ defmodule PhoenixUI.Components.Collapse do
 
   """
   @spec collapse(Socket.assigns()) :: Rendered.t()
-  def collapse(raw_assigns) do
-    assigns =
-      raw_assigns
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:max_size, fn -> @default_max_size end)
-      |> assign_new(:open, fn -> @default_open end)
-      |> assign_new(:orientation, fn -> @default_orientation end)
-      |> assign_new(:transition_duration, fn -> @default_transition_duration end)
-      |> build_collapse_attrs()
+  def collapse(prev_assigns) do
+    assigns = build_collapse_attrs(prev_assigns)
 
     ~H"""
-    <.element {@collapse_attrs}>
+    <.dynamic_tag {@collapse_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -118,7 +109,7 @@ defmodule PhoenixUI.Components.Collapse do
       assigns
       |> assigns_to_attributes([:element, :max_size, :extend_class, :orientation])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :collapse_attrs, attrs)
   end

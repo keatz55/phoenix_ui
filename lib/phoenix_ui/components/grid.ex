@@ -2,12 +2,10 @@ defmodule PhoenixUI.Components.Grid do
   @moduledoc """
   Provides grid component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_columns 12
-  @default_element "div"
+  attr(:columns, :integer, default: 12)
+  attr(:element, :string, default: "div")
 
   @doc """
   Renders grid component.
@@ -22,17 +20,13 @@ defmodule PhoenixUI.Components.Grid do
 
   """
   @spec grid(Socket.assigns()) :: Rendered.t()
-  def grid(raw_assigns) do
-    assigns =
-      raw_assigns
-      |> assign_new(:columns, fn -> @default_columns end)
-      |> assign_new(:element, fn -> @default_element end)
-      |> build_grid_attrs()
+  def grid(prev_assigns) do
+    assigns = build_grid_attrs(prev_assigns)
 
     ~H"""
-    <.element {@grid_attrs}>
+    <.dynamic_tag {@grid_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -70,7 +64,7 @@ defmodule PhoenixUI.Components.Grid do
       assigns
       |> assigns_to_attributes([:columns, :element, :extend_class, :spacing])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :grid_attrs, attrs)
   end

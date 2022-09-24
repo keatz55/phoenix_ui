@@ -2,13 +2,11 @@ defmodule PhoenixUI.Components.Container do
   @moduledoc """
   Provides container component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_element "div"
-  @default_max_width "screen-lg"
-  @default_variant "fluid"
+  attr(:element, :string, default: "div")
+  attr(:max_width, :string, default: "screen-lg")
+  attr(:variant, :string, default: "fluid")
 
   @doc """
   Renders container component.
@@ -23,18 +21,13 @@ defmodule PhoenixUI.Components.Container do
 
   """
   @spec container(Socket.assigns()) :: Rendered.t()
-  def container(raw_assigns) do
-    assigns =
-      raw_assigns
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:max_width, fn -> @default_max_width end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> build_container_attrs()
+  def container(prev_assigns) do
+    assigns = build_container_attrs(prev_assigns)
 
     ~H"""
-    <.element {@container_attrs}>
+    <.dynamic_tag {@container_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -69,7 +62,7 @@ defmodule PhoenixUI.Components.Container do
       assigns
       |> assigns_to_attributes([:element, :extend_class, :max_width, :variant])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :container_attrs, attrs)
   end

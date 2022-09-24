@@ -2,17 +2,15 @@ defmodule PhoenixUI.Components.Button do
   @moduledoc """
   Provides button component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_color "blue"
-  @default_disabled false
-  @default_element "button"
-  @default_size "md"
-  @default_square false
-  @default_type "button"
-  @default_variant "contained"
+  attr(:color, :string, default: "blue")
+  attr(:disabled, :boolean, default: false)
+  attr(:element, :string, default: "button")
+  attr(:size, :string, default: "md")
+  attr(:square, :boolean, default: false)
+  attr(:type, :string, default: "button")
+  attr(:variant, :string, default: "contained")
 
   @doc """
   Renders button component.
@@ -27,22 +25,13 @@ defmodule PhoenixUI.Components.Button do
 
   """
   @spec button(Socket.assigns()) :: Rendered.t()
-  def button(raw) do
-    assigns =
-      raw
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:disabled, fn -> @default_disabled end)
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:size, fn -> @default_size end)
-      |> assign_new(:square, fn -> @default_square end)
-      |> assign_new(:type, fn -> @default_type end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> build_btn_attrs()
+  def button(prev_assigns) do
+    assigns = build_btn_attrs(prev_assigns)
 
     ~H"""
-    <.element {@btn_attrs}>
+    <.dynamic_tag {@btn_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -83,7 +72,7 @@ defmodule PhoenixUI.Components.Button do
       assigns
       |> assigns_to_attributes([:color, :element, :extend_class, :size, :square, :variant])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put_new(:variant, assigns[:element])
+      |> Keyword.put_new(:name, assigns[:element])
 
     assign(assigns, :btn_attrs, attrs)
   end
