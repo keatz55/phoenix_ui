@@ -6,7 +6,7 @@ defmodule PhoenixUI.Components.Alert do
 
   use PhoenixUI, :component
 
-  @default_action_icon_name "x"
+  @default_action_icon_name "x-mark"
   @default_icon_color "inherity"
   @default_icon_variant "outline"
   @default_severity "info"
@@ -258,5 +258,5 @@ defmodule PhoenixUI.Components.Alert do
   defp icon_mapping("danger"), do: "exclamation-circle"
   defp icon_mapping("info"), do: "information-circle"
   defp icon_mapping("success"), do: "check-circle"
-  defp icon_mapping("warning"), do: "exclamation"
+  defp icon_mapping("warning"), do: "exclamation-triangle"
 end
