@@ -21,15 +21,23 @@ defmodule PhoenixUI.Components.Backdrop do
   """
   @spec backdrop(Socket.assigns()) :: Rendered.t()
   def backdrop(prev_assigns) do
-    assigns = build_backdrop_attrs(prev_assigns)
+    assigns =
+      prev_assigns
+      |> assign_class(~w(
+        backdrop fixed inset-0 z-50 invisible opacity-0
+        open:visible open:opacity-100 transition-all ease-in-out
+        #{classes(:color, prev_assigns)}
+        #{classes(:transition, prev_assigns)}
+      ))
+      |> assign_rest([:element, :elevation, :variant])
 
     ~H"""
     <%= if assigns[:inner_block] do %>
-      <.dynamic_tag {@backdrop_attrs}>
+      <.dynamic_tag name={@element} {@rest}>
         <%= render_slot(@inner_block) %>
       </.dynamic_tag>
     <% else %>
-      <.dynamic_tag {@backdrop_attrs}></.dynamic_tag>
+      <.dynamic_tag name={@element} {@rest}></.dynamic_tag>
     <% end %>
     """
   end
@@ -92,24 +100,6 @@ defmodule PhoenixUI.Components.Backdrop do
   @spec show_backdrop(struct(), String.t()) :: struct()
   def show_backdrop(%JS{} = js, selector) do
     JS.set_attribute(js, {"open", "true"}, to: selector)
-  end
-
-  defp build_backdrop_attrs(assigns) do
-    class = build_class(~w(
-      backdrop fixed inset-0 z-50 invisible opacity-0
-      open:visible open:opacity-100 transition-all ease-in-out
-      #{classes(:color, assigns)}
-      #{classes(:transition, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:element, :elevation, :variant])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :backdrop_attrs, attrs)
   end
 
   ### CSS Classes ##########################
