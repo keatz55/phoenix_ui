@@ -37,12 +37,9 @@ defmodule PhoenixUI.Components.Select do
       |> build_select_attrs()
 
     ~H"""
-    <.form_group
-      extend_class={assigns[:extend_class]}
-      margin={@margin}
-    >
+    <.form_group extend_class={assigns[:extend_class]} margin={@margin}>
       <%= if assigns[:label] == nil do %>
-        <.label field={@field} form={@form}/>
+        <.label field={@field} form={@form} />
       <% end %>
       <%= if assigns[:label] do %>
         <.label field={@field} form={@form}>
@@ -59,7 +56,7 @@ defmodule PhoenixUI.Components.Select do
             <% end %>
           </div>
         <% end %>
-        <%= select @form, @field, @options, @select_attrs %>
+        <%= select(@form, @field, @options, @select_attrs) %>
         <%= if assigns[:end_adornment] do %>
           <div class="px-3 absolute right-0 top-1/2 -translate-y-1/2 text-slate-500">
             <%= if is_bitstring(@end_adornment) do %>

@@ -59,11 +59,7 @@ defmodule PhoenixUI.Components.Avatar do
   defp generate_markup(%{src: src} = assigns) when not is_nil(src) do
     ~H"""
     <.element {@avatar_attrs}>
-      <img
-        alt={assigns[:alt]}
-        class="avatar-image object-cover h-full w-full"
-        src={@src}
-      />
+      <img alt={assigns[:alt]} class="avatar-image object-cover h-full w-full" src={@src} />
     </.element>
     """
   end

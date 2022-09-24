@@ -73,10 +73,10 @@ defmodule PhoenixUI.Components.Card do
     ~H"""
     <.element {@card_header_attrs}>
       <%= for avatar <- @avatar do %>
-        <.avatar {avatar}/>
+        <.avatar {avatar} />
       <% end %>
       <%= for avatar_group <- @avatar_group do %>
-        <.avatar_group {avatar_group}/>
+        <.avatar_group {avatar_group} />
       <% end %>
       <div class="flex-1">
         <%= for title <- @title do %>
@@ -122,7 +122,7 @@ defmodule PhoenixUI.Components.Card do
     assigns = assign(raw, :card_media_attrs, attrs)
 
     ~H"""
-    <.element variant="img" {@card_media_attrs}/>
+    <.element variant="img" {@card_media_attrs} />
     """
   end
 

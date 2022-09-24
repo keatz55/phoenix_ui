@@ -1,40 +1,36 @@
 defmodule PhoenixUI.Components.Link do
   @moduledoc """
-  Provides link component.
+  Provides a component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
   @default_color "blue"
   @default_disabled false
-  @default_variant "a"
 
   @doc """
-  Renders link component.
+  Renders a component.
 
   ## Examples
 
       ```
-      <.link>
+      <.a>
         content
-      </.link>
+      </.a>
       ```
 
   """
-  @spec link(Socket.assigns()) :: Rendered.t()
-  def link(raw) do
+  @spec a(Socket.assigns()) :: Rendered.t()
+  def a(raw) do
     assigns =
       raw
       |> assign_new(:color, fn -> @default_color end)
       |> assign_new(:disabled, fn -> @default_disabled end)
-      |> assign_new(:variant, fn -> @default_variant end)
       |> build_link_attrs()
 
     ~H"""
-    <.element {@link_attrs}>
+    <.link {@link_attrs}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.link>
     """
   end
 
@@ -49,11 +45,9 @@ defmodule PhoenixUI.Components.Link do
   """
   @spec classes :: [String.t()]
   def classes do
-    generate_all_classes(&link/1,
+    generate_all_classes(&a/1,
       color: Theme.colors(),
-      disabled: [false, true],
-      to: [""],
-      variant: ["a", "link", "live_patch", "live_redirect"]
+      disabled: [false, true]
     )
   end
 

@@ -11,20 +11,15 @@ defmodule PhoenixUI.Components.SelectFilter do
     ~H"""
     <div>
       <.form
+        :let={f}
         class="flex-1"
         for={:filter}
         id={"#{@id}_form"}
-        let={f}
         phx-change="handle_filter"
         phx-submit="handle_filter"
         phx-target={@myself}
       >
-        <.select
-          field={:select}
-          form={f}
-          phx-debounce={nil}
-          {@select_attrs}
-        />
+        <.select field={:select} form={f} phx-debounce={nil} {@select_attrs} />
       </.form>
     </div>
     """

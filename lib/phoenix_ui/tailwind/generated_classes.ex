@@ -792,6 +792,43 @@ defmodule PhoenixUI.Tailwind.GeneratedClasses do
   - font-medium
   - font-normal
   - font-semibold
+  - gap-x-1
+  - gap-x-10
+  - gap-x-11
+  - gap-x-12
+  - gap-x-2
+  - gap-x-3
+  - gap-x-4
+  - gap-x-5
+  - gap-x-6
+  - gap-x-7
+  - gap-x-8
+  - gap-x-9
+  - gap-y-1
+  - gap-y-10
+  - gap-y-11
+  - gap-y-12
+  - gap-y-2
+  - gap-y-3
+  - gap-y-4
+  - gap-y-5
+  - gap-y-6
+  - gap-y-7
+  - gap-y-8
+  - gap-y-9
+  - grid
+  - grid-cols-1
+  - grid-cols-10
+  - grid-cols-11
+  - grid-cols-12
+  - grid-cols-2
+  - grid-cols-3
+  - grid-cols-4
+  - grid-cols-5
+  - grid-cols-6
+  - grid-cols-7
+  - grid-cols-8
+  - grid-cols-9
   - group
   - group-hover:opacity-100
   - group-hover:visible

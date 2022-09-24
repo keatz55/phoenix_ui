@@ -16,9 +16,9 @@ defmodule PhoenixUI.Components.Breadcrumbs do
 
       ```
       <.breadcrumbs>
-        <:link link={[to: "#"]}>Users</:link>
-        <:link link={[to: "#"]}>John Doe</:link>
-        <:link>Edit</:link>
+        <:a href={[to: "#"]}>Users</:a>
+        <:a href={[to: "#"]}>John Doe</:a>
+        <:a>Edit</:a>
       </.breadcrumbs>
       ```
 
@@ -35,13 +35,13 @@ defmodule PhoenixUI.Components.Breadcrumbs do
     ~H"""
     <nav {@nav_attrs}>
       <ol class="flex items-center space-x-2" role="list">
-        <%= for link <- @link do %>
+        <%= for link <- @a do %>
           <li class="flex items-center">
-            <.link {link}>
+            <.a {link}>
               <%= render_slot(link) %>
-            </.link>
+            </.a>
             <%= if !link[:"aria-current"] do %>
-              <.heroicon {@separator_attrs}/>
+              <.heroicon {@separator_attrs} />
             <% end %>
           </li>
         <% end %>
@@ -62,7 +62,7 @@ defmodule PhoenixUI.Components.Breadcrumbs do
   @spec classes :: [String.t()]
   def classes do
     generate_all_classes(&breadcrumbs/1,
-      link: [
+      a: [
         [
           %{inner_block: fn _, _ -> "Phoenix UI" end},
           %{inner_block: fn _, _ -> "Components" end}
@@ -81,7 +81,7 @@ defmodule PhoenixUI.Components.Breadcrumbs do
 
     attrs =
       assigns
-      |> assigns_to_attributes([:extend_class, :link, :size])
+      |> assigns_to_attributes([:extend_class, :a, :size])
       |> Keyword.put_new(:class, class)
       |> Keyword.put_new(:"aria-label", "Breadcrumb")
 
@@ -105,14 +105,14 @@ defmodule PhoenixUI.Components.Breadcrumbs do
   defp normalize_links(assigns) do
     links =
       assigns
-      |> Map.get(:link, [])
+      |> Map.get(:a, [])
       |> Enum.reverse()
       |> Enum.reduce([], fn link, acc ->
         updated = link |> Map.put_new(:color, @default_link_color) |> apply_aria_current(acc)
         [updated | acc]
       end)
 
-    assign(assigns, :link, links)
+    assign(assigns, :a, links)
   end
 
   defp apply_aria_current(link, []), do: Map.put(link, :"aria-current", "page")

@@ -10,14 +10,15 @@ defmodule PhoenixUI.Components.LinkTest do
   describe "link/1" do
     test "should render with defaults", %{assigns: assigns} do
       markup = ~H"""
-      <.link>
+      <.a>
         <%= @text %>
-      </.link>
+      </.a>
       """
 
       html = rendered_to_string(markup)
 
-      assert html =~ "<a class=\"link "
+      assert html =~ "<a "
+      assert html =~ "class=\"link "
       assert html =~ assigns.text
       assert html =~ "</a>"
     end

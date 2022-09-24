@@ -15,16 +15,8 @@ defmodule PhoenixUI.Components.TextFilter do
   def render(assigns) do
     ~H"""
     <div>
-      <.form
-        for={:filter}
-        id={"#{@id}_form"}
-        let={f}
-      >
-        <.text_input
-          field="text"
-          form={f}
-          {@text_input_attrs}
-        />
+      <.form :let={f} for={:filter} id={"#{@id}_form"}>
+        <.text_input field="text" form={f} {@text_input_attrs} />
       </.form>
     </div>
     """

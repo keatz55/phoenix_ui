@@ -18,6 +18,7 @@ defmodule PhoenixUI.Components.GridTest do
       html = rendered_to_string(markup)
 
       assert html =~ "<div class=\"grid "
+      assert html =~ assigns[:text]
     end
   end
 
