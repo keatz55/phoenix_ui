@@ -24,10 +24,10 @@ defmodule PhoenixUI.Components.List do
     assigns =
       prev_assigns
       |> assign_class(~w(py-1))
-      |> assign_rest()
+      |> assign_rest([:element])
 
     ~H"""
-    <.dynamic_tag name={@element} class={@class} {@rest}>
+    <.dynamic_tag name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
@@ -56,10 +56,10 @@ defmodule PhoenixUI.Components.List do
         block w-full whitespace-nowrap py-2 px-4 text-sm font-normal
         text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-100/25
       ))
-      |> assign_rest()
+      |> assign_rest([:element])
 
     ~H"""
-    <.dynamic_tag name={@element} class={@class} {@rest}>
+    <.dynamic_tag name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """

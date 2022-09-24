@@ -2,15 +2,13 @@ defmodule PhoenixUI.Components.Paper do
   @moduledoc """
   Provides paper component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_blur false
-  @default_element "div"
-  @default_elevation 2
-  @default_square false
-  @default_variant "elevated"
+  attr(:blur, :boolean, default: false)
+  attr(:element, :string, default: "div")
+  attr(:elevation, :integer, default: 2)
+  attr(:square, :boolean, default: false)
+  attr(:variant, :string, default: "elevated")
 
   @doc """
   Renders paper component
@@ -24,20 +22,22 @@ defmodule PhoenixUI.Components.Paper do
 
   """
   @spec paper(Socket.assigns()) :: Rendered.t()
-  def paper(raw_assigns) do
+  def paper(prev_assigns) do
     assigns =
-      raw_assigns
-      |> assign_new(:blur, fn -> @default_blur end)
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:elevation, fn -> @default_elevation end)
-      |> assign_new(:square, fn -> @default_square end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> build_paper_attrs()
+      prev_assigns
+      |> assign_class(~w(
+          paper transition-all ease-in-out duration-300
+          #{classes(:blur, prev_assigns)}
+          #{classes(:elevation, prev_assigns)}
+          #{classes(:square, prev_assigns)}
+          #{classes(:variant, prev_assigns)}
+        ))
+      |> assign_rest([:element, :elevation, :extend_class, :square, :variant])
 
     ~H"""
-    <.element {@paper_attrs}>
+    <.dynamic_tag name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -58,27 +58,6 @@ defmodule PhoenixUI.Components.Paper do
       square: [true, false],
       variant: ["elevated", "outlined"]
     )
-  end
-
-  ### Container Attrs ##########################
-
-  defp build_paper_attrs(assigns) do
-    class = build_class(~w(
-      paper transition-all ease-in-out duration-300
-      #{classes(:blur, assigns)}
-      #{classes(:elevation, assigns)}
-      #{classes(:square, assigns)}
-      #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:element, :elevation, :extend_class, :square, :variant])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, assigns[:element])
-
-    assign(assigns, :paper_attrs, attrs)
   end
 
   ### CSS Classes ##########################
