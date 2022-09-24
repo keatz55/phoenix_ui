@@ -44,7 +44,7 @@ defmodule PhoenixUI.Components.Alert do
           <%= if is_slot?(@icon) do %>
             <%= render_slot(@icon) %>
           <% else %>
-            <.heroicon {@icon_attrs}/>
+            <.heroicon {@icon_attrs} />
           <% end %>
         </div>
       <% end %>
@@ -66,11 +66,11 @@ defmodule PhoenixUI.Components.Alert do
       </div>
       <%= if assigns[:action] do %>
         <div {@action_wrapper_attrs}>
-        <%= if is_slot?(@action) do %>
-          <%= render_slot(@action) %>
-        <% else %>
-          <.heroicon {@action_attrs}/>
-        <% end %>
+          <%= if is_slot?(@action) do %>
+            <%= render_slot(@action) %>
+          <% else %>
+            <.heroicon {@action_attrs} />
+          <% end %>
         </div>
       <% end %>
     </div>

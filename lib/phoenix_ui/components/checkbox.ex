@@ -29,32 +29,29 @@ defmodule PhoenixUI.Components.Checkbox do
       |> build_checkbox_attrs()
 
     ~H"""
-    <.form_group
-      extend_class={assigns[:extend_class]}
-      margin={@margin}
-    >
+    <.form_group extend_class={assigns[:extend_class]} margin={@margin}>
       <%= case {assigns[:form], assigns[:field], assigns[:label]} do %>
         <% {nil, nil, label} when label in [false, nil] -> %>
           <.label margin={false}>
-            <input type="checkbox" {@checkbox_attrs}/>
+            <input type="checkbox" {@checkbox_attrs} />
           </.label>
         <% {nil, nil, _label} -> %>
           <.label margin={false}>
-            <input type="checkbox" {@checkbox_attrs}/>
+            <input type="checkbox" {@checkbox_attrs} />
             <%= @label %>
           </.label>
         <% {_form, _field, false} -> %>
           <.label field={@field} form={@form} margin={false}>
-            <%= checkbox @form, @field, @checkbox_attrs %>
+            <%= checkbox(@form, @field, @checkbox_attrs) %>
           </.label>
         <% {_form, _field, nil} -> %>
           <.label field={@field} form={@form} margin={false}>
-            <%= checkbox @form, @field, @checkbox_attrs %>
+            <%= checkbox(@form, @field, @checkbox_attrs) %>
             <%= humanize(@field) %>
           </.label>
         <% {_form, _field, _label} -> %>
           <.label field={@field} form={@form} margin={false}>
-            <%= checkbox @form, @field, @checkbox_attrs %>
+            <%= checkbox(@form, @field, @checkbox_attrs) %>
             <%= @label %>
           </.label>
       <% end %>

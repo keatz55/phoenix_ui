@@ -47,13 +47,13 @@ defmodule PhoenixUI.Components.Accordion do
       <div {@header_closed_attrs} phx-click={close_accordion(@id)}>
         <%= render_slot(@header) %>
         <div class={@icon_wrapper_class}>
-          <.heroicon {@icon_closed_attrs}/>
+          <.heroicon {@icon_closed_attrs} />
         </div>
       </div>
       <div {@header_opened_attrs} phx-click={open_accordion(@id)}>
         <%= render_slot(@header) %>
         <div class={@icon_wrapper_class}>
-          <.heroicon {@icon_opened_attrs}/>
+          <.heroicon {@icon_opened_attrs} />
         </div>
       </div>
       <.collapse {@panel_attrs}>

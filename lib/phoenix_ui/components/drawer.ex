@@ -42,7 +42,8 @@ defmodule PhoenixUI.Components.Drawer do
       open={@open}
       variant="visible"
       phx-click={hide_drawer("##{@id}")}
-    ></.backdrop>
+    >
+    </.backdrop>
     <.paper variant="elevated" {@drawer_attrs}>
       <%= render_slot(@inner_block) %>
     </.paper>

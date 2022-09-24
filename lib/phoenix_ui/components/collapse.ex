@@ -36,7 +36,7 @@ defmodule PhoenixUI.Components.Collapse do
       |> build_collapse_attrs()
 
     ~H"""
-    <.element {@collapse_attrs} >
+    <.element {@collapse_attrs}>
       <%= render_slot(@inner_block) %>
     </.element>
     """

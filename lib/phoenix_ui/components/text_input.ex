@@ -39,7 +39,7 @@ defmodule PhoenixUI.Components.TextInput do
     ~H"""
     <.form_group extend_class={assigns[:extend_class]}>
       <%= if assigns[:form] && assigns[:label] == nil do %>
-        <.label field={assigns[:field]} form={assigns[:form]}/>
+        <.label field={assigns[:field]} form={assigns[:form]} />
       <% end %>
       <%= if assigns[:form] && assigns[:label] do %>
         <.label field={assigns[:field]} form={assigns[:form]}>
@@ -53,9 +53,9 @@ defmodule PhoenixUI.Components.TextInput do
           </div>
         <% end %>
         <%= if assigns[:form] do %>
-          <%= text_input @form, @field, @text_input_attrs %>
+          <%= text_input(@form, @field, @text_input_attrs) %>
         <% else %>
-          <input {@input_attrs}/>
+          <input {@input_attrs} />
         <% end %>
         <%= if assigns[:end_icon] do %>
           <div class="px-3 absolute right-0 top-1/2 -translate-y-1/2 text-slate-500">

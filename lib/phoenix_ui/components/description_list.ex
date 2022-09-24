@@ -40,7 +40,7 @@ defmodule PhoenixUI.Components.DescriptionList do
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             <%= render_slot(dd) %>
           </dd>
-          </div>
+        </div>
       <% end %>
     </dl>
     """

@@ -34,7 +34,7 @@ defmodule PhoenixUI.Components.Textarea do
     ~H"""
     <.form_group extend_class={assigns[:extend_class]}>
       <%= if assigns[:label] == nil do %>
-        <.label field={@field} form={@form}/>
+        <.label field={@field} form={@form} />
       <% end %>
       <%= if assigns[:label] do %>
         <.label field={@field} form={@form}>
@@ -51,7 +51,7 @@ defmodule PhoenixUI.Components.Textarea do
             <% end %>
           </div>
         <% end %>
-        <%= textarea @form, @field, @textarea_attrs %>
+        <%= textarea(@form, @field, @textarea_attrs) %>
         <%= if assigns[:end_adornment] do %>
           <div class="px-3 absolute right-0 top-1/2 -translate-y-1/2 text-slate-500">
             <%= if is_bitstring(@end_adornment) do %>

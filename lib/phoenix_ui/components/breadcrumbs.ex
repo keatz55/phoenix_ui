@@ -2,11 +2,11 @@ defmodule PhoenixUI.Components.Breadcrumbs do
   @moduledoc """
   Provides breadcrumbs component.
   """
-  import PhoenixUI.Components.{Heroicon, Link}
+  import PhoenixUI.Components.{Heroicon, A}
 
   use PhoenixUI, :component
 
-  @default_link_color "slate"
+  @default_a_color "slate"
   @default_separator "chevron-right"
 
   @doc """
@@ -16,9 +16,9 @@ defmodule PhoenixUI.Components.Breadcrumbs do
 
       ```
       <.breadcrumbs>
-        <:link link={[to: "#"]}>Users</:link>
-        <:link link={[to: "#"]}>John Doe</:link>
-        <:link>Edit</:link>
+        <:a href={[to: "#"]}>Users</:a>
+        <:a href={[to: "#"]}>John Doe</:a>
+        <:a>Edit</:a>
       </.breadcrumbs>
       ```
 
@@ -30,18 +30,18 @@ defmodule PhoenixUI.Components.Breadcrumbs do
       |> assign_new(:separator, fn -> @default_separator end)
       |> build_nav_attrs()
       |> build_separator_attrs()
-      |> normalize_links()
+      |> normalize_as()
 
     ~H"""
     <nav {@nav_attrs}>
       <ol class="flex items-center space-x-2" role="list">
-        <%= for link <- @link do %>
+        <%= for a <- @a do %>
           <li class="flex items-center">
-            <.link {link}>
-              <%= render_slot(link) %>
-            </.link>
-            <%= if !link[:"aria-current"] do %>
-              <.heroicon {@separator_attrs}/>
+            <.a {a}>
+              <%= render_slot(a) %>
+            </.a>
+            <%= if !a[:"aria-current"] do %>
+              <.heroicon {@separator_attrs} />
             <% end %>
           </li>
         <% end %>
@@ -62,7 +62,7 @@ defmodule PhoenixUI.Components.Breadcrumbs do
   @spec classes :: [String.t()]
   def classes do
     generate_all_classes(&breadcrumbs/1,
-      link: [
+      a: [
         [
           %{inner_block: fn _, _ -> "Phoenix UI" end},
           %{inner_block: fn _, _ -> "Components" end}
@@ -81,7 +81,7 @@ defmodule PhoenixUI.Components.Breadcrumbs do
 
     attrs =
       assigns
-      |> assigns_to_attributes([:extend_class, :link, :size])
+      |> assigns_to_attributes([:extend_class, :a, :size])
       |> Keyword.put_new(:class, class)
       |> Keyword.put_new(:"aria-label", "Breadcrumb")
 
@@ -102,19 +102,19 @@ defmodule PhoenixUI.Components.Breadcrumbs do
 
   ### Normalize Links ##########################
 
-  defp normalize_links(assigns) do
-    links =
+  defp normalize_as(assigns) do
+    as =
       assigns
-      |> Map.get(:link, [])
+      |> Map.get(:a, [])
       |> Enum.reverse()
-      |> Enum.reduce([], fn link, acc ->
-        updated = link |> Map.put_new(:color, @default_link_color) |> apply_aria_current(acc)
+      |> Enum.reduce([], fn a, acc ->
+        updated = a |> Map.put_new(:color, @default_a_color) |> apply_aria_current(acc)
         [updated | acc]
       end)
 
-    assign(assigns, :link, links)
+    assign(assigns, :a, as)
   end
 
-  defp apply_aria_current(link, []), do: Map.put(link, :"aria-current", "page")
-  defp apply_aria_current(link, _acc), do: link
+  defp apply_aria_current(a, []), do: Map.put(a, :"aria-current", "page")
+  defp apply_aria_current(a, _acc), do: a
 end

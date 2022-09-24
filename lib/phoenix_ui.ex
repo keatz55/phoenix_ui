@@ -36,7 +36,7 @@ defmodule PhoenixUI do
         Heroicon,
         HiddenInput,
         Label,
-        Link,
+        A,
         List,
         Menu,
         Modal,

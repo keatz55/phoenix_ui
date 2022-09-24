@@ -48,7 +48,7 @@ defmodule PhoenixUI.Components.Chip do
       <%= @label %>
       <%= if assigns[:delete_icon] do %>
         <div class="ml-1 cursor-pointer text-slate-600 hover:text-slate-500">
-          <.heroicon {@delete_icon_attrs}/>
+          <.heroicon {@delete_icon_attrs} />
         </div>
       <% end %>
     </.element>

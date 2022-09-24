@@ -11,7 +11,7 @@ defmodule PhoenixUI.Components.BadgeTest do
     test "should render with defaults", %{assigns: assigns} do
       markup = ~H"""
       <.badge content="99+">
-        <.heroicon color="slate" name="mail"/>
+        <.heroicon color="slate" name="mail" />
       </.badge>
       """
 

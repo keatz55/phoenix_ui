@@ -28,13 +28,11 @@ defmodule PhoenixUI.Components.Dropdown do
     assigns = assign_new(raw_assigns, :variant, fn -> @default_variant end)
 
     ~H"""
-    <div
-      id={@id}
-      class="relative dropdown"
-      phx-click-away={close_dropdown(@id)}>
+    <div id={@id} class="relative dropdown" phx-click-away={close_dropdown(@id)}>
       <div
         class="flex items-baseline cursor-pointer gap-x-1 dropdown-toggle"
-        phx-click={toggle_dropdown(@id)}>
+        phx-click={toggle_dropdown(@id)}
+      >
         <%= render_slot(@toggle) %>
       </div>
       <.menu extend_class="dropdown-menu hidden absolute right-0 mt-2 z-20">

@@ -26,7 +26,7 @@ defmodule PhoenixUI.Components.Divider do
       |> build_divider_attrs()
 
     ~H"""
-    <hr {@divider_attrs}/>
+    <hr {@divider_attrs} />
     """
   end
 
