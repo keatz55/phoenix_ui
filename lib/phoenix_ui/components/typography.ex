@@ -2,12 +2,10 @@ defmodule PhoenixUI.Components.Typography do
   @moduledoc """
   Provides typography component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_variant "p"
-  @default_color "slate"
+  attr(:color, :string, default: "slate")
+  attr(:variant, :string, default: "p")
 
   @doc """
   Renders typography component.
@@ -22,17 +20,23 @@ defmodule PhoenixUI.Components.Typography do
 
   """
   @spec typography(Socket.assigns()) :: Rendered.t()
-  def typography(raw) do
+  def typography(prev_assigns) do
     assigns =
-      raw
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> build_typography_attrs()
+      prev_assigns
+      |> assign_class(~w(
+        typography
+        #{classes(:align, prev_assigns)}
+        #{classes(:color, prev_assigns)}
+        #{classes(:font_size, prev_assigns)}
+        #{classes(:margin, prev_assigns)}
+        #{classes(:variant, prev_assigns)}
+      ))
+      |> assign_rest([:align, :color, :element, :extend_class, :variant])
 
     ~H"""
-    <.element {@typography_attrs}>
+    <.dynamic_tag name={@variant} {@rest}>
       <%= render_slot(@inner_block) %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -52,30 +56,6 @@ defmodule PhoenixUI.Components.Typography do
       color: Theme.colors(),
       variant: ["h1", "h2", "h3", "h4", "p"]
     )
-  end
-
-  ### Typography Attrs ##########################
-
-  defp build_typography_attrs(assigns) do
-    variant = assigns[:element] || assigns[:variant]
-
-    class = build_class(~w(
-      typography
-      #{classes(:align, assigns)}
-      #{classes(:color, assigns)}
-      #{classes(:font_size, assigns)}
-      #{classes(:margin, assigns)}
-      #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:align, :color, :element, :extend_class, :variant])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, variant)
-
-    assign(assigns, :typography_attrs, attrs)
   end
 
   ### CSS Classes ##########################

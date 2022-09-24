@@ -33,6 +33,29 @@ defmodule PhoenixUI.Helpers do
 
   ## Examples
 
+      iex> assign_extend_class(assigns, [" class1", "class2 ", ...])
+      %{class: "class1 class2 ...", ..}
+
+  """
+  @spec assign_extend_class(Socket.assigns(), [String.t()]) :: Socket.assigns()
+  def assign_extend_class(assigns, []), do: assigns
+
+  def assign_extend_class(assigns, extend_class_list) do
+    extend_class =
+      if extend_class = Map.get(assigns, :extend_class) do
+        [extend_class | extend_class_list] |> Enum.reverse() |> Enum.join(" ") |> String.trim()
+      else
+        extend_class_list |> Enum.join(" ") |> String.trim()
+      end
+
+    assign(assigns, :extend_class, extend_class)
+  end
+
+  @doc """
+  Builds and normalizes list of classes.
+
+  ## Examples
+
       iex> assign_rest(assigns, exclude)
       %{...}
 
