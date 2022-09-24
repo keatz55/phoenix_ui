@@ -2,18 +2,18 @@ defmodule PhoenixUI.Components.ButtonGroup do
   @moduledoc """
   Provides a button_group component.
   """
-  import PhoenixUI.Components.{Button, Element}
+  import PhoenixUI.Components.Button, only: [button: 1]
 
   use PhoenixUI, :component
 
-  @default_color "blue"
-  @default_disabled false
-  @default_element "div"
-  @default_orientation "horizontal"
-  @default_size "md"
-  @default_square false
-  @default_type "button"
-  @default_variant "contained"
+  attr(:color, :string, default: "blue")
+  attr(:disabled, :boolean, default: true)
+  attr(:element, :string, default: "div")
+  attr(:orientation, :string, default: "horizontal")
+  attr(:size, :string, default: "md")
+  attr(:square, :boolean, default: false)
+  attr(:type, :string, default: "button")
+  attr(:variant, :string, default: "contained")
 
   @doc """
   Renders a button group
@@ -34,28 +34,17 @@ defmodule PhoenixUI.Components.ButtonGroup do
 
   """
   @spec button_group(Socket.assigns()) :: Rendered.t()
-  def button_group(raw) do
-    assigns =
-      raw
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:disabled, fn -> @default_disabled end)
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:orientation, fn -> @default_orientation end)
-      |> assign_new(:size, fn -> @default_size end)
-      |> assign_new(:square, fn -> @default_square end)
-      |> assign_new(:type, fn -> @default_type end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> build_wrapper_attrs()
-      |> normalize_buttons()
+  def button_group(prev_assigns) do
+    assigns = prev_assigns |> build_wrapper_attrs() |> normalize_buttons()
 
     ~H"""
-    <.element {@wrapper_attrs}>
+    <.dynamic_tag {@wrapper_attrs}>
       <%= for button <- @button do %>
         <.button {button}>
           <%= render_slot(button) %>
         </.button>
       <% end %>
-    </.element>
+    </.dynamic_tag>
     """
   end
 
@@ -74,7 +63,7 @@ defmodule PhoenixUI.Components.ButtonGroup do
       assigns
       |> assigns_to_attributes([:button, :color, :extend_class, :size, :variant])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put_new(:variant, assigns[:element])
+      |> Keyword.put_new(:name, assigns[:element])
 
     assign(assigns, :wrapper_attrs, attrs)
   end

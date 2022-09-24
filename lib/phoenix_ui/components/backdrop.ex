@@ -2,14 +2,12 @@ defmodule PhoenixUI.Components.Backdrop do
   @moduledoc """
   Provides Backdrop component.
   """
-  import PhoenixUI.Components.Element
-
   use PhoenixUI, :component
 
-  @default_element "div"
-  @default_invisible false
-  @default_open true
-  @default_transition_duration 300
+  attr(:element, :string, default: "div")
+  attr(:invisible, :boolean, default: false)
+  attr(:open, :boolean, default: true)
+  attr(:transition_duration, :integer, default: 300)
 
   @doc """
   Renders backdrop component.
@@ -22,22 +20,16 @@ defmodule PhoenixUI.Components.Backdrop do
 
   """
   @spec backdrop(Socket.assigns()) :: Rendered.t()
-  def backdrop(raw_assigns) do
-    assigns =
-      raw_assigns
-      |> assign_new(:element, fn -> @default_element end)
-      |> assign_new(:invisible, fn -> @default_invisible end)
-      |> assign_new(:open, fn -> @default_open end)
-      |> assign_new(:transition_duration, fn -> @default_transition_duration end)
-      |> build_backdrop_attrs()
+  def backdrop(prev_assigns) do
+    assigns = build_backdrop_attrs(prev_assigns)
 
     ~H"""
     <%= if assigns[:inner_block] do %>
-      <.element {@backdrop_attrs}>
+      <.dynamic_tag {@backdrop_attrs}>
         <%= render_slot(@inner_block) %>
-      </.element>
+      </.dynamic_tag>
     <% else %>
-      <.element {@backdrop_attrs}></.element>
+      <.dynamic_tag {@backdrop_attrs}></.dynamic_tag>
     <% end %>
     """
   end
@@ -115,7 +107,7 @@ defmodule PhoenixUI.Components.Backdrop do
       assigns
       |> assigns_to_attributes([:element, :elevation, :variant])
       |> Keyword.put_new(:class, class)
-      |> Keyword.put(:variant, assigns[:element])
+      |> Keyword.put(:name, assigns[:element])
 
     assign(assigns, :backdrop_attrs, attrs)
   end
