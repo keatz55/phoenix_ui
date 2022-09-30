@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Chip do
+defmodule Phoenix.UI.Components.Chip do
   @moduledoc """
   Provides chip component.
   """
-  import PhoenixUI.Components.{Avatar, Heroicon}
+  import Phoenix.UI.Components.{Avatar, Heroicon}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_avatar_size 2
   @default_delete_icon_name "x-circle"
@@ -50,26 +50,6 @@ defmodule PhoenixUI.Components.Chip do
       <% end %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&chip/1,
-      color: Theme.colors(),
-      label: ["label"],
-      on_click: ["handle_click"],
-      on_delete: ["handle_delete"],
-      variant: ["filled", "outlined"]
-    )
   end
 
   ### Chip Attrs ##########################

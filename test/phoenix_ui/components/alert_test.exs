@@ -1,7 +1,5 @@
-defmodule PhoenixUI.Components.AlertTest do
-  alias PhoenixUI.Components.Alert
-
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.AlertTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]
@@ -20,12 +18,6 @@ defmodule PhoenixUI.Components.AlertTest do
       assert html =~ "<div role=\"alert\" class=\"alert "
       assert html =~ "<svg class=\"heroicon "
       assert html =~ "Content"
-    end
-  end
-
-  describe "classes/0" do
-    test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = Alert.classes()
     end
   end
 end

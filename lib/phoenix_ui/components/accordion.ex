@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Accordion do
+defmodule Phoenix.UI.Components.Accordion do
   @moduledoc """
   Provides accordion component.
   """
-  import PhoenixUI.{Components.Collapse, Components.Heroicon}
+  import Phoenix.UI.{Components.Collapse, Components.Heroicon}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_icon_color "slate"
   @default_icon_name_closed "chevron-up"
@@ -61,25 +61,6 @@ defmodule PhoenixUI.Components.Accordion do
       </.collapse>
     </div>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&accordion/1,
-      header: [[%{inner_block: fn _, _ -> "header" end}]],
-      id: ["accordion"],
-      open: [true, false],
-      panel: [[%{inner_block: fn _, _ -> "panel" end}]]
-    )
   end
 
   ### JS Interactions ##########################

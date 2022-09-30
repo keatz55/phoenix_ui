@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Collapse do
+defmodule Phoenix.UI.Components.Collapse do
   @moduledoc """
   Provides collapse component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:max_size, :string, default: "5000px")
@@ -31,25 +31,6 @@ defmodule PhoenixUI.Components.Collapse do
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&collapse/1,
-      max_size: Enum.map(range(100, 5000, 100), &"#{&1}px"),
-      open: [true, false],
-      orientation: ["horizontal", "vertical"],
-      transition_duration: Theme.transition_durations()
-    )
   end
 
   ### JS Interactions ##########################

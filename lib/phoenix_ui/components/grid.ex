@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Grid do
+defmodule Phoenix.UI.Components.Grid do
   @moduledoc """
   Provides grid component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:columns, :integer, default: 12)
   attr(:element, :string, default: "div")
@@ -28,25 +28,6 @@ defmodule PhoenixUI.Components.Grid do
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&grid/1,
-      column_spacing: 1..12,
-      columns: 1..12,
-      row_spacing: 1..12,
-      spacing: 1..12
-    )
   end
 
   ### Grid Attrs ##########################

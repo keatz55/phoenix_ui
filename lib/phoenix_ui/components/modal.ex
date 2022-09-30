@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Modal do
+defmodule Phoenix.UI.Components.Modal do
   @moduledoc """
   Provides modal component.
   """
-  import PhoenixUI.Components.{Backdrop, Paper}
+  import Phoenix.UI.Components.{Backdrop, Paper}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_max_width :sm
   @default_open false
@@ -56,24 +56,6 @@ defmodule PhoenixUI.Components.Modal do
       <%= render_slot(@inner_block) %>
     </.paper>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    PhoenixUI.Helpers.generate_all_classes(&modal/1,
-      id: ["modal"],
-      max_width: [:xs, :sm, :md, :lg, :xl],
-      open: [true, false]
-    )
   end
 
   ### JS Interactions ##########################

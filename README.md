@@ -1,4 +1,4 @@
-# PhoenixUI
+# Phoenix.UI
 
 A complimentary UI library for the Phoenix Framework and Phoenix LiveView.
 
@@ -35,7 +35,7 @@ module.exports = {
     '../lib/*_web.ex',
     '../lib/*_web/**/*.*ex',
 
-+    # Allows PhoenixUI css to be processed by JIT compiler.
++    # Allows Phoenix.UI css to be processed by JIT compiler.
 +    "../deps/phoenix_ui/**/*.*ex",
   ],
   darkMode: "class",
@@ -57,10 +57,10 @@ There are multiple ways to import components. We recommend importing components 
     quote do
       ...
 
-      # PhoenixUI macro which imports all components and JS interactions
-      use PhoenixUI
+      # Phoenix.UI macro which imports all components and JS interactions
+      use Phoenix.UI
       # Or import components individually
-      import PhoenixUI.Components.{Button, Tooltip, ...}
+      import Phoenix.UI.Components.{Button, Tooltip, ...}
 
       ...
     end

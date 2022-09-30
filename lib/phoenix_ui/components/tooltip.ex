@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Tooltip do
+defmodule Phoenix.UI.Components.Tooltip do
   @moduledoc """
   Provides tooltip component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_color "slate"
   @default_position "top"
@@ -41,38 +41,6 @@ defmodule PhoenixUI.Components.Tooltip do
       </div>
     </div>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&tooltip/1,
-      color: Theme.colors(),
-      content: [""],
-      position: [
-        "bottom_end",
-        "bottom_start",
-        "bottom",
-        "left_end",
-        "left_start",
-        "left",
-        "right_end",
-        "right_start",
-        "right",
-        "top_end",
-        "top_start",
-        "top"
-      ],
-      variant: ["arrow", "simple"]
-    )
   end
 
   ### Tooltip Attrs ##########################

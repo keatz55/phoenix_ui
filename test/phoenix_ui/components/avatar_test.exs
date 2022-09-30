@@ -1,7 +1,5 @@
-defmodule PhoenixUI.Components.AvatarTest do
-  alias PhoenixUI.Components.Avatar
-
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.AvatarTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]
@@ -17,12 +15,6 @@ defmodule PhoenixUI.Components.AvatarTest do
 
       assert html =~ "<div class=\"avatar "
       assert html =~ "<svg class=\"heroicon "
-    end
-  end
-
-  describe "classes/0" do
-    test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = Avatar.classes()
     end
   end
 end

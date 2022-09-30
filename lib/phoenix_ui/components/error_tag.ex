@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.ErrorTag do
+defmodule Phoenix.UI.Components.ErrorTag do
   @moduledoc """
   Provides error tag component.
   """
   import Phoenix.HTML.Form
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "red")
   attr(:variant, :string, default: "p")

@@ -1,4 +1,4 @@
-defmodule PhoenixUI.Tailwind do
+defmodule Phoenix.UI.Tailwind do
   @moduledoc """
   Defaults for each service
   """

@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Badge do
+defmodule Phoenix.UI.Components.Badge do
   @moduledoc """
   Provides badge component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_border false
   @default_color "blue"
@@ -50,38 +50,6 @@ defmodule PhoenixUI.Components.Badge do
       <% end %>
     </div>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&badge/1,
-      color: Theme.colors(),
-      content: [""],
-      position: [
-        "bottom_end",
-        "bottom_start",
-        "bottom",
-        "left_end",
-        "left_start",
-        "left",
-        "right_end",
-        "right_start",
-        "right",
-        "top_end",
-        "top_start",
-        "top"
-      ],
-      variant: ["dot", "standard"]
-    )
   end
 
   ### Wrapper Attrs ##########################

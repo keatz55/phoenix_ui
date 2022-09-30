@@ -1,11 +1,11 @@
-defmodule PhoenixUI.Case do
+defmodule Phoenix.UI.Case do
   @moduledoc false
   use ExUnit.CaseTemplate
 
   using do
     quote do
       use Phoenix.Component
-      use PhoenixUI
+      use Phoenix.UI
 
       import Phoenix.LiveViewTest
 

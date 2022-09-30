@@ -1,11 +1,11 @@
-defmodule PhoenixUI.Components.Select do
+defmodule Phoenix.UI.Components.Select do
   @moduledoc """
   Provides select component.
   """
   import Phoenix.HTML.Form, only: [select: 4]
-  import PhoenixUI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
+  import Phoenix.UI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_end_adornment "chevron-down"
   @default_full_width false

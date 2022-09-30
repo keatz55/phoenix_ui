@@ -1,13 +1,13 @@
-defmodule PhoenixUI.Theme do
+defmodule Phoenix.UI.Theme do
   @moduledoc """
   Phoenix UI theme functionality.
   """
-  alias PhoenixUI.Tailwind
+  alias Phoenix.UI.Tailwind
 
   @additional_colors ["danger", "error", "primary", "secondary", "success", "warning", "info"]
 
   @doc """
-  Returns a list of supported PhoenixUI colors.
+  Returns a list of supported Phoenix.UI colors.
 
   ## Examples
 
@@ -19,7 +19,7 @@ defmodule PhoenixUI.Theme do
   def colors, do: Tailwind.colors() ++ @additional_colors
 
   @doc """
-  Returns a list of supported PhoenixUI widths.
+  Returns a list of supported Phoenix.UI widths.
 
   ## Examples
 
@@ -31,7 +31,7 @@ defmodule PhoenixUI.Theme do
   def max_widths, do: Tailwind.max_widths()
 
   @doc """
-  Returns a list of supported PhoenixUI transition durations.
+  Returns a list of supported Phoenix.UI transition durations.
 
   ## Examples
 

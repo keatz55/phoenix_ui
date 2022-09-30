@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.ButtonGroup do
+defmodule Phoenix.UI.Components.ButtonGroup do
   @moduledoc """
   Provides a button_group component.
   """
-  import PhoenixUI.Components.Button, only: [button: 1]
+  import Phoenix.UI.Components.Button, only: [button: 1]
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "blue")
   attr(:disabled, :boolean, default: true)

@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Backdrop do
+defmodule Phoenix.UI.Components.Backdrop do
   @moduledoc """
   Provides Backdrop component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:invisible, :boolean, default: false)
@@ -40,24 +40,6 @@ defmodule PhoenixUI.Components.Backdrop do
       <.dynamic_tag name={@element} {@rest}></.dynamic_tag>
     <% end %>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&backdrop/1,
-      invisible: [true, false],
-      open: [true, false],
-      transition_duration: Theme.transition_durations()
-    )
   end
 
   ### JS Interactions ##########################

@@ -1,4 +1,4 @@
-name: PhoenixUI CI
+name: Phoenix.UI CI
 
 on:
   pull_request:

@@ -1,7 +1,5 @@
-defmodule PhoenixUI.Components.AccordionTest do
-  alias PhoenixUI.Components.Accordion
-
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.AccordionTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]
@@ -27,12 +25,6 @@ defmodule PhoenixUI.Components.AccordionTest do
       assert html =~ "Header"
       assert html =~ "<div class=\"collapse"
       assert html =~ "Content"
-    end
-  end
-
-  describe "classes/0" do
-    test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = Accordion.classes()
     end
   end
 end

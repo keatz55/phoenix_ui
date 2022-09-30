@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Divider do
+defmodule Phoenix.UI.Components.Divider do
   @moduledoc """
   Provides divider component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_color "slate"
   @default_variant "full_width"
@@ -28,23 +28,6 @@ defmodule PhoenixUI.Components.Divider do
     ~H"""
     <hr {@divider_attrs} />
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&divider/1,
-      color: Theme.colors(),
-      variant: ["full_width", "inset", "middle"]
-    )
   end
 
   ### Divider Attrs ##########################

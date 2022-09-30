@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Table do
+defmodule Phoenix.UI.Components.Table do
   @moduledoc """
   Provides a table components.
   """
-  import PhoenixUI.Components.Paper
+  import Phoenix.UI.Components.Paper
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @doc """
   Renders table component.

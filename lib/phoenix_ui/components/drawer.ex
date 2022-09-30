@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Drawer do
+defmodule Phoenix.UI.Components.Drawer do
   @moduledoc """
   Provides drawer component.
   """
-  import PhoenixUI.Components.{Backdrop, Paper}
+  import Phoenix.UI.Components.{Backdrop, Paper}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_anchor "left"
   @default_open false
@@ -48,24 +48,6 @@ defmodule PhoenixUI.Components.Drawer do
       <%= render_slot(@inner_block) %>
     </.paper>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    PhoenixUI.Helpers.generate_all_classes(&drawer/1,
-      id: ["drawer"],
-      open: [true, false],
-      variant: [:temporary]
-    )
   end
 
   ### JS Interactions ##########################

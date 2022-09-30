@@ -13,11 +13,11 @@ defmodule Mix.Tasks.Heroicons.Generate do
     file = File.open!("lib/phoenix_ui/components/heroicon.ex", [:write])
 
     IO.binwrite(file, """
-    defmodule PhoenixUI.Components.Heroicon do
+    defmodule Phoenix.UI.Components.Heroicon do
       @moduledoc \"\"\"
       Provides heroicon component.
       \"\"\"
-      use PhoenixUI, :component
+      use Phoenix.UI, :component
 
       attr(:color, :string, default: "inherit")
       attr(:name, :string, required: true)

@@ -1,7 +1,5 @@
-defmodule PhoenixUI.Components.TypographyTest do
-  alias PhoenixUI.Components.Typography
-
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.TypographyTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{text: "text"}]
@@ -20,12 +18,6 @@ defmodule PhoenixUI.Components.TypographyTest do
       assert html =~ "<p class=\"typography "
       assert html =~ assigns.text
       assert html =~ "</p>"
-    end
-  end
-
-  describe "classes/0" do
-    test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = Typography.classes()
     end
   end
 end

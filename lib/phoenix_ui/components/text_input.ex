@@ -1,11 +1,11 @@
-defmodule PhoenixUI.Components.TextInput do
+defmodule Phoenix.UI.Components.TextInput do
   @moduledoc """
   Provides text input component.
   """
   import Phoenix.HTML.Form, only: [text_input: 3]
-  import PhoenixUI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
+  import Phoenix.UI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_full_width false
   @default_icon_color "inherit"

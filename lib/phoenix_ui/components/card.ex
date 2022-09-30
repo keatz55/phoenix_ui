@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Card do
+defmodule Phoenix.UI.Components.Card do
   @moduledoc """
   Provides card component.
   """
-  import PhoenixUI.Components.{Avatar, AvatarGroup, Paper, Typography}
+  import Phoenix.UI.Components.{Avatar, AvatarGroup, Paper, Typography}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string)
 
@@ -216,37 +216,6 @@ defmodule PhoenixUI.Components.Card do
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    [
-      # Card
-      generate_all_classes(&card/1,
-        elevation: [0, 1, 2, 3, 4, 5],
-        square: [true, false],
-        variant: ["elevated", "outlined"]
-      ),
-      # Card Header
-      generate_all_classes(&card_header/1, []),
-      # Card Media
-      generate_all_classes(&card_media/1, src: [""]),
-      # Card Content
-      generate_all_classes(&card_content/1, []),
-      # Card Actions
-      generate_all_classes(&card_action/1, [])
-    ]
-    |> List.flatten()
-    |> Enum.uniq()
   end
 
   ### Card Header Attrs ##########################

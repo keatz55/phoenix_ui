@@ -1,11 +1,11 @@
-defmodule PhoenixUI.Components.Checkbox do
+defmodule Phoenix.UI.Components.Checkbox do
   @moduledoc """
   Provides checkbox component.
   """
   import Phoenix.HTML.Form, only: [checkbox: 3, humanize: 1]
-  import PhoenixUI.Components.{ErrorTag, FormGroup, HelperText, Label}
+  import Phoenix.UI.Components.{ErrorTag, FormGroup, HelperText, Label}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_margin true
   @default_phx_debounce "blur"

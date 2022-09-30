@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.FormGroup do
+defmodule Phoenix.UI.Components.FormGroup do
   @moduledoc """
   Provides form group component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:margin, :boolean, default: true)

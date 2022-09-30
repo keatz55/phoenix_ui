@@ -1,12 +1,12 @@
-defmodule PhoenixUI.Components.Autocomplete do
+defmodule Phoenix.UI.Components.Autocomplete do
   @moduledoc """
   Provides text filter component.
   """
-  alias PhoenixUI.Components.TextFilter
+  alias Phoenix.UI.Components.TextFilter
 
-  import PhoenixUI.Components.Menu
+  import Phoenix.UI.Components.Menu
 
-  use PhoenixUI, :live_component
+  use Phoenix.UI, :live_component
 
   @impl true
   def render(assigns) do

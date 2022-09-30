@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Typography do
+defmodule Phoenix.UI.Components.Typography do
   @moduledoc """
   Provides typography component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "slate")
   attr(:variant, :string, default: "p")
@@ -38,24 +38,6 @@ defmodule PhoenixUI.Components.Typography do
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&typography/1,
-      align: ["center", "justify", "left", "right"],
-      color: Theme.colors(),
-      variant: ["h1", "h2", "h3", "h4", "p"]
-    )
   end
 
   ### CSS Classes ##########################

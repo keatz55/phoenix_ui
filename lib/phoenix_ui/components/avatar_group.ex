@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.AvatarGroup do
+defmodule Phoenix.UI.Components.AvatarGroup do
   @moduledoc """
   Provides avatar_group component.
   """
-  import PhoenixUI.Components.Avatar, only: [avatar: 1]
+  import Phoenix.UI.Components.Avatar, only: [avatar: 1]
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:border, :boolean, default: true)
   attr(:color, :string, default: "slate")
@@ -61,27 +61,6 @@ defmodule PhoenixUI.Components.AvatarGroup do
       <% end %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&avatar_group/1,
-      avatar: [[%{inner_block: nil}]],
-      color: Theme.colors(),
-      inner_block: [nil, []],
-      size: ["xs", "sm", "md", "lg", "xl"],
-      spacing: ["xs", "sm", "md", "lg", "xl"],
-      variant: ["circular", "rounded", "square"]
-    )
   end
 
   defp calc_total(%{avatar: avatars} = assigns) do

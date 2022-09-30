@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Heroicon do
+defmodule Phoenix.UI.Components.Heroicon do
   @moduledoc """
   Provides heroicon component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "inherit")
   attr(:name, :string, required: true)
@@ -30,25 +30,6 @@ defmodule PhoenixUI.Components.Heroicon do
     ))
     |> assign_rest([:color, :extend_class, :name, :size, :variant])
     |> render_markup()
-  end
-
-  @doc """
-  Returns all component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&heroicon/1,
-      color: Theme.colors(),
-      name: ["academic-cap"],
-      size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
-      variant: ["outline", "solid"]
-    )
   end
 
   ### CSS Classes ##########################

@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Container do
+defmodule Phoenix.UI.Components.Container do
   @moduledoc """
   Provides container component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:max_width, :string, default: "screen-lg")
@@ -29,23 +29,6 @@ defmodule PhoenixUI.Components.Container do
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&container/1,
-      max_width: Theme.max_widths(),
-      variant: ["fixed", "fluid"]
-    )
   end
 
   ### Container Attrs ##########################

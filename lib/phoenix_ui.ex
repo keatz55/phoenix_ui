@@ -1,18 +1,15 @@
-defmodule PhoenixUI do
+defmodule Phoenix.UI do
   @moduledoc """
-  Documentation for `PhoenixUI`.
+  Documentation for `Phoenix.UI`.
   """
 
   defmacro __using__(which) when is_atom(which), do: apply(__MODULE__, which, [])
 
   defmacro __using__(_opts) do
     quote generated: true, location: :keep do
-      alias PhoenixUI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
+      alias Phoenix.UI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
 
-      import PhoenixUI.Components.Divider, only: [divider: 1]
-      import PhoenixUI.Components.Link, only: [a: 1]
-
-      import PhoenixUI.Components.{
+      import Phoenix.UI.Components.{
         Accordion,
         Alert,
         Avatar,
@@ -28,6 +25,7 @@ defmodule PhoenixUI do
         Collapse,
         Container,
         DescriptionList,
+        Divider,
         Drawer,
         Dropdown,
         ErrorTag,
@@ -38,6 +36,7 @@ defmodule PhoenixUI do
         HiddenInput,
         Label,
         List,
+        Link,
         Menu,
         Modal,
         Paper,
@@ -52,31 +51,31 @@ defmodule PhoenixUI do
   end
 
   @doc """
-  Helper macro for creating a PhoenixUI component.
+  Helper macro for creating a Phoenix.UI component.
 
   ## Examples
 
-      use PhoenixUI, :component
+      use Phoenix.UI, :component
 
   """
   @spec component() :: Macro.t()
   def component do
     quote generated: true, location: :keep do
       alias Phoenix.LiveView.{JS, Rendered, Socket}
-      alias PhoenixUI.Theme
+      alias Phoenix.UI.Theme
 
-      import PhoenixUI.Helpers
+      import Phoenix.UI.Helpers
 
       use Phoenix.Component
     end
   end
 
   @doc """
-  Helper macro for creating a PhoenixUI live_component.
+  Helper macro for creating a Phoenix.UI live_component.
 
   ## Examples
 
-      use PhoenixUI, :live_component
+      use Phoenix.UI, :live_component
 
   """
   @spec live_component() :: Macro.t()
@@ -84,7 +83,7 @@ defmodule PhoenixUI do
     quote generated: true, location: :keep do
       alias Phoenix.LiveView.Socket
 
-      import PhoenixUI.Helpers
+      import Phoenix.UI.Helpers
 
       use Phoenix.LiveComponent
     end

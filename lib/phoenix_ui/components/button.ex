@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Button do
+defmodule Phoenix.UI.Components.Button do
   @moduledoc """
   Provides button component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "blue")
   attr(:disabled, :boolean, default: false)
@@ -33,26 +33,6 @@ defmodule PhoenixUI.Components.Button do
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&button/1,
-      color: Theme.colors(),
-      disabled: [true, false],
-      size: ["xs", "sm", "md", "lg", "xl"],
-      square: [true, false],
-      variant: ["contained", "icon", "outlined", "text"]
-    )
   end
 
   ### Btn Attrs ##########################

@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Alert do
+defmodule Phoenix.UI.Components.Alert do
   @moduledoc """
   Provides Alert component
   """
-  import PhoenixUI.Components.Heroicon
+  import Phoenix.UI.Components.Heroicon
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_action_icon_name "x-mark"
   @default_icon_color "inherity"
@@ -75,24 +75,6 @@ defmodule PhoenixUI.Components.Alert do
       <% end %>
     </div>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&alert/1,
-      action: [["phx-click": "lv:clear-flash"]],
-      severity: ["error", "info", "success", "warning"],
-      variant: ["filled", "outlined", "standard"]
-    )
   end
 
   ### Container Attrs ##########################

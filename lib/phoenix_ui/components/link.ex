@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Link do
+defmodule Phoenix.UI.Components.Link do
   @moduledoc """
   Provides a component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_color "blue"
   @default_disabled false
@@ -32,23 +32,6 @@ defmodule PhoenixUI.Components.Link do
       <%= render_slot(@inner_block) %>
     </.link>
     """
-  end
-
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&a/1,
-      color: Theme.colors(),
-      disabled: [false, true]
-    )
   end
 
   ### Link Attrs ##########################

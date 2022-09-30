@@ -1,6 +1,6 @@
-defmodule PhoenixUI.Tailwind.GeneratedClasses do
+defmodule Phoenix.UI.Tailwind.GeneratedClasses do
   @moduledoc """
-  Referential PhoenixUI classes for JIT compilation:
+  Referential Phoenix.UI classes for JIT compilation:
   - -ml-0.5
   - -ml-1
   - -ml-1.5
