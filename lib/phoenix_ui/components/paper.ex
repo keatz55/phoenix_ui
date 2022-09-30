@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Paper do
+defmodule Phoenix.UI.Components.Paper do
   @moduledoc """
   Provides paper component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:blur, :boolean, default: false)
   attr(:element, :string, default: "div")

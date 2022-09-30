@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.LinkTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.LinkTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{text: "text"}]

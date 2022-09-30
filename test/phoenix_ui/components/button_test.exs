@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.ButtonTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.ButtonTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{text: "text"}]

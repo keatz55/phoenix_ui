@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Alert do
+defmodule Phoenix.UI.Components.Alert do
   @moduledoc """
   Provides Alert component
   """
-  import PhoenixUI.Components.Heroicon
+  import Phoenix.UI.Components.Heroicon
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_action_icon_name "x-mark"
   @default_icon_color "inherity"

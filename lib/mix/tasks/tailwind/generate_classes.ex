@@ -2,12 +2,12 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
   @moduledoc """
   Mix task for generating, parsing, and referencing all Phoenix UI classes.
   """
-  alias PhoenixUI.Theme
+  alias Phoenix.UI.Theme
 
   import Phoenix.{Component, LiveViewTest}
 
   use Mix.Task
-  use PhoenixUI
+  use Phoenix.UI
 
   @impl true
   def run(_args) do
@@ -16,9 +16,9 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
     file = File.open!("lib/phoenix_ui/tailwind/generated_classes.ex", [:write])
 
     IO.binwrite(file, """
-    defmodule PhoenixUI.Tailwind.GeneratedClasses do
+    defmodule Phoenix.UI.Tailwind.GeneratedClasses do
       @moduledoc \"\"\"
-      Referential PhoenixUI classes for JIT compilation:
+      Referential Phoenix.UI classes for JIT compilation:
     """)
 
     [

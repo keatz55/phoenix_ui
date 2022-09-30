@@ -1,11 +1,11 @@
-defmodule PhoenixUI.Components.Textarea do
+defmodule Phoenix.UI.Components.Textarea do
   @moduledoc """
   Provides textarea component.
   """
   import Phoenix.HTML.Form, only: [textarea: 3]
-  import PhoenixUI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
+  import Phoenix.UI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_full_width false
   @default_phx_debounce "blur"

@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Grid do
+defmodule Phoenix.UI.Components.Grid do
   @moduledoc """
   Provides grid component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:columns, :integer, default: 12)
   attr(:element, :string, default: "div")

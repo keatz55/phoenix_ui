@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Chip do
+defmodule Phoenix.UI.Components.Chip do
   @moduledoc """
   Provides chip component.
   """
-  import PhoenixUI.Components.{Avatar, Heroicon}
+  import Phoenix.UI.Components.{Avatar, Heroicon}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_avatar_size 2
   @default_delete_icon_name "x-circle"

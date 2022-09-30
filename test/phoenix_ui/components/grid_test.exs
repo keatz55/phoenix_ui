@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.GridTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.GridTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{text: "text"}]

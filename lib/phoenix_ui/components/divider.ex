@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Divider do
+defmodule Phoenix.UI.Components.Divider do
   @moduledoc """
   Provides divider component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_color "slate"
   @default_variant "full_width"

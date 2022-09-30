@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.TextFilter do
+defmodule Phoenix.UI.Components.TextFilter do
   @moduledoc """
   Provides text filter component.
   """
-  import PhoenixUI.Components.TextInput
+  import Phoenix.UI.Components.TextInput
 
-  use PhoenixUI, :live_component
+  use Phoenix.UI, :live_component
 
   @default_debounce 300
   @default_end_icon "x"

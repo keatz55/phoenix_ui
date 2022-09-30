@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Label do
+defmodule Phoenix.UI.Components.Label do
   @moduledoc """
   Provides label component.
   """
   import Phoenix.HTML.Form
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_disabled false
   @default_margin true

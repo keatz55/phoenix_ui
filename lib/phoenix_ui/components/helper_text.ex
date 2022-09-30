@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.HelperText do
+defmodule Phoenix.UI.Components.HelperText do
   @moduledoc """
   Provides helper text component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:disabled, :boolean, default: false)
   attr(:element, :string, default: "div")

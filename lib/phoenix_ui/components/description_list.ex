@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.DescriptionList do
+defmodule Phoenix.UI.Components.DescriptionList do
   @moduledoc """
   Provides description list component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_variant :simple
   @default_striped false

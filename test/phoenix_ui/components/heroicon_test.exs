@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.HeroiconTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.HeroiconTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]

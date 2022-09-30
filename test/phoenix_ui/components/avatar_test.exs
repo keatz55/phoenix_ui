@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.AvatarTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.AvatarTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]

@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.BackdropTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.BackdropTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]

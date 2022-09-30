@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.List do
+defmodule Phoenix.UI.Components.List do
   @moduledoc """
   Provides list component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "ul")
 

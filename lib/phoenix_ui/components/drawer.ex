@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Drawer do
+defmodule Phoenix.UI.Components.Drawer do
   @moduledoc """
   Provides drawer component.
   """
-  import PhoenixUI.Components.{Backdrop, Paper}
+  import Phoenix.UI.Components.{Backdrop, Paper}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_anchor "left"
   @default_open false

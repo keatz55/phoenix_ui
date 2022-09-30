@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.AccordionTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.AccordionTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]

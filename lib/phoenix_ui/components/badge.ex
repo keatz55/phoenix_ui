@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Badge do
+defmodule Phoenix.UI.Components.Badge do
   @moduledoc """
   Provides badge component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_border false
   @default_color "blue"

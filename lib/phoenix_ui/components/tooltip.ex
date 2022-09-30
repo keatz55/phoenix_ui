@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Tooltip do
+defmodule Phoenix.UI.Components.Tooltip do
   @moduledoc """
   Provides tooltip component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_color "slate"
   @default_position "top"

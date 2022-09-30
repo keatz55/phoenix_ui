@@ -1,4 +1,4 @@
-defmodule PhoenixUI.MixProject do
+defmodule Phoenix.UI.MixProject do
   use Mix.Project
 
   @version "0.1.1"
@@ -60,7 +60,7 @@ defmodule PhoenixUI.MixProject do
   defp docs do
     [
       extras: ["README.md"],
-      main: "PhoenixUI",
+      main: "Phoenix.UI",
       source_ref: "v#{@version}",
       source_url: "https://github.com/keatz55/phoenix_ui"
     ]

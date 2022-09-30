@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Card do
+defmodule Phoenix.UI.Components.Card do
   @moduledoc """
   Provides card component.
   """
-  import PhoenixUI.Components.{Avatar, AvatarGroup, Paper, Typography}
+  import Phoenix.UI.Components.{Avatar, AvatarGroup, Paper, Typography}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string)
 

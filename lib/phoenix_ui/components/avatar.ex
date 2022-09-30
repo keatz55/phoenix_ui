@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Avatar do
+defmodule Phoenix.UI.Components.Avatar do
   @moduledoc """
   Provides avatar component.
   """
-  import PhoenixUI.Components.Heroicon, only: [heroicon: 1]
+  import Phoenix.UI.Components.Heroicon
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:border, :boolean, default: false)
   attr(:color, :string, default: "slate")

@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Link do
+defmodule Phoenix.UI.Components.Link do
   @moduledoc """
   Provides a component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_color "blue"
   @default_disabled false

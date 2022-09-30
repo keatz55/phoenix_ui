@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Backdrop do
+defmodule Phoenix.UI.Components.Backdrop do
   @moduledoc """
   Provides Backdrop component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:invisible, :boolean, default: false)

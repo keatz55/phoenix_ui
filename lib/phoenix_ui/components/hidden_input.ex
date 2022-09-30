@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.HiddenInput do
+defmodule Phoenix.UI.Components.HiddenInput do
   @moduledoc """
   Provides hidden input component.
   """
   import Phoenix.HTML.Form, only: [hidden_input: 3]
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @doc """
   Renders hidden input component.

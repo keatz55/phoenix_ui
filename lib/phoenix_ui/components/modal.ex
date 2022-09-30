@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Modal do
+defmodule Phoenix.UI.Components.Modal do
   @moduledoc """
   Provides modal component.
   """
-  import PhoenixUI.Components.{Backdrop, Paper}
+  import Phoenix.UI.Components.{Backdrop, Paper}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_max_width :sm
   @default_open false

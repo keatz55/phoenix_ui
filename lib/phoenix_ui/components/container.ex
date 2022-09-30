@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Container do
+defmodule Phoenix.UI.Components.Container do
   @moduledoc """
   Provides container component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:max_width, :string, default: "screen-lg")

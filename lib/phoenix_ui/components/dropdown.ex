@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Dropdown do
+defmodule Phoenix.UI.Components.Dropdown do
   @moduledoc """
   Provides dropdown component.
   """
-  import PhoenixUI.Components.Menu
+  import Phoenix.UI.Components.Menu
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_variant "elevated"
 

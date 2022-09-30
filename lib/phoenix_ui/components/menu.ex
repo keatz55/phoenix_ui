@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Menu do
+defmodule Phoenix.UI.Components.Menu do
   @moduledoc """
   Provides menu component.
   """
-  import PhoenixUI.Components.Paper
+  import Phoenix.UI.Components.Paper
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "ul")
 

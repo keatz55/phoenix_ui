@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Breadcrumbs do
+defmodule Phoenix.UI.Components.Breadcrumbs do
   @moduledoc """
   Provides breadcrumbs component.
   """
-  import PhoenixUI.Components.{Heroicon, Link}
+  import Phoenix.UI.Components.{Heroicon, Link}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_link_color "slate"
   @default_separator "chevron-right"

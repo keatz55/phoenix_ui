@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Typography do
+defmodule Phoenix.UI.Components.Typography do
   @moduledoc """
   Provides typography component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "slate")
   attr(:variant, :string, default: "p")

@@ -1,10 +1,10 @@
-defmodule PhoenixUI.Components.Accordion do
+defmodule Phoenix.UI.Components.Accordion do
   @moduledoc """
   Provides accordion component.
   """
-  import PhoenixUI.{Components.Collapse, Components.Heroicon}
+  import Phoenix.UI.{Components.Collapse, Components.Heroicon}
 
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   @default_icon_color "slate"
   @default_icon_name_closed "chevron-up"

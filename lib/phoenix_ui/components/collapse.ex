@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Collapse do
+defmodule Phoenix.UI.Components.Collapse do
   @moduledoc """
   Provides collapse component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
   attr(:max_size, :string, default: "5000px")

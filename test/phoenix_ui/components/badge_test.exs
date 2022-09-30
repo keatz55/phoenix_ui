@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.BadgeTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.BadgeTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]

@@ -1,5 +1,5 @@
-defmodule PhoenixUI.Components.DividerTest do
-  use PhoenixUI.Case, async: true
+defmodule Phoenix.UI.Components.DividerTest do
+  use Phoenix.UI.Case, async: true
 
   setup do
     [assigns: %{}]

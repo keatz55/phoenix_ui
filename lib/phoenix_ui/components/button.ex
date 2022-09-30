@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.Button do
+defmodule Phoenix.UI.Components.Button do
   @moduledoc """
   Provides button component.
   """
-  use PhoenixUI, :component
+  use Phoenix.UI, :component
 
   attr(:color, :string, default: "blue")
   attr(:disabled, :boolean, default: false)

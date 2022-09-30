@@ -1,8 +1,8 @@
-defmodule PhoenixUI.Components.SelectFilter do
+defmodule Phoenix.UI.Components.SelectFilter do
   @moduledoc """
   Provides select filter component.
   """
-  import PhoenixUI.Components.Select
+  import Phoenix.UI.Components.Select
 
   use Phoenix.LiveComponent
 

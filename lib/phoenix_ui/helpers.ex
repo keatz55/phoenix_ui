@@ -1,4 +1,4 @@
-defmodule PhoenixUI.Helpers do
+defmodule Phoenix.UI.Helpers do
   @moduledoc """
   Provides helper functionality.
   """
