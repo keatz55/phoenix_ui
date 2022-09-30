@@ -1,6 +1,4 @@
 defmodule PhoenixUI.Components.GridTest do
-  alias PhoenixUI.Components.Grid
-
   use PhoenixUI.Case, async: true
 
   setup do
@@ -19,12 +17,6 @@ defmodule PhoenixUI.Components.GridTest do
 
       assert html =~ "<div class=\"grid "
       assert html =~ assigns[:text]
-    end
-  end
-
-  describe "classes/0" do
-    test "should generate a list of all possible classes for Tailwind CSS JIT compiler" do
-      assert [_ | _] = Grid.classes()
     end
   end
 end
