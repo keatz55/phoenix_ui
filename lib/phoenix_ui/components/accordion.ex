@@ -63,25 +63,6 @@ defmodule PhoenixUI.Components.Accordion do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&accordion/1,
-      header: [[%{inner_block: fn _, _ -> "header" end}]],
-      id: ["accordion"],
-      open: [true, false],
-      panel: [[%{inner_block: fn _, _ -> "panel" end}]]
-    )
-  end
-
   ### JS Interactions ##########################
 
   @doc """

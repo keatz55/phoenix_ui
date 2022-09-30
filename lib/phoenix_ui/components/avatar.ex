@@ -37,26 +37,6 @@ defmodule PhoenixUI.Components.Avatar do
     |> generate_markup()
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&avatar/1,
-      inner_block: [nil, []],
-      color: Theme.colors(),
-      border: [true, false],
-      size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
-      variant: ["circular", "rounded", "square"]
-    )
-  end
-
   ### Markup ##########################
 
   defp generate_markup(%{src: src} = assigns) when not is_nil(src) do

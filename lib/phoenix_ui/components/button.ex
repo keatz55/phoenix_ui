@@ -35,26 +35,6 @@ defmodule PhoenixUI.Components.Button do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&button/1,
-      color: Theme.colors(),
-      disabled: [true, false],
-      size: ["xs", "sm", "md", "lg", "xl"],
-      square: [true, false],
-      variant: ["contained", "icon", "outlined", "text"]
-    )
-  end
-
   ### Btn Attrs ##########################
 
   defp build_btn_attrs(assigns) do

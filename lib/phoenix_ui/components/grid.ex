@@ -30,25 +30,6 @@ defmodule PhoenixUI.Components.Grid do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&grid/1,
-      column_spacing: 1..12,
-      columns: 1..12,
-      row_spacing: 1..12,
-      spacing: 1..12
-    )
-  end
-
   ### Grid Attrs ##########################
 
   defp build_grid_attrs(assigns) do

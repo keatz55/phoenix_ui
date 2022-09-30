@@ -30,23 +30,6 @@ defmodule PhoenixUI.Components.Divider do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&divider/1,
-      color: Theme.colors(),
-      variant: ["full_width", "inset", "middle"]
-    )
-  end
-
   ### Divider Attrs ##########################
 
   defp build_divider_attrs(assigns) do

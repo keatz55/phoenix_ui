@@ -9,9 +9,6 @@ defmodule PhoenixUI do
     quote generated: true, location: :keep do
       alias PhoenixUI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
 
-      import PhoenixUI.Components.Divider, only: [divider: 1]
-      import PhoenixUI.Components.Link, only: [a: 1]
-
       import PhoenixUI.Components.{
         Accordion,
         Alert,
@@ -28,6 +25,7 @@ defmodule PhoenixUI do
         Collapse,
         Container,
         DescriptionList,
+        Divider,
         Drawer,
         Dropdown,
         ErrorTag,
@@ -38,6 +36,7 @@ defmodule PhoenixUI do
         HiddenInput,
         Label,
         List,
+        Link,
         Menu,
         Modal,
         Paper,

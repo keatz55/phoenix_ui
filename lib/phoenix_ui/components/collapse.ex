@@ -33,25 +33,6 @@ defmodule PhoenixUI.Components.Collapse do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&collapse/1,
-      max_size: Enum.map(range(100, 5000, 100), &"#{&1}px"),
-      open: [true, false],
-      orientation: ["horizontal", "vertical"],
-      transition_duration: Theme.transition_durations()
-    )
-  end
-
   ### JS Interactions ##########################
 
   @doc """

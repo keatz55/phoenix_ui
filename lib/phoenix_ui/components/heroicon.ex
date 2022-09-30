@@ -32,25 +32,6 @@ defmodule PhoenixUI.Components.Heroicon do
     |> render_markup()
   end
 
-  @doc """
-  Returns all component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&heroicon/1,
-      color: Theme.colors(),
-      name: ["academic-cap"],
-      size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
-      variant: ["outline", "solid"]
-    )
-  end
-
   ### CSS Classes ##########################
 
   # Color

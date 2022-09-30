@@ -41,25 +41,6 @@ defmodule PhoenixUI.Components.Paper do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&paper/1,
-      blur: [true, false, "none", "sm", "md", "lg", "xl", "2xl", "3xl"],
-      elevation: [0, 1, 2, 3, 4, 5],
-      square: [true, false],
-      variant: ["elevated", "outlined"]
-    )
-  end
-
   ### CSS Classes ##########################
 
   # Blur

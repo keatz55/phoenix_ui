@@ -52,26 +52,6 @@ defmodule PhoenixUI.Components.Chip do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&chip/1,
-      color: Theme.colors(),
-      label: ["label"],
-      on_click: ["handle_click"],
-      on_delete: ["handle_delete"],
-      variant: ["filled", "outlined"]
-    )
-  end
-
   ### Chip Attrs ##########################
 
   defp build_chip_attrs(assigns) do

@@ -43,38 +43,6 @@ defmodule PhoenixUI.Components.Tooltip do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&tooltip/1,
-      color: Theme.colors(),
-      content: [""],
-      position: [
-        "bottom_end",
-        "bottom_start",
-        "bottom",
-        "left_end",
-        "left_start",
-        "left",
-        "right_end",
-        "right_start",
-        "right",
-        "top_end",
-        "top_start",
-        "top"
-      ],
-      variant: ["arrow", "simple"]
-    )
-  end
-
   ### Tooltip Attrs ##########################
 
   defp build_tooltip_attrs(assigns) do

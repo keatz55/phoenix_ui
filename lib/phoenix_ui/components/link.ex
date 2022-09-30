@@ -34,23 +34,6 @@ defmodule PhoenixUI.Components.Link do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&a/1,
-      color: Theme.colors(),
-      disabled: [false, true]
-    )
-  end
-
   ### Link Attrs ##########################
 
   defp build_link_attrs(assigns) do

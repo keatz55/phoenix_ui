@@ -50,27 +50,6 @@ defmodule PhoenixUI.Components.Breadcrumbs do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&breadcrumbs/1,
-      a: [
-        [
-          %{inner_block: fn _, _ -> "Phoenix UI" end},
-          %{inner_block: fn _, _ -> "Components" end}
-        ]
-      ]
-    )
-  end
-
   ### Nav Attrs ##########################
 
   defp build_nav_attrs(assigns) do

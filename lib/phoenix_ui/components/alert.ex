@@ -77,24 +77,6 @@ defmodule PhoenixUI.Components.Alert do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&alert/1,
-      action: [["phx-click": "lv:clear-flash"]],
-      severity: ["error", "info", "success", "warning"],
-      variant: ["filled", "outlined", "standard"]
-    )
-  end
-
   ### Container Attrs ##########################
 
   defp build_container_attrs(assigns) do

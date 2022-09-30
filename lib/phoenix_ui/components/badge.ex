@@ -52,38 +52,6 @@ defmodule PhoenixUI.Components.Badge do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&badge/1,
-      color: Theme.colors(),
-      content: [""],
-      position: [
-        "bottom_end",
-        "bottom_start",
-        "bottom",
-        "left_end",
-        "left_start",
-        "left",
-        "right_end",
-        "right_start",
-        "right",
-        "top_end",
-        "top_start",
-        "top"
-      ],
-      variant: ["dot", "standard"]
-    )
-  end
-
   ### Wrapper Attrs ##########################
 
   defp build_wrapper_attrs(assigns) do

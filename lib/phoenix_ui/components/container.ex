@@ -31,23 +31,6 @@ defmodule PhoenixUI.Components.Container do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&container/1,
-      max_width: Theme.max_widths(),
-      variant: ["fixed", "fluid"]
-    )
-  end
-
   ### Container Attrs ##########################
 
   defp build_container_attrs(assigns) do

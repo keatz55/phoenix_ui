@@ -42,24 +42,6 @@ defmodule PhoenixUI.Components.Backdrop do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    generate_all_classes(&backdrop/1,
-      invisible: [true, false],
-      open: [true, false],
-      transition_duration: Theme.transition_durations()
-    )
-  end
-
   ### JS Interactions ##########################
 
   @doc """

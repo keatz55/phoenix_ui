@@ -218,37 +218,6 @@ defmodule PhoenixUI.Components.Card do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    [
-      # Card
-      generate_all_classes(&card/1,
-        elevation: [0, 1, 2, 3, 4, 5],
-        square: [true, false],
-        variant: ["elevated", "outlined"]
-      ),
-      # Card Header
-      generate_all_classes(&card_header/1, []),
-      # Card Media
-      generate_all_classes(&card_media/1, src: [""]),
-      # Card Content
-      generate_all_classes(&card_content/1, []),
-      # Card Actions
-      generate_all_classes(&card_action/1, [])
-    ]
-    |> List.flatten()
-    |> Enum.uniq()
-  end
-
   ### Card Header Attrs ##########################
 
   defp build_card_header_attrs(assigns) do

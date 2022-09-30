@@ -50,24 +50,6 @@ defmodule PhoenixUI.Components.Drawer do
     """
   end
 
-  @doc """
-  Returns all possible component classes for Tailwind CSS JIT compilation.
-
-  ## Examples
-
-      iex> classes()
-      ["class1", "class2", ...]
-
-  """
-  @spec classes :: [String.t()]
-  def classes do
-    PhoenixUI.Helpers.generate_all_classes(&drawer/1,
-      id: ["drawer"],
-      open: [true, false],
-      variant: [:temporary]
-    )
-  end
-
   ### JS Interactions ##########################
 
   @doc """
