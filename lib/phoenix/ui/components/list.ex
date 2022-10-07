@@ -56,26 +56,10 @@ defmodule Phoenix.UI.Components.List do
         text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-100/25
       ))
     |> assign_rest([:element])
-    |> list_item_markup()
+    |> render_list_item()
   end
 
-  defp list_item_markup(%{href: _} = assigns) do
-    ~H"""
-    <.link name={@element} {@rest}>
-      <%= render_slot(@inner_block) %>
-    </.link>
-    """
-  end
-
-  defp list_item_markup(%{navigate: _} = assigns) do
-    ~H"""
-    <.link name={@element} {@rest}>
-      <%= render_slot(@inner_block) %>
-    </.link>
-    """
-  end
-
-  defp list_item_markup(%{patch: _} = assigns) do
+  defp render_list_item(%{href: _} = assigns) do
     ~H"""
     <.link {@rest}>
       <%= render_slot(@inner_block) %>
@@ -83,7 +67,23 @@ defmodule Phoenix.UI.Components.List do
     """
   end
 
-  defp list_item_markup(assigns) do
+  defp render_list_item(%{navigate: _} = assigns) do
+    ~H"""
+    <.link {@rest}>
+      <%= render_slot(@inner_block) %>
+    </.link>
+    """
+  end
+
+  defp render_list_item(%{patch: _} = assigns) do
+    ~H"""
+    <.link {@rest}>
+      <%= render_slot(@inner_block) %>
+    </.link>
+    """
+  end
+
+  defp render_list_item(assigns) do
     ~H"""
     <.dynamic_tag name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
