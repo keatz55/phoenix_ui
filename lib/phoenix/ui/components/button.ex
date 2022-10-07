@@ -26,35 +26,51 @@ defmodule Phoenix.UI.Components.Button do
   """
   @spec button(Socket.assigns()) :: Rendered.t()
   def button(prev_assigns) do
-    assigns = build_btn_attrs(prev_assigns)
+    prev_assigns
+    |> assign_class(~w(
+      button tracking-wider uppercase outline-none focus:outline-none text-center transition
+      duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
+      #{classes(:color, prev_assigns)}
+      #{classes(:size, prev_assigns)}
+      #{classes(:square, prev_assigns)}
+      #{classes(:variant, prev_assigns)}
+    ))
+    |> assign_rest([:color, :element, :extend_class, :size, :square, :variant])
+    |> render_btn()
+  end
 
+  ### Btn Markup ##########################
+
+  defp render_btn(%{href: _} = assigns) do
     ~H"""
-    <.dynamic_tag {@btn_attrs}>
+    <.link {@rest}>
       <%= render_slot(@inner_block) %>
-    </.dynamic_tag>
+    </.link>
     """
   end
 
-  ### Btn Attrs ##########################
+  defp render_btn(%{navigate: _} = assigns) do
+    ~H"""
+    <.link {@rest}>
+      <%= render_slot(@inner_block) %>
+    </.link>
+    """
+  end
 
-  defp build_btn_attrs(assigns) do
-    class = build_class(~w(
-      button tracking-wider uppercase outline-none focus:outline-none text-center transition
-      duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
-      #{classes(:color, assigns)}
-      #{classes(:size, assigns)}
-      #{classes(:square, assigns)}
-      #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
+  defp render_btn(%{patch: _} = assigns) do
+    ~H"""
+    <.link {@rest}>
+      <%= render_slot(@inner_block) %>
+    </.link>
+    """
+  end
 
-    attrs =
-      assigns
-      |> assigns_to_attributes([:color, :element, :extend_class, :size, :square, :variant])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put_new(:name, assigns[:element])
-
-    assign(assigns, :btn_attrs, attrs)
+  defp render_btn(assigns) do
+    ~H"""
+    <.dynamic_tag name={@element} {@rest}>
+      <%= render_slot(@inner_block) %>
+    </.dynamic_tag>
+    """
   end
 
   ### CSS Classes ##########################
