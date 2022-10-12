@@ -71,7 +71,24 @@ defmodule PhoenixUI.Components.Checkbox do
   end
 
   defp build_checkbox_attrs(assigns) do
-    class = build_class(~w(checkbox mr-2 #{Map.get(assigns, :extend_class)}))
+    class = build_class(~w(
+      appearance-none
+      h-5 w-5 border
+      border-slate-500
+      checked:border-blue-500
+      hover:bg-slate-500
+      cursor-pointer
+      transition-all ease-in-out duration-300
+      after:content-['']
+      after:border-2
+      after:border-white
+      after:rotate-45
+      after:absolute
+      after:w-[5px]
+      after:h-[10px]
+      mr-2
+      #{Map.get(assigns, :extend_class)}
+    ))
 
     attrs =
       assigns
