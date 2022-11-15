@@ -33,7 +33,7 @@ defmodule Phoenix.UI.Components.Grid do
       ))
 
     ~H"""
-    <.dynamic_tag class={@class} name={@element} {@grid_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
