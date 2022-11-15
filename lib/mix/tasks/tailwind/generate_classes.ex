@@ -13,7 +13,7 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
   def run(_args) do
     Application.put_env(:phoenix, :json_library, Jason)
     File.mkdir_p!("lib/phoenix_ui/tailwind")
-    file = File.open!("lib/phoenix_ui/tailwind/generated_classes.ex", [:write])
+    file = File.open!("lib/phoenix/ui/tailwind/generated_classes.ex", [:write])
 
     IO.binwrite(file, """
     defmodule Phoenix.UI.Tailwind.GeneratedClasses do

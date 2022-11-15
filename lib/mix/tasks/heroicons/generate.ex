@@ -10,7 +10,16 @@ defmodule Mix.Tasks.Heroicons.Generate do
     outline_icon_markup = load_markup("24/outline")
     solid_icon_markup = load_markup("24/solid")
 
-    file = File.open!("lib/phoenix_ui/components/heroicon.ex", [:write])
+    icons =
+      "heroicons/optimized/**/*.svg"
+      |> Path.absname(:code.priv_dir(:phoenix_ui))
+      |> Path.wildcard()
+      |> Enum.map(&Path.basename(&1, ".svg"))
+      |> Enum.uniq()
+
+    icon_values = Enum.map_join(icons, ", ", &"\"#{&1}\"")
+
+    file = File.open!("lib/phoenix/ui/components/heroicon.ex", [:write])
 
     IO.binwrite(file, """
     defmodule Phoenix.UI.Components.Heroicon do
@@ -19,10 +28,12 @@ defmodule Mix.Tasks.Heroicons.Generate do
       \"\"\"
       use Phoenix.UI, :component
 
-      attr(:color, :string, default: "inherit")
-      attr(:name, :string, required: true)
-      attr(:size, :string, default: "md")
-      attr(:variant, :string, default: "solid")
+      attr(:color, :string, default: "inherit", values: ["inherit" | Theme.colors()])
+      attr(:extend_class, :string)
+      attr(:name, :string, required: true, values: [#{icon_values}])
+      attr(:rest, :global)
+      attr(:size, :any, default: "md")
+      attr(:variant, :string, default: "solid", values: ["mini", "outline", "solid"])
 
       @doc \"\"\"
       Renders heroicon component.
@@ -43,27 +54,7 @@ defmodule Mix.Tasks.Heroicons.Generate do
           #\{classes(:size, assigns)\}
           #\{Map.get(assigns, :extend_class)\}
         ))
-        |> assign_rest([:color, :extend_class, :name, :size, :variant])
         |> render_markup()
-      end
-
-      @doc \"\"\"
-      Returns all component classes for Tailwind CSS JIT compilation.
-
-      ## Examples
-
-          iex> classes()
-          ["class1", "class2", ...]
-
-      \"\"\"
-      @spec classes :: [String.t()]
-      def classes do
-        generate_all_classes(&heroicon/1,
-          color: Theme.colors(),
-          name: ["academic-cap"],
-          size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
-          variant: ["outline", "solid"]
-        )
       end
 
       ### CSS Classes ##########################
@@ -86,12 +77,7 @@ defmodule Mix.Tasks.Heroicons.Generate do
 
     """)
 
-    "heroicons/optimized/**/*.svg"
-    |> Path.absname(:code.priv_dir(:phoenix_ui))
-    |> Path.wildcard()
-    |> Enum.map(&Path.basename(&1, ".svg"))
-    |> Enum.uniq()
-    |> Enum.each(fn icon ->
+    Enum.each(icons, fn icon ->
       IO.binwrite(file, """
       # #{icon}
       defp render_markup(%{name: "#{icon}", variant: "mini"} = assigns) do
@@ -133,7 +119,7 @@ defmodule Mix.Tasks.Heroicons.Generate do
         file
         |> File.read!()
         |> String.trim()
-        |> String.replace("<svg", "<svg {@rest}")
+        |> String.replace("<svg", "<svg class={@class} {@rest}")
       }
     end)
   end

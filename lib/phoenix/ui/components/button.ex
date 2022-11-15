@@ -4,13 +4,15 @@ defmodule Phoenix.UI.Components.Button do
   """
   use Phoenix.UI, :component
 
-  attr(:color, :string, default: "blue")
-  attr(:disabled, :boolean, default: false)
+  attr(:color, :string, default: "blue", values: Theme.colors())
   attr(:element, :string, default: "button")
-  attr(:size, :string, default: "md")
-  attr(:square, :boolean, default: false)
-  attr(:type, :string, default: "button")
-  attr(:variant, :string, default: "contained")
+  attr(:extend_class, :string)
+  attr(:rest, :global, include: ~w(disabled form name value))
+  attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg"])
+  attr(:square, :boolean, default: false, values: [true, false])
+  attr(:variant, :string, default: "contained", values: ["contained", "icon", "outlined", "text"])
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders button component.
@@ -35,7 +37,6 @@ defmodule Phoenix.UI.Components.Button do
       #{classes(:square, prev_assigns)}
       #{classes(:variant, prev_assigns)}
     ))
-    |> assign_rest([:color, :element, :extend_class, :size, :square, :variant])
     |> render_btn()
   end
 
@@ -43,7 +44,7 @@ defmodule Phoenix.UI.Components.Button do
 
   defp render_btn(%{href: _} = assigns) do
     ~H"""
-    <.link {@rest}>
+    <.link class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
     </.link>
     """
@@ -51,7 +52,7 @@ defmodule Phoenix.UI.Components.Button do
 
   defp render_btn(%{navigate: _} = assigns) do
     ~H"""
-    <.link {@rest}>
+    <.link class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
     </.link>
     """
@@ -59,7 +60,7 @@ defmodule Phoenix.UI.Components.Button do
 
   defp render_btn(%{patch: _} = assigns) do
     ~H"""
-    <.link {@rest}>
+    <.link class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
     </.link>
     """
@@ -67,7 +68,7 @@ defmodule Phoenix.UI.Components.Button do
 
   defp render_btn(assigns) do
     ~H"""
-    <.dynamic_tag name={@element} {@rest}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """

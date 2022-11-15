@@ -5,9 +5,12 @@ defmodule Phoenix.UI.Components.Backdrop do
   use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
-  attr(:invisible, :boolean, default: false)
-  attr(:open, :boolean, default: true)
+  attr(:extend_class, :string)
+  attr(:invisible, :boolean, default: false, values: [true, false])
+  attr(:rest, :global, include: ~w(open))
   attr(:transition_duration, :integer, default: 300)
+
+  slot(:inner_block)
 
   @doc """
   Renders backdrop component.
@@ -21,24 +24,17 @@ defmodule Phoenix.UI.Components.Backdrop do
   """
   @spec backdrop(Socket.assigns()) :: Rendered.t()
   def backdrop(prev_assigns) do
-    assigns =
-      prev_assigns
-      |> assign_class(~w(
+    assigns = assign_class(prev_assigns, ~w(
         backdrop fixed inset-0 z-50 invisible opacity-0
         open:visible open:opacity-100 transition-all ease-in-out
         #{classes(:color, prev_assigns)}
         #{classes(:transition, prev_assigns)}
       ))
-      |> assign_rest([:element, :elevation, :variant])
 
     ~H"""
-    <%= if assigns[:inner_block] do %>
-      <.dynamic_tag name={@element} {@rest}>
-        <%= render_slot(@inner_block) %>
-      </.dynamic_tag>
-    <% else %>
-      <.dynamic_tag name={@element} {@rest}></.dynamic_tag>
-    <% end %>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
+      <%= render_slot(@inner_block) %>
+    </.dynamic_tag>
     """
   end
 

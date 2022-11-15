@@ -7,8 +7,11 @@ defmodule Phoenix.UI.Components.Paper do
   attr(:blur, :boolean, default: false)
   attr(:element, :string, default: "div")
   attr(:elevation, :integer, default: 2)
+  attr(:extend_class, :string)
   attr(:square, :boolean, default: false)
   attr(:variant, :string, default: "elevated")
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders paper component

@@ -15,6 +15,8 @@ defmodule Phoenix.UI.Components.ButtonGroup do
   attr(:type, :string, default: "button")
   attr(:variant, :string, default: "contained")
 
+  slot(:button)
+
   @doc """
   Renders a button group
 

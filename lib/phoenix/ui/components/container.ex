@@ -5,8 +5,12 @@ defmodule Phoenix.UI.Components.Container do
   use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
   attr(:max_width, :string, default: "screen-lg")
-  attr(:variant, :string, default: "fluid")
+  attr(:rest, :global)
+  attr(:variant, :string, default: "fluid", values: ["fixed", "fluid"])
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders container component.
@@ -22,32 +26,17 @@ defmodule Phoenix.UI.Components.Container do
   """
   @spec container(Socket.assigns()) :: Rendered.t()
   def container(prev_assigns) do
-    assigns = build_container_attrs(prev_assigns)
+    assigns = assign_class(prev_assigns, ~w(
+        container mx-auto
+        #{classes(:max_width, prev_assigns)}
+        #{classes(:variant, prev_assigns)}
+      ))
 
     ~H"""
-    <.dynamic_tag {@container_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  ### Container Attrs ##########################
-
-  defp build_container_attrs(assigns) do
-    class = build_class(~w(
-      container mx-auto
-      #{classes(:max_width, assigns)}
-      #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:element, :extend_class, :max_width, :variant])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :container_attrs, attrs)
   end
 
   ### CSS Classes ##########################

@@ -9,8 +9,12 @@ defmodule Phoenix.UI.Components.Avatar do
   attr(:border, :boolean, default: false)
   attr(:color, :string, default: "slate")
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
   attr(:size, :string, default: "md")
   attr(:variant, :string, default: "circular")
+
+  slot(:inner_block)
 
   @doc """
   Renders avatar component.
@@ -33,45 +37,42 @@ defmodule Phoenix.UI.Components.Avatar do
       #{classes(:size, assigns)}
       #{classes(:variant, assigns)}
     ))
-    |> assign_rest([:alt, :border, :color, :element, :extend_class, :name, :size, :src, :variant])
     |> generate_markup()
   end
 
   ### Markup ##########################
 
-  defp generate_markup(%{src: src} = assigns) when not is_nil(src) do
+  defp generate_markup(%{rest: %{src: src}} = assigns) when not is_nil(src) do
     ~H"""
-    <.dynamic_tag name={@element} {@rest}>
-      <img alt={assigns[:alt]} class="avatar-image object-cover h-full w-full" src={@src} />
+    <img class={@class} {@rest} />
+    """
+  end
+
+  defp generate_markup(%{inner_block: [], rest: %{alt: alt}} = assigns) when not is_nil(alt) do
+    ~H"""
+    <.dynamic_tag class={@class} name={@element} {@rest}>
+      <%= build_initials(@rest[:alt]) %>
     </.dynamic_tag>
     """
   end
 
-  defp generate_markup(%{inner_block: inner_block} = assigns) when not is_nil(inner_block) do
+  defp generate_markup(%{inner_block: []} = assigns) do
     ~H"""
-    <.dynamic_tag name={@element} {@rest}>
-      <%= render_slot(@inner_block) %>
-    </.dynamic_tag>
-    """
-  end
-
-  defp generate_markup(%{name: name} = assigns) when not is_nil(name) do
-    ~H"""
-    <.dynamic_tag name={@element} {@rest}>
-      <%= build_initials(@name) %>
-    </.dynamic_tag>
-    """
-  end
-
-  defp generate_markup(assigns) do
-    ~H"""
-    <.dynamic_tag name={@element} {@rest}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <.heroicon
         extend_class="absolute scale-125 top-[15%]"
         name="user"
         size={icon_size_mapping(@size)}
         variant="mini"
       />
+    </.dynamic_tag>
+    """
+  end
+
+  defp generate_markup(assigns) do
+    ~H"""
+    <.dynamic_tag class={@class} name={@element} {@rest}>
+      <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
   end

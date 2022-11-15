@@ -7,6 +7,9 @@ defmodule Phoenix.UI.Components.Menu do
   use Phoenix.UI, :component
 
   attr(:element, :string, default: "ul")
+  attr(:extend_class, :string)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders menu component.
@@ -36,6 +39,8 @@ defmodule Phoenix.UI.Components.Menu do
   end
 
   attr(:element, :string, default: "li")
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders menu_item component.

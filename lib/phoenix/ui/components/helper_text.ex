@@ -7,6 +7,8 @@ defmodule Phoenix.UI.Components.HelperText do
   attr(:disabled, :boolean, default: false)
   attr(:element, :string, default: "div")
 
+  slot(:inner_block, required: true)
+
   @doc """
   Renders helper text component.
 

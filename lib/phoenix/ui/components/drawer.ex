@@ -37,12 +37,7 @@ defmodule Phoenix.UI.Components.Drawer do
       |> build_drawer_attrs()
 
     ~H"""
-    <.backdrop
-      id={"#{@id}_drawer_backdrop"}
-      open={@open}
-      variant="visible"
-      phx-click={hide_drawer("##{@id}")}
-    >
+    <.backdrop id={"#{@id}_drawer_backdrop"} open={@open} phx-click={hide_drawer("##{@id}")}>
     </.backdrop>
     <.paper variant="elevated" {@drawer_attrs}>
       <%= render_slot(@inner_block) %>

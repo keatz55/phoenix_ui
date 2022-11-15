@@ -10,8 +10,10 @@ defmodule Phoenix.UI.Components.Chip do
   @default_delete_icon_name "x-circle"
   @default_icon_color "inherit"
 
-  attr(:color, :string, default: "slate")
+  attr(:color, :string, default: "slate", values: Theme.colors())
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:label, :string)
   attr(:size, :string, default: "md")
   attr(:variant, :string, default: "filled")
 

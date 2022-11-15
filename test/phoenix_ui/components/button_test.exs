@@ -8,7 +8,7 @@ defmodule Phoenix.UI.Components.ButtonTest do
   describe "button/1" do
     test "should render with defaults", %{assigns: assigns} do
       markup = ~H"""
-      <.button>
+      <.button type="button">
         <%= @text %>
       </.button>
       """

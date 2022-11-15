@@ -7,6 +7,9 @@ defmodule Phoenix.UI.Components.Card do
   use Phoenix.UI, :component
 
   attr(:element, :string)
+  attr(:extend_class, :string)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders card component.
@@ -42,6 +45,7 @@ defmodule Phoenix.UI.Components.Card do
   end
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
 
   slot(:action)
   slot(:avatar_group)
@@ -102,7 +106,10 @@ defmodule Phoenix.UI.Components.Card do
     """
   end
 
+  attr(:alt, :string)
   attr(:element, :string, default: "img")
+  attr(:extend_class, :string)
+  attr(:src, :string)
 
   @doc """
   Renders card media component.
@@ -139,6 +146,7 @@ defmodule Phoenix.UI.Components.Card do
   end
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
 
   @doc """
   Renders card content component.
@@ -179,6 +187,7 @@ defmodule Phoenix.UI.Components.Card do
   end
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
 
   @doc """
   Renders card actions component.

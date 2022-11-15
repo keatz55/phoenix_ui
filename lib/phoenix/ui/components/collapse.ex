@@ -5,10 +5,13 @@ defmodule Phoenix.UI.Components.Collapse do
   use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
   attr(:max_size, :string, default: "5000px")
   attr(:open, :boolean, default: false)
   attr(:orientation, :string, default: "vertical")
   attr(:transition_duration, :integer, default: 300)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders collapse component.
