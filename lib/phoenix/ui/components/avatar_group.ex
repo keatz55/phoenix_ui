@@ -7,14 +7,15 @@ defmodule Phoenix.UI.Components.AvatarGroup do
   use Phoenix.UI, :component
 
   attr(:border, :boolean, default: true)
-  attr(:color, :string, default: "slate")
+  attr(:color, :string, default: "slate", values: Theme.colors())
   attr(:element, :string, default: "div")
   attr(:max, :integer, default: 5)
-  attr(:size, :string, default: "md")
-  attr(:spacing, :string, default: "md")
-  attr(:variant, :string, default: "circular")
+  attr(:rest, :global)
+  attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg", "xl"])
+  attr(:spacing, :string, default: "md", values: ["xs", "sm", "md", "lg", "xl"])
+  attr(:variant, :string, default: "circular", values: ["circular", "rounded"])
 
-  slot(:avatar, required: true)
+  slot(:avatar)
 
   @doc """
   Renders avatar_group component.
@@ -37,14 +38,13 @@ defmodule Phoenix.UI.Components.AvatarGroup do
 
     assigns =
       prev_assigns
-      |> assign_class(~w(avatar-group inline-flex flex-row-reverse items-center pl-#{spacing} ))
-      |> assign_rest([:avatar, :border, :color, :element, :extend_class, :size, :variant])
+      |> assign_class(~w(avatar-group inline-flex flex-row-reverse items-center pl-#{spacing}))
       |> calc_total()
       |> calc_extra()
       |> normalize_avatars()
 
     ~H"""
-    <.dynamic_tag name={@element} {@rest}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= if (@total - @max) > 0 do %>
         <.avatar
           border={@border}
@@ -92,6 +92,7 @@ defmodule Phoenix.UI.Components.AvatarGroup do
         |> Map.put_new(:size, assigns[:size])
         |> Map.put_new(:variant, assigns[:variant])
         |> Map.put(:extend_class, extend_class)
+        |> apply_avatar_inner_block()
       end)
       |> Enum.reverse()
 
@@ -103,4 +104,10 @@ defmodule Phoenix.UI.Components.AvatarGroup do
   defp spacing_mapping("md"), do: "1.5"
   defp spacing_mapping("lg"), do: "1"
   defp spacing_mapping("xl"), do: "0.5"
+
+  defp apply_avatar_inner_block(%{inner_block: nil} = avatar) do
+    Map.put(avatar, :inner_block, [])
+  end
+
+  defp apply_avatar_inner_block(avatar), do: avatar
 end

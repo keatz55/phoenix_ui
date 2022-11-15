@@ -4,6 +4,7 @@ defmodule Phoenix.UI.Tailwind do
   """
   @colors [
     "amber",
+    "black",
     "blue",
     "cyan",
     "emerald",
@@ -23,6 +24,7 @@ defmodule Phoenix.UI.Tailwind do
     "stone",
     "teal",
     "violet",
+    "white",
     "yellow",
     "zinc"
   ]

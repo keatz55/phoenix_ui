@@ -7,6 +7,8 @@ defmodule Phoenix.UI.Components.ErrorTag do
   use Phoenix.UI, :component
 
   attr(:color, :string, default: "red")
+  attr(:field, :any)
+  attr(:form, :any)
   attr(:variant, :string, default: "p")
 
   @doc """

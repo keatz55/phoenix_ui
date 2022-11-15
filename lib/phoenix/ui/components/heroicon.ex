@@ -4,10 +4,310 @@ defmodule Phoenix.UI.Components.Heroicon do
   """
   use Phoenix.UI, :component
 
-  attr(:color, :string, default: "inherit")
-  attr(:name, :string, required: true)
-  attr(:size, :string, default: "md")
-  attr(:variant, :string, default: "solid")
+  attr(:color, :string, default: "inherit", values: ["inherit" | Theme.colors()])
+  attr(:extend_class, :string)
+
+  attr(:name, :string,
+    required: true,
+    values: [
+      "academic-cap",
+      "adjustments-horizontal",
+      "adjustments-vertical",
+      "archive-box-arrow-down",
+      "archive-box-x-mark",
+      "archive-box",
+      "arrow-down-circle",
+      "arrow-down-left",
+      "arrow-down-on-square-stack",
+      "arrow-down-on-square",
+      "arrow-down-right",
+      "arrow-down-tray",
+      "arrow-down",
+      "arrow-left-circle",
+      "arrow-left-on-rectangle",
+      "arrow-left",
+      "arrow-long-down",
+      "arrow-long-left",
+      "arrow-long-right",
+      "arrow-long-up",
+      "arrow-path-rounded-square",
+      "arrow-path",
+      "arrow-right-circle",
+      "arrow-right-on-rectangle",
+      "arrow-right",
+      "arrow-small-down",
+      "arrow-small-left",
+      "arrow-small-right",
+      "arrow-small-up",
+      "arrow-top-right-on-square",
+      "arrow-trending-down",
+      "arrow-trending-up",
+      "arrow-up-circle",
+      "arrow-up-left",
+      "arrow-up-on-square-stack",
+      "arrow-up-on-square",
+      "arrow-up-right",
+      "arrow-up-tray",
+      "arrow-up",
+      "arrow-uturn-down",
+      "arrow-uturn-left",
+      "arrow-uturn-right",
+      "arrow-uturn-up",
+      "arrows-pointing-in",
+      "arrows-pointing-out",
+      "arrows-right-left",
+      "arrows-up-down",
+      "at-symbol",
+      "backspace",
+      "backward",
+      "banknotes",
+      "bars-2",
+      "bars-3-bottom-left",
+      "bars-3-bottom-right",
+      "bars-3-center-left",
+      "bars-3",
+      "bars-4",
+      "bars-arrow-down",
+      "bars-arrow-up",
+      "battery-0",
+      "battery-100",
+      "battery-50",
+      "beaker",
+      "bell-alert",
+      "bell-slash",
+      "bell-snooze",
+      "bell",
+      "bolt-slash",
+      "bolt",
+      "book-open",
+      "bookmark-slash",
+      "bookmark-square",
+      "bookmark",
+      "briefcase",
+      "bug-ant",
+      "building-library",
+      "building-office-2",
+      "building-office",
+      "building-storefront",
+      "cake",
+      "calculator",
+      "calendar-days",
+      "calendar",
+      "camera",
+      "chart-bar-square",
+      "chart-bar",
+      "chart-pie",
+      "chat-bubble-bottom-center-text",
+      "chat-bubble-bottom-center",
+      "chat-bubble-left-ellipsis",
+      "chat-bubble-left-right",
+      "chat-bubble-left",
+      "chat-bubble-oval-left-ellipsis",
+      "chat-bubble-oval-left",
+      "check-badge",
+      "check-circle",
+      "check",
+      "chevron-double-down",
+      "chevron-double-left",
+      "chevron-double-right",
+      "chevron-double-up",
+      "chevron-down",
+      "chevron-left",
+      "chevron-right",
+      "chevron-up-down",
+      "chevron-up",
+      "circle-stack",
+      "clipboard-document-check",
+      "clipboard-document-list",
+      "clipboard-document",
+      "clipboard",
+      "clock",
+      "cloud-arrow-down",
+      "cloud-arrow-up",
+      "cloud",
+      "code-bracket-square",
+      "code-bracket",
+      "cog-6-tooth",
+      "cog-8-tooth",
+      "cog",
+      "command-line",
+      "computer-desktop",
+      "cpu-chip",
+      "credit-card",
+      "cube-transparent",
+      "cube",
+      "currency-bangladeshi",
+      "currency-dollar",
+      "currency-euro",
+      "currency-pound",
+      "currency-rupee",
+      "currency-yen",
+      "cursor-arrow-rays",
+      "cursor-arrow-ripple",
+      "device-phone-mobile",
+      "device-tablet",
+      "document-arrow-down",
+      "document-arrow-up",
+      "document-chart-bar",
+      "document-check",
+      "document-duplicate",
+      "document-magnifying-glass",
+      "document-minus",
+      "document-plus",
+      "document-text",
+      "document",
+      "ellipsis-horizontal-circle",
+      "ellipsis-horizontal",
+      "ellipsis-vertical",
+      "envelope-open",
+      "envelope",
+      "exclamation-circle",
+      "exclamation-triangle",
+      "eye-dropper",
+      "eye-slash",
+      "eye",
+      "face-frown",
+      "face-smile",
+      "film",
+      "finger-print",
+      "fire",
+      "flag",
+      "folder-arrow-down",
+      "folder-minus",
+      "folder-open",
+      "folder-plus",
+      "folder",
+      "forward",
+      "funnel",
+      "gif",
+      "gift-top",
+      "gift",
+      "globe-alt",
+      "globe-americas",
+      "globe-asia-australia",
+      "globe-europe-africa",
+      "hand-raised",
+      "hand-thumb-down",
+      "hand-thumb-up",
+      "hashtag",
+      "heart",
+      "home-modern",
+      "home",
+      "identification",
+      "inbox-arrow-down",
+      "inbox-stack",
+      "inbox",
+      "information-circle",
+      "key",
+      "language",
+      "lifebuoy",
+      "light-bulb",
+      "link",
+      "list-bullet",
+      "lock-closed",
+      "lock-open",
+      "magnifying-glass-circle",
+      "magnifying-glass-minus",
+      "magnifying-glass-plus",
+      "magnifying-glass",
+      "map-pin",
+      "map",
+      "megaphone",
+      "microphone",
+      "minus-circle",
+      "minus-small",
+      "minus",
+      "moon",
+      "musical-note",
+      "newspaper",
+      "no-symbol",
+      "paint-brush",
+      "paper-airplane",
+      "paper-clip",
+      "pause-circle",
+      "pause",
+      "pencil-square",
+      "pencil",
+      "phone-arrow-down-left",
+      "phone-arrow-up-right",
+      "phone-x-mark",
+      "phone",
+      "photo",
+      "play-circle",
+      "play-pause",
+      "play",
+      "plus-circle",
+      "plus-small",
+      "plus",
+      "power",
+      "presentation-chart-bar",
+      "presentation-chart-line",
+      "printer",
+      "puzzle-piece",
+      "qr-code",
+      "question-mark-circle",
+      "queue-list",
+      "radio",
+      "receipt-percent",
+      "receipt-refund",
+      "rectangle-group",
+      "rectangle-stack",
+      "rocket-launch",
+      "rss",
+      "scale",
+      "scissors",
+      "server-stack",
+      "server",
+      "share",
+      "shield-check",
+      "shield-exclamation",
+      "shopping-bag",
+      "shopping-cart",
+      "signal-slash",
+      "signal",
+      "sparkles",
+      "speaker-wave",
+      "speaker-x-mark",
+      "square-2-stack",
+      "square-3-stack-3d",
+      "squares-2x2",
+      "squares-plus",
+      "star",
+      "stop-circle",
+      "stop",
+      "sun",
+      "swatch",
+      "table-cells",
+      "tag",
+      "ticket",
+      "trash",
+      "trophy",
+      "truck",
+      "tv",
+      "user-circle",
+      "user-group",
+      "user-minus",
+      "user-plus",
+      "user",
+      "users",
+      "variable",
+      "video-camera-slash",
+      "video-camera",
+      "view-columns",
+      "viewfinder-circle",
+      "wallet",
+      "wifi",
+      "window",
+      "wrench-screwdriver",
+      "wrench",
+      "x-circle",
+      "x-mark"
+    ]
+  )
+
+  attr(:rest, :global)
+  attr(:size, :any, default: "md")
+  attr(:variant, :string, default: "solid", values: ["mini", "outline", "solid"])
 
   @doc """
   Renders heroicon component.
@@ -28,7 +328,6 @@ defmodule Phoenix.UI.Components.Heroicon do
       #{classes(:size, assigns)}
       #{Map.get(assigns, :extend_class)}
     ))
-    |> assign_rest([:color, :extend_class, :name, :size, :variant])
     |> render_markup()
   end
 
@@ -54,6 +353,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "academic-cap", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -72,6 +372,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "academic-cap", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -92,6 +393,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "academic-cap", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -109,6 +411,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "adjustments-horizontal", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -123,6 +426,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "adjustments-horizontal", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -143,6 +447,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "adjustments-horizontal", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -158,6 +463,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "adjustments-vertical", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -172,6 +478,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "adjustments-vertical", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -192,6 +499,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "adjustments-vertical", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -207,6 +515,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box-arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -225,6 +534,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box-arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -245,6 +555,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box-arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -265,6 +576,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box-x-mark", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -284,6 +596,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box-x-mark", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -304,6 +617,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box-x-mark", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -324,6 +638,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -343,6 +658,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -363,6 +679,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "archive-box", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -383,6 +700,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -401,6 +719,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -421,6 +740,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -440,6 +760,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -458,6 +779,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -478,6 +800,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -497,6 +820,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-on-square-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -515,6 +839,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-on-square-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -535,6 +860,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-on-square-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -555,6 +881,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-on-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -569,6 +896,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-on-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -589,6 +917,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-on-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -604,6 +933,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -618,6 +948,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -634,6 +965,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -653,6 +985,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-tray", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -668,6 +1001,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-tray", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -688,6 +1022,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down-tray", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -707,6 +1042,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -725,6 +1061,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -741,6 +1078,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -760,6 +1098,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -785,6 +1124,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -805,6 +1145,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -824,6 +1165,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left-on-rectangle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -847,6 +1189,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left-on-rectangle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -867,6 +1210,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left-on-rectangle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -886,6 +1230,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -904,6 +1249,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -920,6 +1266,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -939,6 +1286,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -957,6 +1305,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -977,6 +1326,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -996,6 +1346,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1014,6 +1365,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1030,6 +1382,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1049,6 +1402,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1067,6 +1421,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1087,6 +1442,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1106,6 +1462,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1124,6 +1481,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1140,6 +1498,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-long-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1159,6 +1518,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-path-rounded-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1177,6 +1537,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-path-rounded-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1197,6 +1558,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-path-rounded-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1216,6 +1578,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-path", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1234,6 +1597,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-path", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1254,6 +1618,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-path", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1273,6 +1638,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1291,6 +1657,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1311,6 +1678,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1330,6 +1698,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right-on-rectangle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1353,6 +1722,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right-on-rectangle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1373,6 +1743,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right-on-rectangle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1392,6 +1763,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1410,6 +1782,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1426,6 +1799,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1445,6 +1819,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1463,6 +1838,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1483,6 +1859,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1502,6 +1879,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1520,6 +1898,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1540,6 +1919,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1559,6 +1939,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1577,6 +1958,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1597,6 +1979,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1616,6 +1999,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1634,6 +2018,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1654,6 +2039,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-small-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1673,6 +2059,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-top-right-on-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1696,6 +2083,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-top-right-on-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1716,6 +2104,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-top-right-on-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1735,6 +2124,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-trending-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1753,6 +2143,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-trending-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1773,6 +2164,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-trending-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1792,6 +2184,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-trending-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1810,6 +2203,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-trending-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1830,6 +2224,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-trending-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1849,6 +2244,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1867,6 +2263,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1887,6 +2284,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1906,6 +2304,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1924,6 +2323,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -1944,6 +2344,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -1963,6 +2364,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-on-square-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -1981,6 +2383,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-on-square-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2001,6 +2404,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-on-square-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2017,6 +2421,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-on-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2035,6 +2440,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-on-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2055,6 +2461,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-on-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2070,6 +2477,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2088,6 +2496,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2104,6 +2513,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2123,6 +2533,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-tray", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2138,6 +2549,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-tray", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2158,6 +2570,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up-tray", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2177,6 +2590,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2195,6 +2609,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2211,6 +2626,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2230,6 +2646,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2248,6 +2665,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2268,6 +2686,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2287,6 +2706,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2305,6 +2725,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2325,6 +2746,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2344,6 +2766,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2362,6 +2785,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2382,6 +2806,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2401,6 +2826,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2419,6 +2845,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2439,6 +2866,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrow-uturn-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2458,6 +2886,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-pointing-in", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2472,6 +2901,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-pointing-in", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2492,6 +2922,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-pointing-in", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2511,6 +2942,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-pointing-out", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2525,6 +2957,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-pointing-out", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2545,6 +2978,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-pointing-out", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2564,6 +2998,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-right-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2582,6 +3017,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-right-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2602,6 +3038,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-right-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2621,6 +3058,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-up-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2639,6 +3077,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-up-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2659,6 +3098,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "arrows-up-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2678,6 +3118,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "at-symbol", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2696,6 +3137,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "at-symbol", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2715,6 +3157,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "at-symbol", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2734,6 +3177,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "backspace", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2752,6 +3196,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "backspace", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2772,6 +3217,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "backspace", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2791,6 +3237,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "backward", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2805,6 +3252,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "backward", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2825,6 +3273,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "backward", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2840,6 +3289,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "banknotes", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2858,6 +3308,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "banknotes", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2878,6 +3329,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "banknotes", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2899,6 +3351,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-2", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2917,6 +3370,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-2", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2933,6 +3387,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-2", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -2952,6 +3407,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-bottom-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -2970,6 +3426,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-bottom-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -2990,6 +3447,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-bottom-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3009,6 +3467,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-bottom-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3027,6 +3486,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-bottom-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3047,6 +3507,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-bottom-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3066,6 +3527,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-center-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3084,6 +3546,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-center-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3104,6 +3567,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3-center-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3123,6 +3587,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3141,6 +3606,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3161,6 +3627,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-3", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3180,6 +3647,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-4", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3198,6 +3666,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-4", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3218,6 +3687,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-4", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3237,6 +3707,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3255,6 +3726,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3275,6 +3747,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3294,6 +3767,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-arrow-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3312,6 +3786,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-arrow-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3332,6 +3807,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bars-arrow-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3351,6 +3827,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-0", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3369,6 +3846,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-0", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3389,6 +3867,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-0", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3408,6 +3887,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-100", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3427,6 +3907,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-100", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3447,6 +3928,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-100", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3466,6 +3948,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-50", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3485,6 +3968,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-50", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3505,6 +3989,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "battery-50", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3525,6 +4010,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "beaker", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3543,6 +4029,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "beaker", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3563,6 +4050,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "beaker", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3582,6 +4070,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-alert", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3601,6 +4090,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-alert", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3621,6 +4111,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-alert", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3641,6 +4132,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-slash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3655,6 +4147,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-slash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3675,6 +4168,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-slash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3695,6 +4189,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-snooze", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3713,6 +4208,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-snooze", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3733,6 +4229,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell-snooze", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3752,6 +4249,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3770,6 +4268,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3790,6 +4289,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bell", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3809,6 +4309,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bolt-slash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3828,6 +4329,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bolt-slash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3848,6 +4350,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bolt-slash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3863,6 +4366,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bolt", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3877,6 +4381,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bolt", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3897,6 +4402,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bolt", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3916,6 +4422,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "book-open", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3930,6 +4437,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "book-open", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3950,6 +4458,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "book-open", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -3965,6 +4474,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark-slash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -3979,6 +4489,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark-slash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -3999,6 +4510,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark-slash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4014,6 +4526,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4032,6 +4545,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4052,6 +4566,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4071,6 +4586,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4089,6 +4605,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4109,6 +4626,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bookmark", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4128,6 +4646,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "briefcase", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4147,6 +4666,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "briefcase", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4167,6 +4687,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "briefcase", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4187,6 +4708,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bug-ant", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4205,6 +4727,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bug-ant", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4225,6 +4748,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "bug-ant", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4244,6 +4768,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-library", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4262,6 +4787,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-library", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4282,6 +4808,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-library", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4303,6 +4830,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-office-2", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4321,6 +4849,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-office-2", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4341,6 +4870,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-office-2", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4360,6 +4890,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-office", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4378,6 +4909,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-office", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4398,6 +4930,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-office", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4417,6 +4950,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-storefront", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4431,6 +4965,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-storefront", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4451,6 +4986,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "building-storefront", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4471,6 +5007,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cake", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4485,6 +5022,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cake", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4505,6 +5043,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cake", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4520,6 +5059,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calculator", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4538,6 +5078,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calculator", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4558,6 +5099,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calculator", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4577,6 +5119,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calendar-days", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4596,6 +5139,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calendar-days", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4616,6 +5160,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calendar-days", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4636,6 +5181,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calendar", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4654,6 +5200,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calendar", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4674,6 +5221,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "calendar", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4693,6 +5241,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "camera", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4711,6 +5260,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "camera", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4736,6 +5286,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "camera", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4756,6 +5307,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-bar-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4774,6 +5326,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-bar-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4794,6 +5347,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-bar-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4813,6 +5367,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-bar", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4827,6 +5382,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-bar", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4847,6 +5403,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-bar", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4862,6 +5419,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-pie", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4877,6 +5435,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-pie", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4894,6 +5453,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chart-pie", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4918,6 +5478,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-bottom-center-text", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4936,6 +5497,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-bottom-center-text", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -4956,6 +5518,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-bottom-center-text", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -4975,6 +5538,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-bottom-center", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -4993,6 +5557,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-bottom-center", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5013,6 +5578,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-bottom-center", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5032,6 +5598,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left-ellipsis", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5050,6 +5617,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left-ellipsis", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5070,6 +5638,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left-ellipsis", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5089,6 +5658,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5104,6 +5674,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5124,6 +5695,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5140,6 +5712,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5158,6 +5731,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5178,6 +5752,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5197,6 +5772,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-oval-left-ellipsis", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5215,6 +5791,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-oval-left-ellipsis", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5235,6 +5812,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-oval-left-ellipsis", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5254,6 +5832,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-oval-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5272,6 +5851,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-oval-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5292,6 +5872,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chat-bubble-oval-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5311,6 +5892,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check-badge", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5329,6 +5911,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check-badge", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5349,6 +5932,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check-badge", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5368,6 +5952,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5386,6 +5971,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5406,6 +5992,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5425,6 +6012,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5443,6 +6031,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5459,6 +6048,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "check", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5478,6 +6068,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5496,6 +6087,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5516,6 +6108,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5535,6 +6128,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5553,6 +6147,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5573,6 +6168,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5592,6 +6188,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5615,6 +6212,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5635,6 +6233,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5654,6 +6253,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5672,6 +6272,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5692,6 +6293,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-double-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5711,6 +6313,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5729,6 +6332,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5745,6 +6349,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5764,6 +6369,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5782,6 +6388,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5798,6 +6405,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5817,6 +6425,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5835,6 +6444,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5851,6 +6461,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5870,6 +6481,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-up-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5888,6 +6500,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-up-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5908,6 +6521,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-up-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5927,6 +6541,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5945,6 +6560,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -5961,6 +6577,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "chevron-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -5980,6 +6597,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "circle-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -5998,6 +6616,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "circle-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6018,6 +6637,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "circle-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6036,6 +6656,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document-check", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6059,6 +6680,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document-check", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6079,6 +6701,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document-check", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6103,6 +6726,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document-list", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6126,6 +6750,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document-list", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6146,6 +6771,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document-list", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6170,6 +6796,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6189,6 +6816,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6209,6 +6837,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard-document", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6230,6 +6859,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6248,6 +6878,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6268,6 +6899,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clipboard", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6287,6 +6919,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clock", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6305,6 +6938,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clock", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6325,6 +6959,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "clock", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6344,6 +6979,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud-arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6362,6 +6998,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud-arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6382,6 +7019,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud-arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6401,6 +7039,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud-arrow-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6419,6 +7058,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud-arrow-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6439,6 +7079,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud-arrow-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6458,6 +7099,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6472,6 +7114,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6492,6 +7135,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cloud", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6511,6 +7155,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "code-bracket-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6529,6 +7174,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "code-bracket-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6549,6 +7195,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "code-bracket-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6568,6 +7215,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "code-bracket", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6586,6 +7234,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "code-bracket", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6606,6 +7255,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "code-bracket", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6625,6 +7275,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog-6-tooth", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6643,6 +7294,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog-6-tooth", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6664,6 +7316,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog-6-tooth", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6683,6 +7336,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog-8-tooth", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6701,6 +7355,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog-8-tooth", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6722,6 +7377,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog-8-tooth", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6741,6 +7397,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6760,6 +7417,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6780,6 +7438,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cog", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6800,6 +7459,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "command-line", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6818,6 +7478,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "command-line", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6838,6 +7499,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "command-line", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6857,6 +7519,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "computer-desktop", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6875,6 +7538,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "computer-desktop", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6895,6 +7559,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "computer-desktop", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6914,6 +7579,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cpu-chip", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6933,6 +7599,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cpu-chip", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -6953,6 +7620,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cpu-chip", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -6973,6 +7641,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "credit-card", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -6991,6 +7660,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "credit-card", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7011,6 +7681,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "credit-card", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7031,6 +7702,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cube-transparent", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7049,6 +7721,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cube-transparent", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7069,6 +7742,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cube-transparent", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7088,6 +7762,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cube", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7106,6 +7781,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cube", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7126,6 +7802,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cube", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7141,6 +7818,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-bangladeshi", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7159,6 +7837,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-bangladeshi", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7179,6 +7858,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-bangladeshi", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7198,6 +7878,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-dollar", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7217,6 +7898,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-dollar", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7237,6 +7919,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-dollar", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7257,6 +7940,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-euro", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7275,6 +7959,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-euro", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7295,6 +7980,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-euro", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7314,6 +8000,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-pound", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7332,6 +8019,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-pound", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7352,6 +8040,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-pound", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7371,6 +8060,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-rupee", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7389,6 +8079,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-rupee", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7409,6 +8100,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-rupee", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7428,6 +8120,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-yen", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7446,6 +8139,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-yen", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7466,6 +8160,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "currency-yen", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7485,6 +8180,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cursor-arrow-rays", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7503,6 +8199,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cursor-arrow-rays", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7523,6 +8220,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cursor-arrow-rays", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7542,6 +8240,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cursor-arrow-ripple", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7560,6 +8259,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cursor-arrow-ripple", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7580,6 +8280,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "cursor-arrow-ripple", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7599,6 +8300,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "device-phone-mobile", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7618,6 +8320,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "device-phone-mobile", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7638,6 +8341,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "device-phone-mobile", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7658,6 +8362,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "device-tablet", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7676,6 +8381,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "device-tablet", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7696,6 +8402,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "device-tablet", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7716,6 +8423,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7734,6 +8442,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7754,6 +8463,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7774,6 +8484,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-arrow-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7792,6 +8503,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-arrow-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7812,6 +8524,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-arrow-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7832,6 +8545,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-chart-bar", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7850,6 +8564,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-chart-bar", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7870,6 +8585,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-chart-bar", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7890,6 +8606,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-check", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7908,6 +8625,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-check", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7928,6 +8646,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-check", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7948,6 +8667,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-duplicate", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -7963,6 +8683,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-duplicate", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -7983,6 +8704,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-duplicate", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -7999,6 +8721,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-magnifying-glass", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8018,6 +8741,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-magnifying-glass", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8038,6 +8762,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-magnifying-glass", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8059,6 +8784,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-minus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8077,6 +8803,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-minus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8097,6 +8824,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-minus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8117,6 +8845,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-plus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8135,6 +8864,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-plus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8155,6 +8885,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-plus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8175,6 +8906,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-text", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8193,6 +8925,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-text", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8213,6 +8946,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document-text", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8233,6 +8967,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8247,6 +8982,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8267,6 +9003,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "document", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8283,6 +9020,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-horizontal-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8301,6 +9039,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-horizontal-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8321,6 +9060,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-horizontal-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8340,6 +9080,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-horizontal", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8354,6 +9095,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-horizontal", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8374,6 +9116,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-horizontal", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8393,6 +9136,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-vertical", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8407,6 +9151,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-vertical", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8427,6 +9172,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ellipsis-vertical", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8446,6 +9192,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "envelope-open", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8464,6 +9211,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "envelope-open", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8484,6 +9232,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "envelope-open", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8500,6 +9249,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "envelope", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8515,6 +9265,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "envelope", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8535,6 +9286,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "envelope", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8551,6 +9303,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "exclamation-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8569,6 +9322,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "exclamation-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8589,6 +9343,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "exclamation-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8608,6 +9363,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "exclamation-triangle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8626,6 +9382,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "exclamation-triangle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8646,6 +9403,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "exclamation-triangle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8665,6 +9423,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye-dropper", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8683,6 +9442,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye-dropper", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8703,6 +9463,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye-dropper", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8722,6 +9483,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye-slash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8741,6 +9503,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye-slash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8761,6 +9524,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye-slash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8778,6 +9542,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8797,6 +9562,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8818,6 +9584,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "eye", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8838,6 +9605,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "face-frown", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8856,6 +9624,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "face-frown", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8876,6 +9645,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "face-frown", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8895,6 +9665,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "face-smile", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8913,6 +9684,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "face-smile", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8933,6 +9705,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "face-smile", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -8952,6 +9725,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "film", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -8970,6 +9744,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "film", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -8990,6 +9765,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "film", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9009,6 +9785,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "finger-print", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9027,6 +9804,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "finger-print", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9047,6 +9825,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "finger-print", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9066,6 +9845,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "fire", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9084,6 +9864,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "fire", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9109,6 +9890,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "fire", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9128,6 +9910,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "flag", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9142,6 +9925,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "flag", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9162,6 +9946,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "flag", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9181,6 +9966,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9199,6 +9985,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9219,6 +10006,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9238,6 +10026,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-minus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9256,6 +10045,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-minus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9276,6 +10066,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-minus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9295,6 +10086,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-open", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9309,6 +10101,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-open", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9329,6 +10122,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-open", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9344,6 +10138,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-plus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9362,6 +10157,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-plus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9382,6 +10178,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder-plus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9401,6 +10198,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9415,6 +10213,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9435,6 +10234,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "folder", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9450,6 +10250,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "forward", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9464,6 +10265,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "forward", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9484,6 +10286,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "forward", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9499,6 +10302,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "funnel", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9517,6 +10321,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "funnel", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9537,6 +10342,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "funnel", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9556,6 +10362,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gif", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9574,6 +10381,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gif", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9594,6 +10402,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gif", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9613,6 +10422,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gift-top", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9631,6 +10441,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gift-top", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9651,6 +10462,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gift-top", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9667,6 +10479,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gift", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9686,6 +10499,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gift", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9706,6 +10520,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "gift", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9721,6 +10536,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-alt", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9735,6 +10551,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-alt", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9755,6 +10572,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-alt", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9770,6 +10588,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-americas", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9788,6 +10607,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-americas", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9808,6 +10628,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-americas", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9827,6 +10648,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-asia-australia", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9845,6 +10667,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-asia-australia", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9865,6 +10688,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-asia-australia", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9885,6 +10709,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-europe-africa", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9903,6 +10728,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-europe-africa", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9923,6 +10749,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "globe-europe-africa", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9942,6 +10769,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-raised", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -9960,6 +10788,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-raised", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -9980,6 +10809,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-raised", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -9995,6 +10825,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-thumb-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10009,6 +10840,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-thumb-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10029,6 +10861,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-thumb-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10044,6 +10877,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-thumb-up", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10058,6 +10892,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-thumb-up", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10078,6 +10913,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hand-thumb-up", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10093,6 +10929,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hashtag", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10111,6 +10948,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hashtag", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10131,6 +10969,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "hashtag", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10150,6 +10989,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "heart", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10164,6 +11004,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "heart", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10184,6 +11025,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "heart", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10199,6 +11041,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "home-modern", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10213,6 +11056,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "home-modern", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10233,6 +11077,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "home-modern", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10253,6 +11098,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "home", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10271,6 +11117,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "home", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10291,6 +11138,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "home", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10307,6 +11155,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "identification", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10325,6 +11174,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "identification", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10345,6 +11195,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "identification", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10364,6 +11215,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox-arrow-down", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10379,6 +11231,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox-arrow-down", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10399,6 +11252,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox-arrow-down", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10423,6 +11277,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10442,6 +11297,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10462,6 +11318,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10482,6 +11339,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10500,6 +11358,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10520,6 +11379,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "inbox", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10539,6 +11399,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "information-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10547,7 +11408,7 @@ defmodule Phoenix.UI.Components.Heroicon do
     >
       <path
         fill-rule="evenodd"
-        d="M19 10.5a8.5 8.5 0 11-17 0 8.5 8.5 0 0117 0zM8.25 9.75A.75.75 0 019 9h.253a1.75 1.75 0 011.709 2.13l-.46 2.066a.25.25 0 00.245.304H11a.75.75 0 010 1.5h-.253a1.75 1.75 0 01-1.709-2.13l.46-2.066a.25.25 0 00-.245-.304H9a.75.75 0 01-.75-.75zM10 7a1 1 0 100-2 1 1 0 000 2z"
+        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
         clip-rule="evenodd"
       />
     </svg>
@@ -10557,6 +11418,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "information-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10577,6 +11439,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "information-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10596,6 +11459,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "key", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10614,6 +11478,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "key", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10634,6 +11499,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "key", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10653,6 +11519,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "language", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10672,6 +11539,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "language", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10692,6 +11560,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "language", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10711,6 +11580,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lifebuoy", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10729,6 +11599,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lifebuoy", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10749,6 +11620,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lifebuoy", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10768,6 +11640,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "light-bulb", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10782,6 +11655,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "light-bulb", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10802,6 +11676,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "light-bulb", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10822,6 +11697,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "link", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10837,6 +11713,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "link", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10857,6 +11734,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "link", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10876,6 +11754,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "list-bullet", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10894,6 +11773,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "list-bullet", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10914,6 +11794,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "list-bullet", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10933,6 +11814,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lock-closed", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -10951,6 +11833,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lock-closed", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -10971,6 +11854,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lock-closed", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -10990,6 +11874,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lock-open", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11008,6 +11893,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lock-open", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11028,6 +11914,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "lock-open", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11043,6 +11930,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11062,6 +11950,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11082,6 +11971,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11102,6 +11992,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-minus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11121,6 +12012,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-minus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11141,6 +12033,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-minus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11160,6 +12053,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-plus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11179,6 +12073,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-plus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11199,6 +12094,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass-plus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11218,6 +12114,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11236,6 +12133,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11256,6 +12154,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "magnifying-glass", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11275,6 +12174,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "map-pin", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11293,6 +12193,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "map-pin", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11314,6 +12215,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "map-pin", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11333,6 +12235,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "map", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11351,6 +12254,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "map", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11371,6 +12275,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "map", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11390,6 +12295,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "megaphone", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11404,6 +12310,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "megaphone", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11424,6 +12331,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "megaphone", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11439,6 +12347,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "microphone", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11454,6 +12363,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "microphone", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11474,6 +12384,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "microphone", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11490,6 +12401,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11508,6 +12420,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11528,6 +12441,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11547,6 +12461,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus-small", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11561,6 +12476,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus-small", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11577,6 +12493,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus-small", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11596,6 +12513,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11604,7 +12522,7 @@ defmodule Phoenix.UI.Components.Heroicon do
     >
       <path
         fill-rule="evenodd"
-        d="M3 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 10z"
+        d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
         clip-rule="evenodd"
       />
     </svg>
@@ -11614,6 +12532,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11630,6 +12549,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "minus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11649,6 +12569,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "moon", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11667,6 +12588,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "moon", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11687,6 +12609,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "moon", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11706,6 +12629,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "musical-note", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11724,6 +12648,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "musical-note", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11744,6 +12669,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "musical-note", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11763,6 +12689,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "newspaper", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11782,6 +12709,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "newspaper", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11802,6 +12730,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "newspaper", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11822,6 +12751,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "no-symbol", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11840,6 +12770,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "no-symbol", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11860,6 +12791,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "no-symbol", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11879,6 +12811,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paint-brush", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11893,6 +12826,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paint-brush", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11913,6 +12847,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paint-brush", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11932,6 +12867,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paper-airplane", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11946,6 +12882,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paper-airplane", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -11966,6 +12903,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paper-airplane", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -11981,6 +12919,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paper-clip", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -11999,6 +12938,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paper-clip", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12019,6 +12959,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "paper-clip", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12038,6 +12979,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pause-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12056,6 +12998,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pause-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12076,6 +13019,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pause-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12095,6 +13039,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pause", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12109,6 +13054,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pause", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12125,6 +13071,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pause", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12144,6 +13091,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pencil-square", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12159,6 +13107,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pencil-square", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12179,6 +13128,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pencil-square", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12195,6 +13145,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pencil", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12209,6 +13160,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pencil", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12229,6 +13181,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "pencil", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12244,6 +13197,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-arrow-down-left", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12258,6 +13212,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-arrow-down-left", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12278,6 +13233,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-arrow-down-left", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12302,6 +13258,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-arrow-up-right", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12316,6 +13273,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-arrow-up-right", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12336,6 +13294,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-arrow-up-right", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12360,6 +13319,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-x-mark", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12378,6 +13338,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-x-mark", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12398,6 +13359,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone-x-mark", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12417,6 +13379,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12435,6 +13398,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12455,6 +13419,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "phone", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12474,6 +13439,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "photo", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12492,6 +13458,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "photo", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12512,6 +13479,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "photo", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12531,6 +13499,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12549,6 +13518,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12570,6 +13540,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12589,6 +13560,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play-pause", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12603,6 +13575,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play-pause", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12623,6 +13596,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play-pause", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12638,6 +13612,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12652,6 +13627,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12672,6 +13648,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "play", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12691,6 +13668,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12709,6 +13687,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12729,6 +13708,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12748,6 +13728,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus-small", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12762,6 +13743,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus-small", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12778,6 +13760,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus-small", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12797,6 +13780,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12811,6 +13795,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12827,6 +13812,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "plus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12846,6 +13832,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "power", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12864,6 +13851,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "power", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12880,6 +13868,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "power", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12899,6 +13888,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "presentation-chart-bar", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12917,6 +13907,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "presentation-chart-bar", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12937,6 +13928,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "presentation-chart-bar", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12956,6 +13948,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "presentation-chart-line", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -12974,6 +13967,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "presentation-chart-line", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -12994,6 +13988,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "presentation-chart-line", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13013,6 +14008,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "printer", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13031,6 +14027,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "printer", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13051,6 +14048,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "printer", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13070,6 +14068,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "puzzle-piece", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13084,6 +14083,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "puzzle-piece", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13104,6 +14104,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "puzzle-piece", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13119,6 +14120,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "qr-code", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13137,6 +14139,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "qr-code", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13162,6 +14165,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "qr-code", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13181,6 +14185,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "question-mark-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13199,6 +14204,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "question-mark-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13219,6 +14225,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "question-mark-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13238,6 +14245,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "queue-list", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13252,6 +14260,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "queue-list", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13272,6 +14281,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "queue-list", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13287,6 +14297,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "radio", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13305,6 +14316,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "radio", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13325,6 +14337,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "radio", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13344,6 +14357,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "receipt-percent", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13362,6 +14376,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "receipt-percent", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13382,6 +14397,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "receipt-percent", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13401,6 +14417,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "receipt-refund", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13419,6 +14436,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "receipt-refund", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13439,6 +14457,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "receipt-refund", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13458,6 +14477,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rectangle-group", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13476,6 +14496,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rectangle-group", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13496,6 +14517,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rectangle-group", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13515,6 +14537,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rectangle-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13529,6 +14552,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rectangle-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13549,6 +14573,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rectangle-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13564,6 +14589,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rocket-launch", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13587,6 +14613,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rocket-launch", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13607,6 +14634,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rocket-launch", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13627,6 +14655,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rss", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13642,6 +14671,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rss", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13662,6 +14692,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "rss", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13681,6 +14712,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "scale", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13699,6 +14731,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "scale", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13719,6 +14752,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "scale", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13738,6 +14772,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "scissors", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13757,6 +14792,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "scissors", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13777,6 +14813,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "scissors", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13797,6 +14834,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "server-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13816,6 +14854,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "server-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13836,6 +14875,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "server-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13856,6 +14896,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "server", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13875,6 +14916,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "server", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13895,6 +14937,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "server", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13915,6 +14958,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "share", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13929,6 +14973,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "share", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13949,6 +14994,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "share", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -13968,6 +15014,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shield-check", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -13986,6 +15033,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shield-check", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14006,6 +15054,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shield-check", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14025,6 +15074,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shield-exclamation", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14043,6 +15093,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shield-exclamation", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14063,6 +15114,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shield-exclamation", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14082,6 +15134,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shopping-bag", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14100,6 +15153,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shopping-bag", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14120,6 +15174,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shopping-bag", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14139,6 +15194,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shopping-cart", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14153,6 +15209,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shopping-cart", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14173,6 +15230,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "shopping-cart", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14188,6 +15246,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "signal-slash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14202,6 +15261,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "signal-slash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14222,6 +15282,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "signal-slash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14241,6 +15302,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "signal", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14256,6 +15318,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "signal", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14276,6 +15339,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "signal", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14295,6 +15359,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "sparkles", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14309,6 +15374,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "sparkles", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14329,6 +15395,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "sparkles", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14348,6 +15415,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "speaker-wave", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14363,6 +15431,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "speaker-wave", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14383,6 +15452,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "speaker-wave", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14399,6 +15469,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "speaker-x-mark", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14413,6 +15484,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "speaker-x-mark", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14433,6 +15505,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "speaker-x-mark", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14448,6 +15521,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "square-2-stack", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14463,6 +15537,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "square-2-stack", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14483,6 +15558,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "square-2-stack", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14499,6 +15575,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "square-3-stack-3d", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14515,6 +15592,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "square-3-stack-3d", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14535,6 +15613,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "square-3-stack-3d", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14552,6 +15631,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "squares-2x2", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14570,6 +15650,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "squares-2x2", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14590,6 +15671,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "squares-2x2", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14609,6 +15691,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "squares-plus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14623,6 +15706,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "squares-plus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14643,6 +15727,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "squares-plus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14658,6 +15743,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "star", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14676,6 +15762,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "star", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14696,6 +15783,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "star", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14715,6 +15803,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "stop-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14733,6 +15822,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "stop-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14754,6 +15844,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "stop-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14773,6 +15864,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "stop", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14787,6 +15879,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "stop", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14807,6 +15900,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "stop", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14826,6 +15920,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "sun", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14840,6 +15935,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "sun", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14860,6 +15956,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "sun", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14875,6 +15972,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "swatch", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14893,6 +15991,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "swatch", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14913,6 +16012,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "swatch", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14933,6 +16033,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "table-cells", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -14951,6 +16052,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "table-cells", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -14971,6 +16073,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "table-cells", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -14990,6 +16093,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "tag", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15008,6 +16112,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "tag", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15029,6 +16134,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "tag", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15048,6 +16154,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ticket", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15066,6 +16173,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ticket", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15086,6 +16194,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "ticket", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15105,6 +16214,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "trash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15123,6 +16233,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "trash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15143,6 +16254,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "trash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15162,6 +16274,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "trophy", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15180,6 +16293,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "trophy", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15200,6 +16314,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "trophy", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15219,6 +16334,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "truck", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15234,6 +16350,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "truck", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15254,6 +16371,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "truck", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15271,6 +16389,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "tv", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15290,6 +16409,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "tv", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15310,6 +16430,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "tv", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15330,6 +16451,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15348,6 +16470,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15368,6 +16491,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15387,6 +16511,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-group", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15401,6 +16526,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-group", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15421,6 +16547,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-group", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15441,6 +16568,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-minus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15455,6 +16583,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-minus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15475,6 +16604,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-minus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15490,6 +16620,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-plus", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15504,6 +16635,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-plus", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15524,6 +16656,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user-plus", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15539,6 +16672,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15553,6 +16687,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15573,6 +16708,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "user", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15592,6 +16728,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "users", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15606,6 +16743,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "users", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15626,6 +16764,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "users", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15641,6 +16780,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "variable", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15659,6 +16799,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "variable", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15679,6 +16820,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "variable", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15698,6 +16840,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "video-camera-slash", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15712,6 +16855,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "video-camera-slash", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15732,6 +16876,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "video-camera-slash", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15747,6 +16892,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "video-camera", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15761,6 +16907,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "video-camera", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15780,6 +16927,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "video-camera", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15795,6 +16943,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "view-columns", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15809,6 +16958,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "view-columns", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15829,6 +16979,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "view-columns", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15844,6 +16995,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "viewfinder-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15858,6 +17010,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "viewfinder-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15878,6 +17031,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "viewfinder-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15893,6 +17047,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wallet", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15907,6 +17062,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wallet", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15927,6 +17083,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wallet", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15942,6 +17099,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wifi", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -15960,6 +17118,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wifi", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15980,6 +17139,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wifi", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -15999,6 +17159,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "window", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -16017,6 +17178,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "window", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -16037,6 +17199,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "window", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -16056,6 +17219,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wrench-screwdriver", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -16075,6 +17239,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wrench-screwdriver", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -16095,6 +17260,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wrench-screwdriver", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -16120,6 +17286,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wrench", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -16138,6 +17305,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wrench", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -16159,6 +17327,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "wrench", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -16178,6 +17347,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "x-circle", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -16196,6 +17366,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "x-circle", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -16216,6 +17387,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "x-circle", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -16235,6 +17407,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "x-mark", variant: "mini"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
@@ -16249,6 +17422,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "x-mark", variant: "outline"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -16265,6 +17439,7 @@ defmodule Phoenix.UI.Components.Heroicon do
   defp render_markup(%{name: "x-mark", variant: "solid"} = assigns) do
     ~H"""
     <svg
+      class={@class}
       {@rest}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

@@ -5,10 +5,13 @@ defmodule Phoenix.UI.Components.Collapse do
   use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
   attr(:max_size, :string, default: "5000px")
-  attr(:open, :boolean, default: false)
-  attr(:orientation, :string, default: "vertical")
+  attr(:orientation, :string, default: "vertical", values: ["horizontal", "vertical"])
+  attr(:rest, :global, include: ~w(open))
   attr(:transition_duration, :integer, default: 300)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders collapse component.
@@ -24,10 +27,15 @@ defmodule Phoenix.UI.Components.Collapse do
   """
   @spec collapse(Socket.assigns()) :: Rendered.t()
   def collapse(prev_assigns) do
-    assigns = build_collapse_attrs(prev_assigns)
+    assigns = assign_class(prev_assigns, ~w(
+        collapse overflow-hidden invisible open:visible transition-all ease-in-out
+        #{classes(:max_size, prev_assigns)}
+        #{classes(:open, prev_assigns)}
+        #{classes(:transition, prev_assigns)}
+      ))
 
     ~H"""
-    <.dynamic_tag {@collapse_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
@@ -73,26 +81,6 @@ defmodule Phoenix.UI.Components.Collapse do
   @spec open_collapse(struct(), String.t()) :: struct()
   def open_collapse(%JS{} = js, selector) do
     JS.set_attribute(js, {"open", "true"}, to: selector)
-  end
-
-  ### Collapse Attrs ##########################
-
-  defp build_collapse_attrs(assigns) do
-    class = build_class(~w(
-      collapse overflow-hidden invisible open:visible transition-all ease-in-out
-      #{classes(:max_size, assigns)}
-      #{classes(:open, assigns)}
-      #{classes(:transition, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:element, :max_size, :extend_class, :orientation])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :collapse_attrs, attrs)
   end
 
   ### CSS Classes ##########################

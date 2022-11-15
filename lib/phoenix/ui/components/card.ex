@@ -6,7 +6,11 @@ defmodule Phoenix.UI.Components.Card do
 
   use Phoenix.UI, :component
 
-  attr(:element, :string)
+  attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders card component.
@@ -25,23 +29,24 @@ defmodule Phoenix.UI.Components.Card do
 
   """
   @spec card(Socket.assigns()) :: Rendered.t()
-  def card(raw) do
+  def card(prev_assigns) do
     extend_class = build_class(~w(
       card overflow-hidden
-      #{Map.get(raw, :extend_class)}
+      #{Map.get(prev_assigns, :extend_class)}
     ))
 
-    attrs = raw |> assigns_to_attributes() |> Keyword.put(:extend_class, extend_class)
-    assigns = assign(raw, :card_attrs, attrs)
+    assigns = assign(prev_assigns, :extend_class, extend_class)
 
     ~H"""
-    <.paper {@card_attrs}>
+    <.paper extend_class={@extend_class} element={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.paper>
     """
   end
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
 
   slot(:action)
   slot(:avatar_group)
@@ -68,7 +73,9 @@ defmodule Phoenix.UI.Components.Card do
   def card_header(prev_assigns) do
     assigns =
       prev_assigns
-      |> build_card_header_attrs()
+      |> assign_class(~w(
+        card-header flex items-center p-4
+      ))
       |> normalize_card_header_action()
       |> normalize_card_header_avatar_group()
       |> normalize_card_header_avatar()
@@ -76,7 +83,7 @@ defmodule Phoenix.UI.Components.Card do
       |> normalize_card_header_title()
 
     ~H"""
-    <.dynamic_tag {@card_header_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= for avatar <- @avatar do %>
         <.avatar {avatar} />
       <% end %>
@@ -103,6 +110,8 @@ defmodule Phoenix.UI.Components.Card do
   end
 
   attr(:element, :string, default: "img")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
 
   @doc """
   Renders card media component.
@@ -120,25 +129,18 @@ defmodule Phoenix.UI.Components.Card do
   """
   @spec card_media(Socket.assigns()) :: Rendered.t()
   def card_media(prev_assigns) do
-    class = build_class(~w(
-      card-media block bg-cover bg-no-repeat bg-center object-cover w-full
-      #{Map.get(prev_assigns, :extend_class)}
-    ))
-
-    attrs =
-      prev_assigns
-      |> assigns_to_attributes()
-      |> Keyword.put(:name, prev_assigns[:element])
-      |> Keyword.put_new(:class, class)
-
-    assigns = assign(prev_assigns, :card_media_attrs, attrs)
+    assigns = assign_class(prev_assigns, ~w(
+        card-media block bg-cover bg-no-repeat bg-center object-cover w-full
+      ))
 
     ~H"""
-    <.dynamic_tag {@card_media_attrs} />
+    <.dynamic_tag class={@class} name={@element} {@rest} />
     """
   end
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
 
   @doc """
   Renders card content component.
@@ -158,27 +160,20 @@ defmodule Phoenix.UI.Components.Card do
   """
   @spec card_content(Socket.assigns()) :: Rendered.t()
   def card_content(prev_assigns) do
-    class = build_class(~w(
-      card-content p-4
-      #{Map.get(prev_assigns, :extend_class)}
-    ))
-
-    attrs =
-      prev_assigns
-      |> assigns_to_attributes()
-      |> Keyword.put(:name, prev_assigns[:element])
-      |> Keyword.put_new(:class, class)
-
-    assigns = assign(prev_assigns, :card_content_attrs, attrs)
+    assigns = assign_class(prev_assigns, ~w(
+        card-content p-4
+      ))
 
     ~H"""
-    <.dynamic_tag {@card_content_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
   end
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
 
   @doc """
   Renders card actions component.
@@ -198,41 +193,15 @@ defmodule Phoenix.UI.Components.Card do
   """
   @spec card_action(Socket.assigns()) :: Rendered.t()
   def card_action(prev_assigns) do
-    class = build_class(~w(
-      card-action p-4
-      #{Map.get(prev_assigns, :extend_class)}
-    ))
-
-    attrs =
-      prev_assigns
-      |> assigns_to_attributes()
-      |> Keyword.put(:name, prev_assigns[:element])
-      |> Keyword.put_new(:class, class)
-
-    assigns = assign(prev_assigns, :card_action_attrs, attrs)
+    assigns = assign_class(prev_assigns, ~w(
+        card-action p-4
+      ))
 
     ~H"""
-    <.dynamic_tag {@card_action_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  ### Card Header Attrs ##########################
-
-  defp build_card_header_attrs(assigns) do
-    class = build_class(~w(
-      card-header flex items-center p-4
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:action, :avatar_group, :avatar, :extend_class, :subtitle, :title])
-      |> Keyword.put(:name, assigns[:element])
-      |> Keyword.put_new(:class, class)
-
-    assign(assigns, :card_header_attrs, attrs)
   end
 
   ### Normalize Card Header Avatar Group ##########################

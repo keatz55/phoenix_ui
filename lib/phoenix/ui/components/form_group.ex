@@ -5,7 +5,10 @@ defmodule Phoenix.UI.Components.FormGroup do
   use Phoenix.UI, :component
 
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
   attr(:margin, :boolean, default: true)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders form group component.

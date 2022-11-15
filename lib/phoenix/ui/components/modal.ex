@@ -46,12 +46,7 @@ defmodule Phoenix.UI.Components.Modal do
       |> build_modal_attrs()
 
     ~H"""
-    <.backdrop
-      id={"#{@id}_modal_backdrop"}
-      open={@open}
-      variant="visible"
-      phx-click={hide_modal("##{@id}")}
-    />
+    <.backdrop id={"#{@id}_modal_backdrop"} open={@open} phx-click={hide_modal("##{@id}")} />
     <.paper variant="elevated" {@modal_attrs}>
       <%= render_slot(@inner_block) %>
     </.paper>

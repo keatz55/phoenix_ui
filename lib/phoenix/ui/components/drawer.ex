@@ -6,10 +6,13 @@ defmodule Phoenix.UI.Components.Drawer do
 
   use Phoenix.UI, :component
 
-  @default_anchor "left"
-  @default_open false
-  @default_square true
-  @default_variant "temporary"
+  attr(:anchor, :string, default: "left", values: ["bottom", "left", "right", "top"])
+  attr(:extend_class, :string)
+  attr(:id, :string, required: true)
+  attr(:open, :boolean, default: false)
+  attr(:rest, :global)
+  attr(:square, :boolean, default: true)
+  attr(:variant, :string, default: "temporary", values: ["temporary"])
 
   @doc """
   Renders drawer component.
@@ -24,27 +27,31 @@ defmodule Phoenix.UI.Components.Drawer do
 
   """
   @spec drawer(Socket.assigns()) :: Rendered.t()
-  def drawer(raw_assigns) do
-    assigns =
-      raw_assigns
-      |> assign_new(:anchor, fn -> @default_anchor end)
-      |> assign_new(:open, fn -> @default_open end)
-      |> assign_new(:square, fn -> @default_square end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> assign_new("phx-click-away", fn -> hide_drawer("##{raw_assigns[:id]}") end)
-      |> assign_new("phx-key", fn -> "escape" end)
-      |> assign_new("phx-window-keydown", fn -> hide_drawer("##{raw_assigns[:id]}") end)
-      |> build_drawer_attrs()
+  def drawer(prev_assigns) do
+    extend_class = build_class(~w(
+      fixed overflow-hidden z-50 invisible open:visible
+      transition-all ease-in-out duration-300
+      #{classes(:anchor, prev_assigns)}
+      #{classes(:open, prev_assigns)}
+      #{Map.get(prev_assigns, :extend_class)}
+    ))
+
+    assigns = assign(prev_assigns, :extend_class, extend_class)
 
     ~H"""
-    <.backdrop
-      id={"#{@id}_drawer_backdrop"}
-      open={@open}
-      variant="visible"
-      phx-click={hide_drawer("##{@id}")}
-    >
+    <.backdrop id={"#{@id}_drawer_backdrop"} open={@open} phx-click={hide_drawer("##{@id}")}>
     </.backdrop>
-    <.paper variant="elevated" {@drawer_attrs}>
+    <.paper
+      extend_class={@extend_class}
+      id={@id}
+      open={@open}
+      phx-click-away={hide_drawer("##{@id}")}
+      phx-key="escape"
+      phx-window-keydown={hide_drawer("##{@id}")}
+      square={@square}
+      variant="elevated"
+      {@rest}
+    >
       <%= render_slot(@inner_block) %>
     </.paper>
     """
@@ -94,25 +101,6 @@ defmodule Phoenix.UI.Components.Drawer do
     js
     |> JS.set_attribute({"open", "true"}, to: selector)
     |> show_backdrop("#{selector}_drawer_backdrop")
-  end
-
-  ### Drawer Attrs ##########################
-
-  defp build_drawer_attrs(assigns) do
-    extend_class = build_class(~w(
-      fixed overflow-hidden z-50 invisible open:visible
-      transition-all ease-in-out duration-300
-      #{classes(:anchor, assigns)}
-      #{classes(:open, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:anchor, :extend_class, :variant])
-      |> Keyword.put(:extend_class, extend_class)
-
-    assign(assigns, :drawer_attrs, attrs)
   end
 
   ### CSS Classes ##########################

@@ -6,6 +6,10 @@ defmodule Phoenix.UI.Components.Grid do
 
   attr(:columns, :integer, default: 12)
   attr(:element, :string, default: "div")
+  attr(:extend_class, :string)
+  attr(:rest, :global)
+
+  slot(:inner_block, required: true)
 
   @doc """
   Renders grid component.
@@ -21,33 +25,18 @@ defmodule Phoenix.UI.Components.Grid do
   """
   @spec grid(Socket.assigns()) :: Rendered.t()
   def grid(prev_assigns) do
-    assigns = build_grid_attrs(prev_assigns)
+    assigns = assign_class(prev_assigns, ~w(
+        grid
+        #{classes(:column_spacing, prev_assigns)}
+        #{classes(:columns, prev_assigns)}
+        #{classes(:row_spacing, prev_assigns)}
+      ))
 
     ~H"""
-    <.dynamic_tag {@grid_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
-  end
-
-  ### Grid Attrs ##########################
-
-  defp build_grid_attrs(assigns) do
-    class = build_class(~w(
-      grid
-      #{classes(:column_spacing, assigns)}
-      #{classes(:columns, assigns)}
-      #{classes(:row_spacing, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:columns, :element, :extend_class, :spacing])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :grid_attrs, attrs)
   end
 
   ### CSS Classes ##########################
