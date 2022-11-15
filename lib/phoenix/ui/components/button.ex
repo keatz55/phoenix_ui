@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.Button do
   attr(:extend_class, :string)
   attr(:rest, :global, include: ~w(disabled form name value))
   attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg"])
-  attr(:square, :boolean, default: false, values: [true, false])
+  attr(:square, :boolean, default: false)
   attr(:variant, :string, default: "contained", values: ["contained", "icon", "outlined", "text"])
 
   slot(:inner_block, required: true)

@@ -6,7 +6,7 @@ defmodule Phoenix.UI.Components.Backdrop do
 
   attr(:element, :string, default: "div")
   attr(:extend_class, :string)
-  attr(:invisible, :boolean, default: false, values: [true, false])
+  attr(:invisible, :boolean, default: false)
   attr(:rest, :global, include: ~w(open))
   attr(:transition_duration, :integer, default: 300)
 

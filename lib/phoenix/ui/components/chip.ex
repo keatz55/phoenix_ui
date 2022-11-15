@@ -10,12 +10,16 @@ defmodule Phoenix.UI.Components.Chip do
   @default_delete_icon_name "x-circle"
   @default_icon_color "inherit"
 
+  attr(:avatar, :list)
   attr(:color, :string, default: "slate", values: Theme.colors())
+  attr(:delete_icon, :list)
   attr(:element, :string, default: "div")
   attr(:extend_class, :string)
+  attr(:icon, :list)
   attr(:label, :string)
-  attr(:size, :string, default: "md")
-  attr(:variant, :string, default: "filled")
+  attr(:rest, :global)
+  attr(:size, :string, default: "md", values: ["sm", "md"])
+  attr(:variant, :string, default: "filled", values: ["filled", "outlined"])
 
   @doc """
   Renders chip component.
@@ -31,13 +35,19 @@ defmodule Phoenix.UI.Components.Chip do
   def chip(prev_assigns) do
     assigns =
       prev_assigns
-      |> build_chip_attrs()
+      |> assign_class(~w(
+        inline-flex items-center rounded-full text-sm
+        font-semibold transition-all ease-in-out duration-200
+        #{classes(:clickable, prev_assigns)}
+        #{classes(:size, prev_assigns)}
+        #{classes(:variant, prev_assigns)}
+      ))
       |> build_avatar_attrs()
       |> build_icon_attrs()
       |> build_delete_icon_attrs()
 
     ~H"""
-    <.dynamic_tag {@chip_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= if assigns[:avatar] do %>
         <.avatar {@avatar_attrs} />
       <% end %>
@@ -52,36 +62,6 @@ defmodule Phoenix.UI.Components.Chip do
       <% end %>
     </.dynamic_tag>
     """
-  end
-
-  ### Chip Attrs ##########################
-
-  defp build_chip_attrs(assigns) do
-    class = build_class(~w(
-      inline-flex items-center rounded-full text-sm
-      font-semibold transition-all ease-in-out duration-200
-      #{classes(:clickable, assigns)}
-      #{classes(:size, assigns)}
-      #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([
-        :avatar,
-        :color,
-        :delete_icon,
-        :element,
-        :icon,
-        :label,
-        :size,
-        :variant
-      ])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :chip_attrs, attrs)
   end
 
   ### Avatar Attrs ##########################

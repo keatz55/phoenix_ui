@@ -11,9 +11,9 @@ defmodule Phoenix.UI.Components.AvatarGroup do
   attr(:element, :string, default: "div")
   attr(:max, :integer, default: 5)
   attr(:rest, :global)
-  attr(:size, :string, default: "md")
-  attr(:spacing, :string, default: "md")
-  attr(:variant, :string, default: "circular")
+  attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg", "xl"])
+  attr(:spacing, :string, default: "md", values: ["xs", "sm", "md", "lg", "xl"])
+  attr(:variant, :string, default: "circular", values: ["circular", "rounded"])
 
   slot(:avatar)
 

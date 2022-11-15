@@ -6,10 +6,11 @@ defmodule Phoenix.UI.Components.Paper do
 
   attr(:blur, :boolean, default: false)
   attr(:element, :string, default: "div")
-  attr(:elevation, :integer, default: 2)
+  attr(:elevation, :integer, default: 2, values: 1..5)
   attr(:extend_class, :string)
+  attr(:rest, :global, include: ~w(open))
   attr(:square, :boolean, default: false)
-  attr(:variant, :string, default: "elevated")
+  attr(:variant, :string, default: "elevated", values: ["elevated", "outlined"])
 
   slot(:inner_block, required: true)
 
@@ -26,19 +27,16 @@ defmodule Phoenix.UI.Components.Paper do
   """
   @spec paper(Socket.assigns()) :: Rendered.t()
   def paper(prev_assigns) do
-    assigns =
-      prev_assigns
-      |> assign_class(~w(
-          paper transition-all ease-in-out duration-300
-          #{classes(:blur, prev_assigns)}
-          #{classes(:elevation, prev_assigns)}
-          #{classes(:square, prev_assigns)}
-          #{classes(:variant, prev_assigns)}
-        ))
-      |> assign_rest([:element, :elevation, :extend_class, :square, :variant])
+    assigns = assign_class(prev_assigns, ~w(
+        paper transition-all ease-in-out duration-300
+        #{classes(:blur, prev_assigns)}
+        #{classes(:elevation, prev_assigns)}
+        #{classes(:square, prev_assigns)}
+        #{classes(:variant, prev_assigns)}
+      ))
 
     ~H"""
-    <.dynamic_tag name={@element} {@rest}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """

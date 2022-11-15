@@ -7,12 +7,12 @@ defmodule Phoenix.UI.Components.Avatar do
   use Phoenix.UI, :component
 
   attr(:border, :boolean, default: false)
-  attr(:color, :string, default: "slate")
+  attr(:color, :string, default: "slate", values: Theme.colors())
   attr(:element, :string, default: "div")
   attr(:extend_class, :string)
   attr(:rest, :global)
-  attr(:size, :string, default: "md")
-  attr(:variant, :string, default: "circular")
+  attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg", "xl"])
+  attr(:variant, :string, default: "circular", values: ["circular", "rounded"])
 
   slot(:inner_block)
 
