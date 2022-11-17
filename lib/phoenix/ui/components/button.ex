@@ -4,13 +4,39 @@ defmodule Phoenix.UI.Components.Button do
   """
   use Phoenix.UI, :component
 
-  attr(:color, :string, default: "blue", values: Theme.colors())
-  attr(:element, :string, default: "button")
-  attr(:extend_class, :string)
-  attr(:rest, :global, include: ~w(disabled form name value))
-  attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg"])
-  attr(:square, :boolean, default: false)
-  attr(:variant, :string, default: "contained", values: ["contained", "icon", "outlined", "text"])
+  attr(:class, :string, doc: "Override the classes applied to the component.")
+
+  attr(:color, :string,
+    default: "blue",
+    doc: "The color of the component.",
+    values: Theme.colors()
+  )
+
+  attr(:element, :string, default: "button", doc: "The HTML element to use, such as `div`.")
+  attr(:extend_class, :string, doc: "Extend existing classes applied to the component.")
+
+  attr(:full_width, :boolean,
+    doc: "If true, the component will take up the full width of its container."
+  )
+
+  attr(:rest, :global,
+    doc: "Arbitrary HTML or phx attributes",
+    include: ~w(disabled form name value)
+  )
+
+  attr(:size, :string,
+    default: "md",
+    doc: "The size of the component.",
+    values: ["xs", "sm", "md", "lg"]
+  )
+
+  attr(:square, :boolean, default: false, doc: "If true, rounded corners are disabled.")
+
+  attr(:variant, :string,
+    default: "contained",
+    doc: "The variant to use.",
+    values: ["contained", "icon", "outlined", "text"]
+  )
 
   slot(:inner_block, required: true)
 
@@ -19,23 +45,22 @@ defmodule Phoenix.UI.Components.Button do
 
   ## Examples
 
-      ```
       <.button>
         Click me
       </.button>
-      ```
 
   """
   @spec button(Socket.assigns()) :: Rendered.t()
-  def button(prev_assigns) do
-    prev_assigns
+  def button(assigns) do
+    assigns
     |> assign_class(~w(
       button tracking-wider uppercase outline-none focus:outline-none text-center transition
       duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed
-      #{classes(:color, prev_assigns)}
-      #{classes(:size, prev_assigns)}
-      #{classes(:square, prev_assigns)}
-      #{classes(:variant, prev_assigns)}
+      #{classes(:color, assigns)}
+      #{classes(:full_width, assigns)}
+      #{classes(:size, assigns)}
+      #{classes(:square, assigns)}
+      #{classes(:variant, assigns)}
     ))
     |> render_btn()
   end
@@ -92,6 +117,9 @@ defmodule Phoenix.UI.Components.Button do
   defp classes(:color, %{color: color, variant: "text"}) do
     "text-#{color}-500 dark:text-#{color}-400 hover:text-#{color}-700 hover:bg-#{color}-500/20 disabled:bg-transparent disabled:text-#{color}-500"
   end
+
+  # Full Width
+  defp classes(:full_width, %{full_width: true}), do: "w-full"
 
   # Size
   defp classes(:size, %{size: "xs", variant: "icon"}), do: "p-1 text-xs"
