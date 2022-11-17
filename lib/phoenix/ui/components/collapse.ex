@@ -26,12 +26,12 @@ defmodule Phoenix.UI.Components.Collapse do
 
   """
   @spec collapse(Socket.assigns()) :: Rendered.t()
-  def collapse(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def collapse(assigns) do
+    assigns = assign_class(assigns, ~w(
         collapse overflow-hidden invisible open:visible transition-all ease-in-out
-        #{classes(:max_size, prev_assigns)}
-        #{classes(:open, prev_assigns)}
-        #{classes(:transition, prev_assigns)}
+        #{classes(:max_size, assigns)}
+        #{classes(:open, assigns)}
+        #{classes(:transition, assigns)}
       ))
 
     ~H"""

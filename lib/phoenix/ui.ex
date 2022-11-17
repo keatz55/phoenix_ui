@@ -78,7 +78,7 @@ defmodule Phoenix.UI do
   @spec live_component() :: Macro.t()
   def live_component do
     quote generated: true, location: :keep do
-      alias Phoenix.LiveView.Socket
+      alias Phoenix.LiveView.{JS, Socket}
 
       import Phoenix.UI.Helpers
 

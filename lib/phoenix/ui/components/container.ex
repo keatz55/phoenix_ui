@@ -25,11 +25,11 @@ defmodule Phoenix.UI.Components.Container do
 
   """
   @spec container(Socket.assigns()) :: Rendered.t()
-  def container(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def container(assigns) do
+    assigns = assign_class(assigns, ~w(
         container mx-auto
-        #{classes(:max_width, prev_assigns)}
-        #{classes(:variant, prev_assigns)}
+        #{classes(:max_width, assigns)}
+        #{classes(:variant, assigns)}
       ))
 
     ~H"""

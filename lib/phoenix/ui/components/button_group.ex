@@ -34,8 +34,8 @@ defmodule Phoenix.UI.Components.ButtonGroup do
 
   """
   @spec button_group(Socket.assigns()) :: Rendered.t()
-  def button_group(prev_assigns) do
-    assigns = prev_assigns |> build_wrapper_attrs() |> normalize_buttons()
+  def button_group(assigns) do
+    assigns = assigns |> build_wrapper_attrs() |> normalize_buttons()
 
     ~H"""
     <.dynamic_tag {@wrapper_attrs}>

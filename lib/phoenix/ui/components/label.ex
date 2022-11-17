@@ -22,8 +22,8 @@ defmodule Phoenix.UI.Components.Label do
   @spec label(Socket.assigns()) :: Rendered.t()
   def label(assigns) do
     assigns = assign_class(assigns, ~w(
-      label flex items-center mb-2
-      #{classes(:color, assigns)}
+      label flex items-center mb-2 text-slate-600 dark:text-slate-300
+      disabled:text-slate-500 dark:disabled:text-slate-400 invalid:text-red-500
     ))
 
     ~H"""
@@ -32,15 +32,4 @@ defmodule Phoenix.UI.Components.Label do
     </label>
     """
   end
-
-  ### CSS Classes ##########################
-
-  # Color
-  defp classes(:color, %{invalid?: true}), do: "text-red-500"
-
-  defp classes(:color, _assigns) do
-    "text-slate-600 dark:text-slate-300 disabled:text-slate-500 dark:disabled:text-slate-400 invalid:text-red-500"
-  end
-
-  defp classes(_rule_group, _assigns), do: nil
 end

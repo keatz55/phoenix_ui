@@ -2,21 +2,38 @@ defmodule Phoenix.UI.Components.TextFilter do
   @moduledoc """
   Provides text filter component.
   """
-  import Phoenix.UI.Components.TextInput
+  import Phoenix.UI.Components.TextField
 
   use Phoenix.UI, :live_component
 
+  @default_change_event "handle_change"
   @default_debounce 300
-  @default_end_icon "x"
-  @default_label false
-  @default_start_icon "search"
+  @default_start_icon %{name: "magnifying-glass"}
+  @default_variant "simple"
 
   @impl true
   def render(assigns) do
     ~H"""
     <div>
-      <.form :let={f} for={:filter} id={"#{@id}_form"}>
-        <.text_input field="text" form={f} {@text_input_attrs} />
+      <.form
+        :let={f}
+        for={:filter}
+        id={"#{@id}_form"}
+        phx-change="handle_change"
+        phx-submit="handle_change"
+        phx-target={@myself}
+      >
+        <.text_field
+          end_icon={@end_icon}
+          extend_class={@extend_class}
+          field={{f, :text}}
+          full_width={@full_width}
+          margin={@margin}
+          phx-debounce={assigns[:"phx-debounce"]}
+          start_icon={@start_icon}
+          value={@value}
+          variant={@variant}
+        />
       </.form>
     </div>
     """
@@ -28,56 +45,38 @@ defmodule Phoenix.UI.Components.TextFilter do
       :ok,
       socket
       |> assign(assigns)
-      |> assign_new(:on_change, fn -> fn _val, comp_socket -> comp_socket end end)
-      |> assign_new(:"phx-change", fn -> phx_change(assigns) end)
+      |> assign_new(:"phx-change", fn -> @default_change_event end)
       |> assign_new(:"phx-debounce", fn -> @default_debounce end)
+      |> assign_new(:"phx-submit", fn -> @default_change_event end)
       |> assign_new(:"phx-target", fn -> socket.assigns.myself end)
-      |> assign_new(:clear_icon, fn -> @default_end_icon end)
-      |> assign_new(:label, fn -> @default_label end)
-      |> assign_new(:start_icon, fn -> [name: @default_start_icon] end)
+      |> assign_new(:extend_class, fn -> nil end)
+      |> assign_new(:full_width, fn -> true end)
+      |> assign_new(:margin, fn -> "none" end)
+      |> assign_new(:start_icon, fn -> @default_start_icon end)
       |> assign_new(:value, fn -> assigns[:default_value] end)
-      |> build_text_input_attrs()
+      |> assign_new(:variant, fn -> @default_variant end)
+      |> assign_end_icon()
     }
   end
 
   @impl true
-  def handle_event("handle_clear", _params, socket) do
-    socket
-    |> assign(:value, nil)
-    |> socket.assigns.on_clear.()
-  end
-
   def handle_event("handle_change", %{"filter" => %{"text" => value}}, socket) do
-    socket.assigns.on_change.(value, assign(socket, :value, value))
+    {:noreply, socket.assigns.on_change.(value, socket)}
   end
 
-  ### Text Input Attrs ##########################
+  defp assign_end_icon(%Socket{assigns: %{value: val} = assigns} = socket) do
+    end_icon =
+      if val in [nil, ""] do
+        nil
+      else
+        %{
+          "phx-click": JS.push(assigns[:"phx-change"], value: %{"filter" => %{"text" => ""}}),
+          "phx-target": assigns[:"phx-target"],
+          extend_class: "cursor-pointer",
+          name: "x-mark"
+        }
+      end
 
-  defp build_text_input_attrs(%Socket{assigns: assigns} = socket) do
-    attrs =
-      assigns
-      |> assigns_to_attributes([:end_icon, :id, :on_clear, :on_change, :text_input_attrs])
-      |> apply_end_icon(assigns)
-
-    assign(socket, text_input_attrs: attrs)
+    assign(socket, :end_icon, end_icon)
   end
-
-  defp apply_end_icon(attrs, %{value: val} = assigns) when val not in [nil, ""] do
-    icon = [
-      "phx-click": phx_click(assigns),
-      "phx-target": assigns[:"phx-target"],
-      extend_class: "cursor-pointer",
-      name: "x"
-    ]
-
-    Keyword.put(attrs, :end_icon, icon)
-  end
-
-  defp apply_end_icon(attrs, _assigns), do: attrs
-
-  defp phx_change(%{on_change: str}) when is_bitstring(str), do: str
-  defp phx_change(_assigns), do: "handle_change"
-
-  defp phx_click(%{on_clear: str}) when is_bitstring(str), do: str
-  defp phx_click(_assigns), do: "handle_clear"
 end

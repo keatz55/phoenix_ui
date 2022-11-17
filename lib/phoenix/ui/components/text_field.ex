@@ -2,14 +2,17 @@ defmodule Phoenix.UI.Components.TextField do
   @moduledoc """
   Provides text input component.
   """
+  alias Phoenix.HTML.Form
+
   import Phoenix.UI.Components.{ErrorTag, FormGroup, HelperText, Heroicon, Label}
 
   use Phoenix.UI, :component
 
   attr(:"phx-debounce", :string, default: "blur")
   attr(:"phx-feedback-for", :string)
-  attr(:end_icon, :string, default: nil)
+  attr(:end_icon, :map, default: nil, doc: "Heroicon-specific attrs to use, such as `name`.")
   attr(:errors, :list)
+  attr(:extend_class, :string, doc: "Extend existing classes applied to the component.")
   attr(:field, :any, doc: "a %Phoenix.HTML.Form{}/field name tuple, for example: {f, :email}")
   attr(:full_width, :boolean, default: false)
   attr(:helper_text, :string, default: nil)
@@ -23,7 +26,7 @@ defmodule Phoenix.UI.Components.TextField do
       ~w(autocomplete disabled form max maxlength min minlength pattern placeholder readonly required size step)
   )
 
-  attr(:start_icon, :string, default: nil)
+  attr(:start_icon, :map, default: nil, doc: "Heroicon-specific attrs to use, such as `name`.")
   attr(:type, :string, default: "text")
   attr(:value, :any)
   attr(:variant, :string, default: "simple", values: ["simple", "solid", "underline", "unstyled"])
@@ -53,11 +56,11 @@ defmodule Phoenix.UI.Components.TextField do
         #{classes(:variant, assigns)}
         #{classes(:width, assigns)}
       ))
-      |> assign_new(:"phx-feedback-for", fn -> Phoenix.HTML.Form.input_name(f, field) end)
+      |> assign_new(:"phx-feedback-for", fn -> Form.input_name(f, field) end)
       |> assign_new(:errors, fn -> translate_errors(f.errors || [], field) end)
-      |> assign_new(:id, fn -> Phoenix.HTML.Form.input_id(f, field) end)
-      |> assign_new(:name, fn -> Phoenix.HTML.Form.input_name(f, field) end)
-      |> assign_new(:value, fn -> Phoenix.HTML.Form.input_value(f, field) end)
+      |> assign_new(:id, fn -> Form.input_id(f, field) end)
+      |> assign_new(:name, fn -> Form.input_name(f, field) end)
+      |> assign_new(:value, fn -> Form.input_value(f, field) end)
 
     ~H"""
     <.form_group
@@ -68,11 +71,11 @@ defmodule Phoenix.UI.Components.TextField do
       <.label :if={@label} for={@id}><%= @label %></.label>
       <div class={["relative inline-flex", if(@full_width, do: "w-full")]}>
         <div :if={@start_icon} class="pl-3 absolute left-0 top-1/2 -translate-y-1/2 text-slate-500">
-          <.heroicon name={@start_icon} />
+          <.heroicon {@start_icon} />
         </div>
         <input class={@class} id={@id || @name} name={@name} type={@type} value={@value} {@rest} />
         <div :if={@end_icon} class="px-3 absolute right-0 top-1/2 -translate-y-1/2 text-slate-500">
-          <.heroicon name={@end_icon} />
+          <.heroicon {@end_icon} />
         </div>
       </div>
       <.error_tag :for={error <- @errors}><%= error %></.error_tag>

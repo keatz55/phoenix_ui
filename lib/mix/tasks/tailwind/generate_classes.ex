@@ -20,6 +20,7 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
       @moduledoc \"\"\"
       Referential Phoenix.UI classes for JIT compilation:
       \"\"\"
+      # credo:disable-for-next-line Credo.Check.Readability.MaxLineLength
     """)
 
     IO.binwrite(file, "#")

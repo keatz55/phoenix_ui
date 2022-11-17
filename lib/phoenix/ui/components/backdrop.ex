@@ -23,12 +23,12 @@ defmodule Phoenix.UI.Components.Backdrop do
 
   """
   @spec backdrop(Socket.assigns()) :: Rendered.t()
-  def backdrop(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def backdrop(assigns) do
+    assigns = assign_class(assigns, ~w(
         backdrop fixed inset-0 z-50 invisible opacity-0
         open:visible open:opacity-100 transition-all ease-in-out
-        #{classes(:color, prev_assigns)}
-        #{classes(:transition, prev_assigns)}
+        #{classes(:color, assigns)}
+        #{classes(:transition, assigns)}
       ))
 
     ~H"""

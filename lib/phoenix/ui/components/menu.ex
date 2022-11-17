@@ -25,9 +25,9 @@ defmodule Phoenix.UI.Components.Menu do
 
   """
   @spec menu(Socket.assigns()) :: Rendered.t()
-  def menu(prev_assigns) do
+  def menu(assigns) do
     assigns =
-      prev_assigns
+      assigns
       |> assign_extend_class(~w(menu py-1))
       |> assign_rest()
 
@@ -53,14 +53,14 @@ defmodule Phoenix.UI.Components.Menu do
 
   """
   @spec menu_item(Socket.assigns()) :: Rendered.t()
-  def menu_item(prev_assigns) do
+  def menu_item(assigns) do
     assigns =
-      prev_assigns
+      assigns
       |> assign_class(~w(
         menu-item block w-full whitespace-nowrap
-        #{classes(:menu_item, :color, prev_assigns)}
-        #{classes(:menu_item, :font, prev_assigns)}
-        #{classes(:menu_item, :spacing, prev_assigns)}
+        #{classes(:menu_item, :color, assigns)}
+        #{classes(:menu_item, :font, assigns)}
+        #{classes(:menu_item, :spacing, assigns)}
       ))
       |> assign_rest()
 
