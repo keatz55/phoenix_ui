@@ -7,12 +7,10 @@ defmodule Phoenix.UI.Components.ButtonGroup do
   use Phoenix.UI, :component
 
   attr(:color, :string, default: "blue", values: Theme.colors())
-  attr(:disabled, :boolean, default: true)
   attr(:element, :string, default: "div")
   attr(:orientation, :string, default: "horizontal", values: ["horizontal", "vertical"])
   attr(:size, :string, default: "md", values: ["xs", "sm", "md", "lg"])
   attr(:square, :boolean, default: false)
-  attr(:type, :string, default: "button")
   attr(:variant, :string, default: "contained", values: ["contained", "icon", "outlined", "text"])
 
   slot(:button)
@@ -22,7 +20,7 @@ defmodule Phoenix.UI.Components.ButtonGroup do
 
   ## Examples
 
-      ```
+      ```heex
       <.button_group>
         <:button>
           One
