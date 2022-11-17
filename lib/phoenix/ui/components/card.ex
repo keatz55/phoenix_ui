@@ -29,13 +29,13 @@ defmodule Phoenix.UI.Components.Card do
 
   """
   @spec card(Socket.assigns()) :: Rendered.t()
-  def card(prev_assigns) do
+  def card(assigns) do
     extend_class = build_class(~w(
       card overflow-hidden
-      #{Map.get(prev_assigns, :extend_class)}
+      #{Map.get(assigns, :extend_class)}
     ))
 
-    assigns = assign(prev_assigns, :extend_class, extend_class)
+    assigns = assign(assigns, :extend_class, extend_class)
 
     ~H"""
     <.paper extend_class={@extend_class} element={@element} {@rest}>
@@ -70,9 +70,9 @@ defmodule Phoenix.UI.Components.Card do
 
   """
   @spec card_header(Socket.assigns()) :: Rendered.t()
-  def card_header(prev_assigns) do
+  def card_header(assigns) do
     assigns =
-      prev_assigns
+      assigns
       |> assign_class(~w(
         card-header flex items-center p-4
       ))
@@ -128,8 +128,8 @@ defmodule Phoenix.UI.Components.Card do
 
   """
   @spec card_media(Socket.assigns()) :: Rendered.t()
-  def card_media(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def card_media(assigns) do
+    assigns = assign_class(assigns, ~w(
         card-media block bg-cover bg-no-repeat bg-center object-cover w-full
       ))
 
@@ -159,8 +159,8 @@ defmodule Phoenix.UI.Components.Card do
 
   """
   @spec card_content(Socket.assigns()) :: Rendered.t()
-  def card_content(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def card_content(assigns) do
+    assigns = assign_class(assigns, ~w(
         card-content p-4
       ))
 
@@ -192,8 +192,8 @@ defmodule Phoenix.UI.Components.Card do
 
   """
   @spec card_action(Socket.assigns()) :: Rendered.t()
-  def card_action(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def card_action(assigns) do
+    assigns = assign_class(assigns, ~w(
         card-action p-4
       ))
 

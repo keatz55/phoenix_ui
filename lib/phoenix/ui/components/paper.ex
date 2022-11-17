@@ -26,13 +26,13 @@ defmodule Phoenix.UI.Components.Paper do
 
   """
   @spec paper(Socket.assigns()) :: Rendered.t()
-  def paper(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def paper(assigns) do
+    assigns = assign_class(assigns, ~w(
         paper transition-all ease-in-out duration-300
-        #{classes(:blur, prev_assigns)}
-        #{classes(:elevation, prev_assigns)}
-        #{classes(:square, prev_assigns)}
-        #{classes(:variant, prev_assigns)}
+        #{classes(:blur, assigns)}
+        #{classes(:elevation, assigns)}
+        #{classes(:square, assigns)}
+        #{classes(:variant, assigns)}
       ))
 
     ~H"""

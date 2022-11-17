@@ -27,16 +27,16 @@ defmodule Phoenix.UI.Components.Drawer do
 
   """
   @spec drawer(Socket.assigns()) :: Rendered.t()
-  def drawer(prev_assigns) do
+  def drawer(assigns) do
     extend_class = build_class(~w(
       fixed overflow-hidden z-50 invisible open:visible
       transition-all ease-in-out duration-300
-      #{classes(:anchor, prev_assigns)}
-      #{classes(:open, prev_assigns)}
-      #{Map.get(prev_assigns, :extend_class)}
+      #{classes(:anchor, assigns)}
+      #{classes(:open, assigns)}
+      #{Map.get(assigns, :extend_class)}
     ))
 
-    assigns = assign(prev_assigns, :extend_class, extend_class)
+    assigns = assign(assigns, :extend_class, extend_class)
 
     ~H"""
     <.backdrop id={"#{@id}_drawer_backdrop"} open={@open} phx-click={hide_drawer("##{@id}")}>

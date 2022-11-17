@@ -7,7 +7,7 @@ defmodule Phoenix.UI do
 
   defmacro __using__(_opts) do
     quote generated: true, location: :keep do
-      alias Phoenix.UI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
+      alias Phoenix.UI.Components.{Autocomplete, Dropdown, TextFilter}
 
       import Phoenix.UI.Components.{
         Accordion,
@@ -20,7 +20,6 @@ defmodule Phoenix.UI do
         Button,
         ButtonGroup,
         Card,
-        Checkbox,
         Chip,
         Collapse,
         Container,
@@ -40,10 +39,8 @@ defmodule Phoenix.UI do
         Menu,
         Modal,
         Paper,
-        Select,
         Table,
-        Textarea,
-        TextInput,
+        TextField,
         Tooltip,
         Typography
       }
@@ -81,7 +78,7 @@ defmodule Phoenix.UI do
   @spec live_component() :: Macro.t()
   def live_component do
     quote generated: true, location: :keep do
-      alias Phoenix.LiveView.Socket
+      alias Phoenix.LiveView.{JS, Socket}
 
       import Phoenix.UI.Helpers
 

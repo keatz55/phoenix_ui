@@ -33,11 +33,11 @@ defmodule Phoenix.UI.Components.AvatarGroup do
 
   """
   @spec avatar_group(Socket.assigns()) :: Rendered.t()
-  def avatar_group(prev_assigns) do
-    spacing = spacing_mapping(prev_assigns[:spacing])
+  def avatar_group(assigns) do
+    spacing = spacing_mapping(assigns[:spacing])
 
     assigns =
-      prev_assigns
+      assigns
       |> assign_class(~w(avatar-group inline-flex flex-row-reverse items-center pl-#{spacing}))
       |> calc_total()
       |> calc_extra()

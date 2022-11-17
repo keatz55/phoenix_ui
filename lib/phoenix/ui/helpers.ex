@@ -106,4 +106,27 @@ defmodule Phoenix.UI.Helpers do
   @spec is_slot?(any()) :: boolean()
   def is_slot?([%{__slot__: _} | _]), do: true
   def is_slot?(_params), do: false
+
+  @error_message """
+    Missing translate_error_module config. Add the following to your config/config.exe
+    config :phoenix_ui, translate_error_module: YourAppWeb.ErrorHelpers
+  """
+
+  @doc """
+  Translates an error message using gettext.
+  """
+  def translate_error(error) do
+    if module = Application.get_env(:phoenix_ui, :translate_error_module) do
+      module.translate_error(error)
+    else
+      raise ArgumentError, message: @error_message
+    end
+  end
+
+  @doc """
+  Translates the errors for a field from a keyword list of errors.
+  """
+  def translate_errors(errors, field) when is_list(errors) do
+    for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
+  end
 end

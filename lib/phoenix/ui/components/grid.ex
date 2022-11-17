@@ -24,12 +24,12 @@ defmodule Phoenix.UI.Components.Grid do
 
   """
   @spec grid(Socket.assigns()) :: Rendered.t()
-  def grid(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def grid(assigns) do
+    assigns = assign_class(assigns, ~w(
         grid
-        #{classes(:column_spacing, prev_assigns)}
-        #{classes(:columns, prev_assigns)}
-        #{classes(:row_spacing, prev_assigns)}
+        #{classes(:column_spacing, assigns)}
+        #{classes(:columns, assigns)}
+        #{classes(:row_spacing, assigns)}
       ))
 
     ~H"""

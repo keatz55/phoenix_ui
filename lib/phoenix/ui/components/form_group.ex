@@ -4,9 +4,18 @@ defmodule Phoenix.UI.Components.FormGroup do
   """
   use Phoenix.UI, :component
 
-  attr(:element, :string, default: "div")
-  attr(:extend_class, :string)
-  attr(:margin, :boolean, default: true)
+  attr(:class, :string, doc: "Override the classes applied to the component.")
+  attr(:element, :string, default: "div", doc: "The HTML element to use, such as `div`.")
+  attr(:extend_class, :string, doc: "Extend existing classes applied to the component.")
+  attr(:invalid, :boolean, default: false)
+
+  attr(:margin, :string,
+    default: "normal",
+    doc: "If dense or normal, will adjust vertical spacing of this and contained components.",
+    values: ["dense", "none", "normal"]
+  )
+
+  attr(:rest, :global, doc: "Arbitrary HTML or phx attributes")
 
   slot(:inner_block, required: true)
 
@@ -15,7 +24,6 @@ defmodule Phoenix.UI.Components.FormGroup do
 
   ## Examples
 
-      ```
       <.form_group>
         <.label field={:name} form={f}>
           Name
@@ -25,42 +33,31 @@ defmodule Phoenix.UI.Components.FormGroup do
           form={f}
         />
       </.form_group>
-      ```
 
   """
   @spec form_group(Socket.assigns()) :: Rendered.t()
-  def form_group(prev_assigns) do
-    assigns = build_form_group_attrs(prev_assigns)
+  def form_group(assigns) do
+    assigns = assign_class(assigns, ~w(
+      form-group
+      #{classes(:margin, assigns)}
+      #{classes(:invalid, assigns)}
+    ))
 
     ~H"""
-    <.dynamic_tag {@form_group_attrs}>
+    <.dynamic_tag class={@class} name={@element} {@rest}>
       <%= render_slot(@inner_block) %>
     </.dynamic_tag>
     """
   end
 
-  ### Form Group Attrs ##########################
-
-  defp build_form_group_attrs(assigns) do
-    class = build_class(~w(
-      form-group
-      #{classes(:margin, assigns)}
-      #{Map.get(assigns, :extend_class)}
-    ))
-
-    attrs =
-      assigns
-      |> assigns_to_attributes([:element, :extend_class, :margin])
-      |> Keyword.put_new(:class, class)
-      |> Keyword.put(:name, assigns[:element])
-
-    assign(assigns, :form_group_attrs, attrs)
-  end
-
   ### CSS Classes ##########################
 
   # Margin
-  defp classes(:margin, %{margin: true}), do: "mb-3"
+  defp classes(:margin, %{margin: "normal"}), do: "mt-2 mb-4"
+  defp classes(:margin, %{margin: "dense"}), do: "mt-1 mb-2"
+
+  # Invalid
+  defp classes(:invalid, %{invalid: true}), do: "invalid"
 
   defp classes(_rule_group, _assigns), do: nil
 end

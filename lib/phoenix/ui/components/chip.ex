@@ -32,15 +32,15 @@ defmodule Phoenix.UI.Components.Chip do
 
   """
   @spec chip(Socket.assigns()) :: Rendered.t()
-  def chip(prev_assigns) do
+  def chip(assigns) do
     assigns =
-      prev_assigns
+      assigns
       |> assign_class(~w(
         inline-flex items-center rounded-full text-sm
         font-semibold transition-all ease-in-out duration-200
-        #{classes(:clickable, prev_assigns)}
-        #{classes(:size, prev_assigns)}
-        #{classes(:variant, prev_assigns)}
+        #{classes(:clickable, assigns)}
+        #{classes(:size, assigns)}
+        #{classes(:variant, assigns)}
       ))
       |> build_avatar_attrs()
       |> build_icon_attrs()

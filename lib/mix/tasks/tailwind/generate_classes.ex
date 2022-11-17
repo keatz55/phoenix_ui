@@ -19,7 +19,11 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
     defmodule Phoenix.UI.Tailwind.GeneratedClasses do
       @moduledoc \"\"\"
       Referential Phoenix.UI classes for JIT compilation:
+      \"\"\"
+      # credo:disable-for-next-line Credo.Check.Readability.MaxLineLength
     """)
+
+    IO.binwrite(file, "#")
 
     [
       # Accordion
@@ -57,7 +61,7 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
       {
         &avatar/1,
         [
-          inner_block: [nil, []],
+          inner_block: [[]],
           color: Theme.colors(),
           border: [true, false],
           size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
@@ -271,13 +275,11 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
     |> Enum.uniq()
     |> Enum.sort()
     |> Enum.each(fn class ->
-      IO.binwrite(file, """
-        - #{class}
-      """)
+      IO.binwrite(file, " #{class}")
     end)
 
     IO.binwrite(file, """
-      \"\"\"
+
     end
     """)
 

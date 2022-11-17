@@ -1,4 +1,4 @@
-# Phoenix.UI
+# Phoenix UI
 
 A complimentary UI library for the Phoenix Framework and Phoenix LiveView.
 
@@ -17,7 +17,7 @@ Follow the [official guide](https://tailwindcss.com/docs/guides/phoenix) for set
 ```elixir
 def deps do
   [
-    {:phoenix_ui, "~> 0.1.1"},
+    {:phoenix_ui, "~> 0.1.4"},
   ]
 end
 ```
@@ -35,11 +35,16 @@ module.exports = {
     '../lib/*_web.ex',
     '../lib/*_web/**/*.*ex',
 
-+    # Allows Phoenix.UI css to be processed by JIT compiler.
++    // Allows Phoenix.UI css to be processed by JIT compiler.
 +    "../deps/phoenix_ui/**/*.*ex",
   ],
   darkMode: "class",
-  plugins: [],
+  plugins: [
++    // Allows form error styling
++    plugin(({ addVariant }) =>
++      addVariant("invalid", ".invalid:not(.phx-no-feedback) &")
++    ),
+  ],
   theme: {
     extend: {},
   },

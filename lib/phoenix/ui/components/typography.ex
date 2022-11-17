@@ -47,15 +47,15 @@ defmodule Phoenix.UI.Components.Typography do
 
   """
   @spec typography(Socket.assigns()) :: Rendered.t()
-  def typography(prev_assigns) do
-    assigns = assign_class(prev_assigns, ~w(
+  def typography(assigns) do
+    assigns = assign_class(assigns, ~w(
         typography
-        #{classes(:align, prev_assigns)}
-        #{classes(:color, prev_assigns)}
-        #{classes(:margin, prev_assigns)}
-        #{classes(:size, prev_assigns)}
-        #{classes(:variant, prev_assigns)}
-        #{classes(:weight, prev_assigns)}
+        #{classes(:align, assigns)}
+        #{classes(:color, assigns)}
+        #{classes(:margin, assigns)}
+        #{classes(:size, assigns)}
+        #{classes(:variant, assigns)}
+        #{classes(:weight, assigns)}
       ))
 
     ~H"""

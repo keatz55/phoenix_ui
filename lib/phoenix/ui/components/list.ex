@@ -20,9 +20,9 @@ defmodule Phoenix.UI.Components.List do
 
   """
   @spec list(Socket.assigns()) :: Rendered.t()
-  def list(prev_assigns) do
+  def list(assigns) do
     assigns =
-      prev_assigns
+      assigns
       |> assign_class(~w(py-1))
       |> assign_rest([:element])
 
@@ -49,8 +49,8 @@ defmodule Phoenix.UI.Components.List do
 
   """
   @spec list_item(Socket.assigns()) :: Rendered.t()
-  def list_item(prev_assigns) do
-    prev_assigns
+  def list_item(assigns) do
+    assigns
     |> assign_class(~w(
         block w-full whitespace-nowrap py-2 px-4 text-sm font-normal
         text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-100/25
