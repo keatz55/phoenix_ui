@@ -21,7 +21,8 @@ defmodule Phoenix.UI.Components.Button do
 
   attr(:rest, :global,
     doc: "Arbitrary HTML or phx attributes",
-    include: ~w(disabled form name value)
+    include:
+      ~w(csrf_token disabled download form href hreflang method name navigate patch referrerpolicy rel replace target type value)
   )
 
   attr(:size, :string,
@@ -67,7 +68,7 @@ defmodule Phoenix.UI.Components.Button do
 
   ### Btn Markup ##########################
 
-  defp render_btn(%{href: _} = assigns) do
+  defp render_btn(%{rest: %{href: _}} = assigns) do
     ~H"""
     <.link class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
@@ -75,7 +76,7 @@ defmodule Phoenix.UI.Components.Button do
     """
   end
 
-  defp render_btn(%{navigate: _} = assigns) do
+  defp render_btn(%{rest: %{navigate: _}} = assigns) do
     ~H"""
     <.link class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
@@ -83,7 +84,7 @@ defmodule Phoenix.UI.Components.Button do
     """
   end
 
-  defp render_btn(%{patch: _} = assigns) do
+  defp render_btn(%{rest: %{patch: _}} = assigns) do
     ~H"""
     <.link class={@class} {@rest}>
       <%= render_slot(@inner_block) %>
@@ -125,6 +126,7 @@ defmodule Phoenix.UI.Components.Button do
   defp classes(:size, %{size: "xs", variant: "icon"}), do: "p-1 text-xs"
   defp classes(:size, %{size: "sm", variant: "icon"}), do: "p-2 text-xs"
   defp classes(:size, %{variant: "icon"}), do: "p-3 text-xs"
+  defp classes(:size, %{size: "xs"}), do: "py-1 px-1.5 text-xs"
   defp classes(:size, %{size: "sm"}), do: "py-2 px-3 text-xs"
   defp classes(:size, %{size: "md"}), do: "py-2 px-4 text-base font-semibold"
   defp classes(:size, %{size: "lg"}), do: "py-3 px-5 text-xl font-bold"
