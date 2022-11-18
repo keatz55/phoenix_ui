@@ -3,8 +3,6 @@ defmodule Phoenix.UI.Components.ButtonTest do
 
   use Phoenix.UI.Case, async: true
 
-  @moduletag :after_verify
-
   setup do
     [assigns: %{text: "text"}]
   end
