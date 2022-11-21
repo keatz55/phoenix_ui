@@ -24,8 +24,8 @@ defmodule Phoenix.UI.Components.HelperText do
   @spec helper_text(Socket.assigns()) :: Rendered.t()
   def helper_text(assigns) do
     assigns = assign_class(assigns, ~w(
-      mt-2 text-sm text-slate-500 dark:text-slate-400 disabled:text-slate-400 dark:disabled:text-slate-500
-      invalid:hidden
+      helper-text invalid:hidden mt-2 text-sm text-slate-500 dark:text-slate-400
+      disabled:text-slate-400 dark:disabled:text-slate-500
     ))
 
     ~H"""
