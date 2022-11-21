@@ -24,7 +24,7 @@ defmodule Phoenix.UI.Components.ErrorTag do
   @spec error_tag(Socket.assigns()) :: Rendered.t()
   def error_tag(assigns) do
     assigns = assign_class(assigns, ~w(
-      hidden invalid:block mt-2 text-sm text-red-500
+      error-tag hidden invalid:block mt-2 text-sm text-red-500
     ))
 
     ~H"""

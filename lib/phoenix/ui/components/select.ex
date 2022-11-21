@@ -1,6 +1,6 @@
-defmodule Phoenix.UI.Components.TextField do
+defmodule Phoenix.UI.Components.Select do
   @moduledoc """
-  Provides text input component.
+  Provides select component.
   """
   alias Phoenix.HTML.Form
 
@@ -19,7 +19,10 @@ defmodule Phoenix.UI.Components.TextField do
   attr(:id, :any)
   attr(:label, :string, default: nil)
   attr(:margin, :string, default: "normal", values: ["dense", "none", "normal"])
+  attr(:multiple, :boolean, default: false, doc: "the multiple flag for selects")
   attr(:name, :any)
+  attr(:options, :list, doc: "the options to pass to Phoenix.HTML.Form.options_for_select/2")
+  attr(:prompt, :string, default: nil, doc: "the prompt for selects")
 
   attr(:rest, :global,
     include:
@@ -32,23 +35,23 @@ defmodule Phoenix.UI.Components.TextField do
   attr(:variant, :string, default: "simple", values: ["simple", "solid", "underline", "unstyled"])
 
   @doc """
-  Renders text input field component.
+  Renders select component.
 
   ## Examples
 
       ```
-      <.text_field />
+      <.select />
       ```
 
   """
-  @spec text_field(Socket.assigns()) :: Rendered.t()
-  def text_field(%{field: {f, field}} = assigns) do
+  @spec select(Socket.assigns()) :: Rendered.t()
+  def select(%{field: {f, field}} = assigns) do
     assigns =
       assigns
       |> assign(field: nil)
       |> assign_class(~w(
-        input block py-2 px-3 text-slate-700 dark:text-slate-300 text-base outline-none focus:outline-none
-        placeholder-slate-400 dark:placeholder-slate-400 transition-all ease-in-out duration-200
+        select appearance-none block py-2 pr-2 text-slate-700 dark:text-slate-300 text-base outline-none focus:outline-none
+        placeholder-slate-400 dark:placeholder-slate-600 transition-all ease-in-out duration-200
         #{classes(:background, assigns)}
         #{classes(:end_icon, assigns)}
         #{classes(:rounded, assigns)}
@@ -76,15 +79,17 @@ defmodule Phoenix.UI.Components.TextField do
         >
           <.heroicon {@start_icon} />
         </div>
-        <input
+        <select
           class={@class}
-          id={@id || @name}
+          id={@id}
+          multiple={@multiple}
           name={@name}
           phx-debounce={assigns[:"phx-debounce"]}
-          type={@type}
-          value={@value}
           {@rest}
-        />
+        >
+          <option :if={@prompt}><%= @prompt %></option>
+          <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+        </select>
         <div
           :if={@end_icon}
           class="end-icon px-3 absolute right-0 top-1/2 -translate-y-1/2 text-slate-500"
@@ -109,7 +114,7 @@ defmodule Phoenix.UI.Components.TextField do
   defp classes(:background, _assigns), do: "bg-white dark:bg-slate-900"
 
   # End Icon
-  defp classes(:end_icon, %{end_icon: nil}), do: "pr-3"
+  defp classes(:end_icon, %{end_icon: nil}), do: "pr-4"
   defp classes(:end_icon, _assigns), do: "pr-12"
 
   # Rounded

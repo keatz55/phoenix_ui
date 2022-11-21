@@ -19,9 +19,9 @@ defmodule Phoenix.UI.Components.TextFilter do
         :let={f}
         for={:filter}
         id={"#{@id}_form"}
-        phx-change="handle_change"
-        phx-submit="handle_change"
-        phx-target={@myself}
+        phx-change={assigns[:"phx-change"]}
+        phx-submit={assigns[:"phx-submit"]}
+        phx-target={assigns[:"phx-target"]}
       >
         <.text_field
           end_icon={@end_icon}
@@ -30,6 +30,7 @@ defmodule Phoenix.UI.Components.TextFilter do
           full_width={@full_width}
           margin={@margin}
           phx-debounce={assigns[:"phx-debounce"]}
+          placeholder={@placeholder}
           start_icon={@start_icon}
           value={@value}
           variant={@variant}
@@ -52,6 +53,7 @@ defmodule Phoenix.UI.Components.TextFilter do
       |> assign_new(:extend_class, fn -> nil end)
       |> assign_new(:full_width, fn -> true end)
       |> assign_new(:margin, fn -> "none" end)
+      |> assign_new(:placeholder, fn -> nil end)
       |> assign_new(:start_icon, fn -> @default_start_icon end)
       |> assign_new(:value, fn -> assigns[:default_value] end)
       |> assign_new(:variant, fn -> @default_variant end)
