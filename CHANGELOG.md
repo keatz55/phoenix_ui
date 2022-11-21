@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.5 (2022-11-20)
+
+### Enhancements
+
+- Improves and adds error styles for select component.
+- Improves TextFilter live component
+- Button component compilation warning fixes
+- Increased testing for the following
+  - button
+  - select
+  - text_field
+  - text_filter
+
 ## 0.1.4 (2022-11-17)
 
 ### Enhancements
