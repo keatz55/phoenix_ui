@@ -9,7 +9,7 @@ defmodule Phoenix.UI.MixProject do
       deps: deps(),
       description: description(),
       dialyzer: [
-        plt_add_apps: [:mix, :phoenix_html, :phoenix_live_view, :phoenix],
+        plt_add_apps: [:mix, :phoenix_html, :phoenix_live_view, :phoenix, :plug],
         plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
       ],
       docs: docs(),

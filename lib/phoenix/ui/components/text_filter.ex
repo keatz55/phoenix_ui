@@ -1,13 +1,22 @@
 defmodule Phoenix.UI.Components.TextFilter do
   @moduledoc """
   Provides text filter component.
+
+  The `TextFilter` live component supports the following scenarios:
+  - When passed `uri` and `param` attrs, will automatically update query param in url on text change (Default)
+  - When passed `on_change` anonymous function attr, will invoke function on text change
+  - When passed `on_change` event name string attr, will trigger event at parent level upon text change
   """
+  alias Plug.Conn.Query
+
   import Phoenix.UI.Components.TextField
 
   use Phoenix.UI, :live_component
 
-  @default_change_event "handle_change"
   @default_debounce 300
+  @default_full_width true
+  @default_handle_change "handle_change"
+  @default_margin "none"
   @default_start_icon %{name: "magnifying-glass"}
   @default_variant "simple"
 
@@ -19,20 +28,20 @@ defmodule Phoenix.UI.Components.TextFilter do
         :let={f}
         for={:filter}
         id={"#{@id}_form"}
-        phx-change={assigns[:"phx-change"]}
-        phx-submit={assigns[:"phx-submit"]}
+        phx-change={@handle_change}
+        phx-submit={@handle_change}
         phx-target={assigns[:"phx-target"]}
       >
         <.text_field
           end_icon={@end_icon}
-          extend_class={@extend_class}
+          extend_class={assigns[:extend_class]}
           field={{f, :text}}
           full_width={@full_width}
           margin={@margin}
           phx-debounce={assigns[:"phx-debounce"]}
-          placeholder={@placeholder}
+          placeholder={assigns[:placeholder]}
           start_icon={@start_icon}
-          value={@value}
+          value={assigns[:value]}
           variant={@variant}
         />
       </.form>
@@ -46,33 +55,58 @@ defmodule Phoenix.UI.Components.TextFilter do
       :ok,
       socket
       |> assign(assigns)
-      |> assign_new(:"phx-change", fn -> @default_change_event end)
       |> assign_new(:"phx-debounce", fn -> @default_debounce end)
-      |> assign_new(:"phx-submit", fn -> @default_change_event end)
-      |> assign_new(:"phx-target", fn -> socket.assigns.myself end)
-      |> assign_new(:extend_class, fn -> nil end)
-      |> assign_new(:full_width, fn -> true end)
-      |> assign_new(:margin, fn -> "none" end)
-      |> assign_new(:placeholder, fn -> nil end)
+      |> assign_new(:full_width, fn -> @default_full_width end)
+      |> assign_new(:margin, fn -> @default_margin end)
       |> assign_new(:start_icon, fn -> @default_start_icon end)
-      |> assign_new(:value, fn -> assigns[:default_value] end)
       |> assign_new(:variant, fn -> @default_variant end)
+      |> assign_handle_change()
       |> assign_end_icon()
     }
   end
 
   @impl true
   def handle_event("handle_change", %{"filter" => %{"text" => value}}, socket) do
-    {:noreply, socket.assigns.on_change.(value, socket)}
+    socket = assign(socket, :value, value)
+
+    if is_function(socket.assigns[:on_change]) do
+      {:noreply, socket.assigns.on_change.(value, socket)}
+    else
+      uri = socket.assigns[:uri] || URI.new("/")
+      param = socket.assigns[:param] || "text_filter"
+
+      qs =
+        (uri.query || "")
+        |> Query.decode()
+        |> then(fn query ->
+          case value do
+            "" -> Map.drop(query, [param])
+            value -> Map.put(query, param, value)
+          end
+        end)
+        |> Query.encode()
+
+      path = if qs == "", do: uri.path, else: "#{uri.path}?#{qs}"
+
+      {:noreply, push_patch(socket, to: path, replace: true)}
+    end
   end
 
-  defp assign_end_icon(%Socket{assigns: %{value: val} = assigns} = socket) do
+  defp assign_handle_change(%Socket{assigns: assigns} = socket) do
+    if is_bitstring(assigns[:on_change]) do
+      assign(socket, :handle_change, assigns[:on_change])
+    else
+      assign(socket, handle_change: @default_handle_change, "phx-target": assigns.myself)
+    end
+  end
+
+  defp assign_end_icon(%{assigns: assigns} = socket) do
     end_icon =
-      if val in [nil, ""] do
+      if assigns[:value] in [nil, ""] do
         nil
       else
         %{
-          "phx-click": JS.push(assigns[:"phx-change"], value: %{"filter" => %{"text" => ""}}),
+          "phx-click": JS.push(assigns[:handle_change], value: %{"filter" => %{"text" => ""}}),
           "phx-target": assigns[:"phx-target"],
           extend_class: "cursor-pointer",
           name: "x-mark"

@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.TextField do
   use Phoenix.UI, :component
 
   attr(:"phx-debounce", :any, default: "blur")
-  attr(:"phx-feedback-for", :string)
+  attr(:"phx-feedback-for", :any)
   attr(:end_icon, :map, default: nil, doc: "Heroicon-specific attrs to use, such as `name`.")
   attr(:errors, :list)
   attr(:extend_class, :string, doc: "Extend existing classes applied to the component.")

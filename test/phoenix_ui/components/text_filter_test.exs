@@ -1,35 +1,45 @@
 defmodule Phoenix.UI.Components.TextFilterTest do
   use Phoenix.UI.Case, async: true
 
-  test "should render text input filter component" do
-    html =
-      render_component(TextFilter,
-        id: "name_filter",
-        on_change: fn _value, socket -> socket end,
-        placeholder: "Filter by name...",
-        value: "Default Value"
-      )
+  test "should render TextFilter w/ dynamic URI filtering" do
+    html = render_component(TextFilter, id: "filter", param: "name", uri: URI.new("/"))
 
-    assert html =~ "<form id=\"name_filter_form\""
+    assert html =~ "<form id=\"filter_form\""
     assert html =~ "phx-change=\"handle_change\""
     assert html =~ "phx-submit=\"handle_change\""
     assert html =~ "<svg class=\"heroicon"
-    assert html =~ "placeholder=\"Filter by name...\""
+  end
+
+  test "should render TextFilter w/ on_change anonymous fun filtering" do
+    html = render_component(TextFilter, id: "filter", on_change: fn _value, socket -> socket end)
+
+    assert html =~ "phx-change=\"handle_change\""
+    assert html =~ "phx-submit=\"handle_change\""
+  end
+
+  test "should render TextFilter w/ parent-specific form events" do
+    html = render_component(TextFilter, on_change: "custom_parent_event", id: "filter")
+
+    assert html =~ "phx-change=\"custom_parent_event\""
+    assert html =~ "phx-submit=\"custom_parent_event\""
+    refute html =~ "phx-target"
+  end
+
+  test "should render TextFilter w/ default value" do
+    html = render_component(TextFilter, id: "filter", value: "Default Value")
+
     assert html =~ "value=\"Default Value\""
   end
 
-  test "should override live component form events" do
-    html =
-      render_component(TextFilter,
-        "phx-change": "custom_event",
-        "phx-submit": "custom_event",
-        "phx-target": 1,
-        id: "name_filter"
-      )
+  test "should render TextFilter w/ placeholder" do
+    html = render_component(TextFilter, id: "filter", placeholder: "Filter by name...")
 
-    assert html =~ "<form id=\"name_filter_form\""
-    assert html =~ "phx-change=\"custom_event\""
-    assert html =~ "phx-submit=\"custom_event\""
-    assert html =~ "phx-target=\"1\""
+    assert html =~ "placeholder=\"Filter by name...\""
+  end
+
+  test "should render TextFilter w/ full_width=false" do
+    html = render_component(TextFilter, id: "filter", full_width: false)
+
+    refute html =~ "w-full"
   end
 end
