@@ -2,7 +2,7 @@ defmodule Phoenix.UI.Components.TextFilter do
   @moduledoc """
   Provides text filter component.
 
-  The `TextFilter` live component will now support the following scenarios:
+  The `TextFilter` live component supports the following scenarios:
   - When passed `uri` and `param` attrs, will automatically update query param in url on text change (Default)
   - When passed `on_change` anonymous function attr, will invoke function on text change
   - When passed `on_change` event name string attr, will trigger event at parent level upon text change
