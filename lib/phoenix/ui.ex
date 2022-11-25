@@ -7,7 +7,7 @@ defmodule Phoenix.UI do
 
   defmacro __using__(_opts) do
     quote generated: true, location: :keep do
-      alias Phoenix.UI.Components.{Autocomplete, Dropdown, TextFilter}
+      alias Phoenix.UI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
 
       import Phoenix.UI.Components.{
         Accordion,
@@ -41,6 +41,7 @@ defmodule Phoenix.UI do
         Paper,
         Select,
         Table,
+        Textarea,
         TextField,
         Tooltip,
         Typography

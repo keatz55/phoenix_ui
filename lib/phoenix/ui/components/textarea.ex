@@ -1,6 +1,6 @@
-defmodule Phoenix.UI.Components.Select do
+defmodule Phoenix.UI.Components.Textarea do
   @moduledoc """
-  Provides select component.
+  Provides textarea component.
   """
   alias Phoenix.HTML.Form
 
@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.Select do
   use Phoenix.UI, :component
 
   attr(:"phx-debounce", :any, default: "blur")
-  attr(:"phx-feedback-for", :string)
+  attr(:"phx-feedback-for", :any)
   attr(:end_icon, :map, default: nil, doc: "Heroicon-specific attrs to use, such as `name`.")
   attr(:errors, :list)
   attr(:extend_class, :string, doc: "Extend existing classes applied to the component.")
@@ -19,14 +19,11 @@ defmodule Phoenix.UI.Components.Select do
   attr(:id, :any)
   attr(:label, :string, default: nil)
   attr(:margin, :string, default: "normal", values: ["dense", "none", "normal"])
-  attr(:multiple, :boolean, default: false, doc: "the multiple flag for selects")
   attr(:name, :any)
-  attr(:options, :list, doc: "the options to pass to Phoenix.HTML.Form.options_for_select/2")
-  attr(:prompt, :string, default: nil, doc: "the prompt for selects")
 
   attr(:rest, :global,
     include:
-      ~w(autocomplete disabled form max maxlength min minlength pattern placeholder readonly required size step)
+      ~w(autocomplete disabled form max maxlength min minlength pattern placeholder readonly rows required size step)
   )
 
   attr(:start_icon, :map, default: nil, doc: "Heroicon-specific attrs to use, such as `name`.")
@@ -35,23 +32,23 @@ defmodule Phoenix.UI.Components.Select do
   attr(:variant, :string, default: "simple", values: ["simple", "solid", "underline", "unstyled"])
 
   @doc """
-  Renders select component.
+  Renders textarea component.
 
   ## Examples
 
       ```
-      <.select />
+      <.textarea />
       ```
 
   """
-  @spec select(Socket.assigns()) :: Rendered.t()
-  def select(%{field: {f, field}} = assigns) do
+  @spec textarea(Socket.assigns()) :: Rendered.t()
+  def textarea(%{field: {f, field}} = assigns) do
     assigns =
       assigns
       |> assign(field: nil)
       |> assign_class(~w(
-        select appearance-none block py-2 pr-12 text-slate-700 dark:text-slate-300 text-base outline-none focus:outline-none
-        placeholder-slate-400 dark:placeholder-slate-600 transition-all ease-in-out duration-200
+        textarea block py-2 px-3 text-slate-700 dark:text-slate-300 text-base outline-none focus:outline-none
+        placeholder-slate-400 dark:placeholder-slate-400 transition-all ease-in-out duration-200
         #{classes(:background, assigns)}
         #{classes(:end_icon, assigns)}
         #{classes(:rounded, assigns)}
@@ -73,38 +70,19 @@ defmodule Phoenix.UI.Components.Select do
     >
       <.label :if={@label} for={@id}><%= @label %></.label>
       <div class={["relative inline-flex", if(@full_width, do: "w-full")]}>
-        <div
-          :if={@start_icon}
-          class="start-icon pl-3 absolute left-0 top-1/2 -translate-y-1/2 text-slate-500"
-        >
+        <div :if={@start_icon} class="start-icon pl-3 absolute left-0 top-2 text-slate-500">
           <.heroicon {@start_icon} />
         </div>
-        <select
+        <textarea
           class={@class}
-          id={@id}
-          multiple={@multiple}
+          id={@id || @name}
           name={@name}
           phx-debounce={assigns[:"phx-debounce"]}
           {@rest}
-        >
-          <option :if={@prompt} value><%= @prompt %></option>
-          <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
-        </select>
-        <div
-          :if={@end_icon}
-          class="end-icon px-3 absolute right-0 top-1/2 -translate-y-1/2 text-slate-500"
-        >
+        ><%= @value %></textarea>
+        <div :if={@end_icon} class="end-icon px-3 absolute right-0 top-2 text-slate-500">
           <.heroicon {@end_icon} />
         </div>
-        <svg
-          :if={is_nil(@end_icon)}
-          class="absolute top-1/2 -translate-y-1/2 right-2 fill-slate-500 select-none pointer-events-none h-8 w-8"
-          focusable="false"
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-        >
-          <path d="M7 10l5 5 5-5z"></path>
-        </svg>
       </div>
       <.error_tag :for={error <- @errors}><%= error %></.error_tag>
       <.helper_text :if={@helper_text}><%= @helper_text %></.helper_text>
@@ -121,6 +99,10 @@ defmodule Phoenix.UI.Components.Select do
 
   defp classes(:background, %{variant: "underline"}), do: "bg-transparent"
   defp classes(:background, _assigns), do: "bg-white dark:bg-slate-900"
+
+  # End Icon
+  defp classes(:end_icon, %{end_icon: nil}), do: "pr-3"
+  defp classes(:end_icon, _assigns), do: "pr-12"
 
   # Rounded
   defp classes(:rounded, %{variant: "underline"}), do: nil
