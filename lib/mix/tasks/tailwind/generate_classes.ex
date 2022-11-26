@@ -2,7 +2,7 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
   @moduledoc """
   Mix task for generating, parsing, and referencing all Phoenix UI classes.
   """
-  alias Phoenix.UI.Theme
+  alias Phoenix.{HTML.FormData.Atom, HTML.Form, UI.Theme}
 
   import Phoenix.{Component, LiveViewTest}
 
@@ -204,6 +204,26 @@ defmodule Mix.Tasks.Tailwind.GenerateClasses do
           name: ["academic-cap"],
           size: ["xs", "sm", "md", "lg", "xl"] ++ range(0.25, 20, 0.25),
           variant: ["outline", "solid"]
+        ]
+      },
+      # Input
+      {
+        &input/1,
+        [
+          color: Theme.colors(),
+          field: [
+            {%Form{
+               source: :filter,
+               impl: Atom,
+               id: "form",
+               name: "input",
+               data: %{},
+               params: %{},
+               options: []
+             }, :text}
+          ],
+          type: ["text", "checkbox"],
+          variant: ["simple", "solid", "underline", "unstyled"]
         ]
       },
       # Link

@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.TextFilter do
   """
   alias Plug.Conn.Query
 
-  import Phoenix.UI.Components.TextField
+  import Phoenix.UI.Components.Form, only: [input: 1]
 
   use Phoenix.UI, :live_component
 
@@ -32,7 +32,7 @@ defmodule Phoenix.UI.Components.TextFilter do
         phx-submit={@handle_change}
         phx-target={assigns[:"phx-target"]}
       >
-        <.text_field
+        <.input
           end_icon={@end_icon}
           extend_class={assigns[:extend_class]}
           field={{f, :text}}
@@ -41,6 +41,7 @@ defmodule Phoenix.UI.Components.TextFilter do
           phx-debounce={assigns[:"phx-debounce"]}
           placeholder={assigns[:placeholder]}
           start_icon={@start_icon}
+          type="text"
           value={assigns[:value]}
           variant={@variant}
         />

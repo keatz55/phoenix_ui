@@ -28,7 +28,7 @@ defmodule Phoenix.UI.Components.Dropdown do
     assigns = assign_new(raw_assigns, :variant, fn -> @default_variant end)
 
     ~H"""
-    <div id={@id} class="relative dropdown" phx-click-away={close_dropdown(@id)}>
+    <div id={@id} class="relative dropdown" phx-click-away={hide_dropdown(@id)}>
       <div
         class="flex items-baseline cursor-pointer gap-x-1 dropdown-toggle"
         phx-click={toggle_dropdown(@id)}
@@ -58,8 +58,8 @@ defmodule Phoenix.UI.Components.Dropdown do
       %JS{}
 
   """
-  @spec close_dropdown(String.t()) :: struct()
-  def close_dropdown(id), do: JS.hide(%JS{}, to: "##{id} .dropdown-menu")
+  @spec hide_dropdown(String.t()) :: struct()
+  def hide_dropdown(id), do: JS.hide(%JS{}, to: "##{id} .dropdown-menu")
 
   @doc """
   Toggles dropdown matching selector.

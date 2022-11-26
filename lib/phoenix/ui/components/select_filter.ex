@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.SelectFilter do
   """
   alias Plug.Conn.Query
 
-  import Phoenix.UI.Components.Select
+  import Phoenix.UI.Components.Form, only: [select: 1]
 
   use Phoenix.UI, :live_component
 
@@ -32,7 +32,6 @@ defmodule Phoenix.UI.Components.SelectFilter do
         phx-target={assigns[:"phx-target"]}
       >
         <.select
-          end_icon={assigns[:end_icon]}
           extend_class={assigns[:extend_class]}
           field={{f, :select}}
           full_width={@full_width}
