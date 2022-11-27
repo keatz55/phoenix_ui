@@ -4,67 +4,76 @@ defmodule Phoenix.UI.Components.Tooltip do
   """
   use Phoenix.UI, :component
 
-  @default_color "slate"
-  @default_position "top"
-  @default_variant "simple"
+  attr(:class, :string, doc: "Override the classes applied to the component.")
+
+  attr(:color, :string,
+    default: "slate",
+    doc: "The color of the component.",
+    values: Theme.colors()
+  )
+
+  attr(:content, :string, default: nil)
+  attr(:element, :string, default: "div", doc: "The HTML element to use, such as `div`.")
+  attr(:extend_class, :string, doc: "Extend existing classes applied to the component.")
+
+  attr(:position, :string,
+    default: "top",
+    values: [
+      "bottom_end",
+      "bottom_start",
+      "bottom",
+      "left_end",
+      "left_start",
+      "left",
+      "right_end",
+      "right_start",
+      "right",
+      "top_end",
+      "top_start",
+      "top"
+    ]
+  )
+
+  attr(:rest, :global, doc: "Arbitrary HTML or phx attributes")
+  attr(:variant, :string, default: "simple", values: ["arrow", "simple"])
+
+  slot(:custom)
+  slot(:inner_block)
 
   @doc """
-  Renders tooltip component.
+  A tooltip is a floating, non-actionable label used to explain a user interface element or feature.
 
   ## Examples
 
-      ```
       <.tooltip>
         content
       </.tooltip>
-      ```
 
   """
   @spec tooltip(Socket.assigns()) :: Rendered.t()
-  def tooltip(raw) do
-    assigns =
-      raw
-      |> assign_new(:color, fn -> @default_color end)
-      |> assign_new(:position, fn -> @default_position end)
-      |> assign_new(:variant, fn -> @default_variant end)
-      |> build_tooltip_attrs()
-
-    ~H"""
-    <div id={assigns[:id]} class="group relative inline-block">
-      <%= render_slot(@inner_block) %>
-      <div {@tooltip_attrs}>
-        <%= if is_bitstring(@content) do %>
-          <%= @content %>
-        <% else %>
-          <%= render_slot(@content) %>
-        <% end %>
-      </div>
-    </div>
-    """
-  end
-
-  ### Tooltip Attrs ##########################
-
-  defp build_tooltip_attrs(assigns) do
-    class = build_class(~w(
-      z-50 invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute text-xs rounded
+  def tooltip(assigns) do
+    assigns = assign_class(assigns, ~w(
+      tooltip z-50 invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute text-xs rounded
       text-center whitespace-nowrap py-1 px-2 transition-all ease-in-out delay-150 duration-300
       #{classes(:color, assigns)}
       #{classes(:margin, assigns)}
       #{classes(:position, assigns)}
       #{classes(:variant, assigns)}
-      #{Map.get(assigns, :extend_class)}
     ))
 
-    attrs =
-      assigns
-      |> assigns_to_attributes([:color, :content, :id, :position, :variant])
-      |> Keyword.put_new(:class, class)
-
-    assign(assigns, :tooltip_attrs, attrs)
+    ~H"""
+    <div id={assigns[:id]} class="tooltip-wrapper group relative inline-block">
+      <%= render_slot(@inner_block) %>
+      <.dynamic_tag class={@class} name={@element} {@rest}>
+        <%= if is_bitstring(@content) do %>
+          <%= @content %>
+        <% else %>
+          <%= render_slot(@custom) %>
+        <% end %>
+      </.dynamic_tag>
+    </div>
+    """
   end
-
-  ### CSS Classes ##########################
 
   # Color
   defp classes(:color, %{color: color}), do: "bg-#{color}-800 text-#{color}-200"
