@@ -108,7 +108,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
     </.form>
     """
 
-    assert rendered_to_string(markup) =~ "<div class=\"form-group\""
+    assert rendered_to_string(markup) =~ "<div class=\"form-control\""
   end
 
   test "should render textarea with start icon", %{assigns: assigns} do
@@ -147,7 +147,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
     assert html =~ "Description Label"
     assert html =~ "class=\"helper-text invalid:hidden"
     assert html =~ "Helper text"
-    refute html =~ "error-tag"
+    refute html =~ "error"
   end
 
   test "should render textarea with errors", %{assigns: assigns} do
@@ -157,7 +157,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
     </.form>
     """
 
-    assert rendered_to_string(markup) =~ "class=\"error-tag hidden invalid:block "
+    assert rendered_to_string(markup) =~ "class=\"error hidden invalid:block "
   end
 
   test "warns when unknown attributes passed to button", %{assigns: assigns} do
@@ -177,9 +177,9 @@ defmodule Phoenix.UI.Components.TextareaTest do
       end)
 
     assert warnings =~
-             "attribute \"margin\" in component Phoenix.UI.Components.Textarea.textarea/1 must be one of"
+             "attribute \"margin\" in component Phoenix.UI.Components.Form.textarea/1 must be one of"
 
     assert warnings =~
-             "attribute \"variant\" in component Phoenix.UI.Components.Textarea.textarea/1 must be one of"
+             "attribute \"variant\" in component Phoenix.UI.Components.Form.textarea/1 must be one of"
   end
 end
