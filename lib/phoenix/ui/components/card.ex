@@ -2,7 +2,7 @@ defmodule Phoenix.UI.Components.Card do
   @moduledoc """
   Provides card component.
   """
-  import Phoenix.UI.Components.{Avatar, AvatarGroup, Paper, Typography}
+  import Phoenix.UI.Components.{Avatar, Paper, Typography}
 
   use Phoenix.UI, :component
 

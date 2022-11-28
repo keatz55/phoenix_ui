@@ -90,7 +90,7 @@ defmodule Phoenix.UI.Components.SelectTest do
     </.form>
     """
 
-    assert rendered_to_string(markup) =~ "<div class=\"form-group\""
+    assert rendered_to_string(markup) =~ "<div class=\"form-control\""
   end
 
   test "should render select with start icon", %{assigns: assigns} do
@@ -102,18 +102,6 @@ defmodule Phoenix.UI.Components.SelectTest do
 
     html = rendered_to_string(markup)
     assert html =~ "class=\"start-icon "
-    assert html =~ "<svg class=\"heroicon "
-  end
-
-  test "should render select with end icon", %{assigns: assigns} do
-    markup = ~H"""
-    <.form :let={f} for={:user}>
-      <.select field={{f, :pet}} options={@options} end_icon={%{name: "x-mark"}} />
-    </.form>
-    """
-
-    html = rendered_to_string(markup)
-    assert html =~ "class=\"end-icon "
     assert html =~ "<svg class=\"heroicon "
   end
 
@@ -129,7 +117,7 @@ defmodule Phoenix.UI.Components.SelectTest do
     assert html =~ "Pet Label"
     assert html =~ "class=\"helper-text invalid:hidden"
     assert html =~ "Helper text"
-    refute html =~ "error-tag"
+    refute html =~ "error"
   end
 
   test "should render select with errors", %{assigns: assigns} do
@@ -139,7 +127,7 @@ defmodule Phoenix.UI.Components.SelectTest do
     </.form>
     """
 
-    assert rendered_to_string(markup) =~ "class=\"error-tag hidden invalid:block "
+    assert rendered_to_string(markup) =~ "class=\"error hidden invalid:block "
   end
 
   test "warns when unknown attributes passed to button", %{assigns: assigns} do
@@ -159,9 +147,9 @@ defmodule Phoenix.UI.Components.SelectTest do
       end)
 
     assert warnings =~
-             "attribute \"margin\" in component Phoenix.UI.Components.Select.select/1 must be one of"
+             "attribute \"margin\" in component Phoenix.UI.Components.Form.select/1 must be one of"
 
     assert warnings =~
-             "attribute \"variant\" in component Phoenix.UI.Components.Select.select/1 must be one of"
+             "attribute \"variant\" in component Phoenix.UI.Components.Form.select/1 must be one of"
   end
 end

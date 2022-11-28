@@ -7,18 +7,16 @@ defmodule Phoenix.UI do
 
   defmacro __using__(_opts) do
     quote generated: true, location: :keep do
-      alias Phoenix.UI.Components.{Autocomplete, Dropdown, SelectFilter, TextFilter}
+      alias Phoenix.UI.Components.{SelectFilter, TextFilter}
 
       import Phoenix.UI.Components.{
         Accordion,
         Alert,
         Avatar,
-        AvatarGroup,
         Backdrop,
         Badge,
         Breadcrumbs,
         Button,
-        ButtonGroup,
         Card,
         Chip,
         Collapse,
@@ -27,22 +25,15 @@ defmodule Phoenix.UI do
         Divider,
         Drawer,
         Dropdown,
-        ErrorTag,
-        FormGroup,
+        Form,
         Grid,
-        HelperText,
         Heroicon,
-        HiddenInput,
-        Label,
         Link,
         List,
         Menu,
         Modal,
         Paper,
-        Select,
         Table,
-        Textarea,
-        TextField,
         Tooltip,
         Typography
       }
