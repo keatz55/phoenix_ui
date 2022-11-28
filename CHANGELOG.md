@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.6 (2022-11-28)
+
+### Enhancements
+
+- Adds `SelectFilter` and updates existing `TextFilter` live component will now support the following scenarios:
+  - When passed `uri` and `param` attrs, will automatically update query param in url on text change (Default)
+  - When passed `on_change` anonymous function attr, will invoke function on text change
+  - When passed `on_change` event name string attr, will trigger event at parent level upon text change
+- Adds `Phoenix.UI.Hooks` `:assign_uri` helper for making URI available for every `:handle_params` lifecycle event
+- Adds `Textarea` component
+
 ## 0.1.5 (2022-11-20)
 
 ### Enhancements
