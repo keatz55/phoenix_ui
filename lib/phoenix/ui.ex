@@ -39,6 +39,7 @@ defmodule Phoenix.UI do
         Menu,
         Modal,
         Paper,
+        Progress,
         Select,
         Table,
         Textarea,
