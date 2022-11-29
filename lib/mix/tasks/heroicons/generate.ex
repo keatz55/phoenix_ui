@@ -52,7 +52,6 @@ defmodule Mix.Tasks.Heroicons.Generate do
           heroicon inline-block
           #\{classes(:color, assigns)\}
           #\{classes(:size, assigns)\}
-          #\{Map.get(assigns, :extend_class)\}
         ))
         |> render_markup()
       end
@@ -64,8 +63,8 @@ defmodule Mix.Tasks.Heroicons.Generate do
       defp classes(:color, %{color: color}), do: "text-#\{color\}-500"
 
       # Size
-      defp classes(:size, %{size: "xs"}), do: "h-3 w-3"
-      defp classes(:size, %{size: "sm"}), do: "h-4 w-4"
+      defp classes(:size, %{size: "xs"}), do: "h-4 w-4"
+      defp classes(:size, %{size: "sm"}), do: "h-5 w-5"
       defp classes(:size, %{size: "md"}), do: "h-6 w-6"
       defp classes(:size, %{size: "lg"}), do: "h-8 w-8"
       defp classes(:size, %{size: "xl"}), do: "h-10 w-10"
