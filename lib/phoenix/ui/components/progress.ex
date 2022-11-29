@@ -1,8 +1,6 @@
 defmodule Phoenix.UI.Components.Progress do
   @moduledoc """
   Provides progress-related components.
-
-  min-h-8
   """
   use Phoenix.UI, :component
 
@@ -23,7 +21,12 @@ defmodule Phoenix.UI.Components.Progress do
 
   attr(:square, :boolean, default: false, doc: "If true, rounded corners are disabled.")
   attr(:text, :string, default: nil, doc: "Draws a graphics element consisting of text")
-  attr(:value, :integer, default: 30)
+
+  attr(:value, :integer,
+    default: 30,
+    doc:
+      "The value of the progress indicator for the determinate variant. Value between 0 and 100."
+  )
 
   attr(:variant, :string,
     default: "radial",
