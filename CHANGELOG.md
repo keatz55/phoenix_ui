@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.7 (2022-11-30)
+
+### Enhancements
+
+- Adds `progress` component w/ `radial` and `linear` variants
+- Improves `heroicon` sizing
+
 ## 0.1.6 (2022-11-28)
 
 ### Enhancements
