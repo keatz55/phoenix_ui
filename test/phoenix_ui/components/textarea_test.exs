@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with defaults", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} />
     </.form>
     """
@@ -23,7 +23,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea w/ 10 rows", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} rows="10" />
     </.form>
     """
@@ -33,7 +33,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea that is full width of container", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} full_width />
     </.form>
     """
@@ -43,7 +43,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea that is not full width of container", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} />
     </.form>
     """
@@ -53,7 +53,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with class override", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} class="override" />
     </.form>
     """
@@ -63,7 +63,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea class w/ extend_class", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} extend_class="resize-none" />
     </.form>
     """
@@ -73,7 +73,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with placeholder", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} placeholder="Description" />
     </.form>
     """
@@ -83,7 +83,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with phx-debounce override", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} phx-debounce={300} />
     </.form>
     """
@@ -93,7 +93,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with value", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} value="Value" />
     </.form>
     """
@@ -103,7 +103,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with \"none\" margin", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} margin="none" />
     </.form>
     """
@@ -113,7 +113,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with start icon", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} start_icon={%{name: "currency-dollar"}} />
     </.form>
     """
@@ -125,7 +125,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with end icon", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} end_icon={%{name: "x-mark"}} />
     </.form>
     """
@@ -137,7 +137,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with label and helper_text", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea field={{f, :description}} helper_text="Helper text" label="Description Label" />
     </.form>
     """
@@ -152,7 +152,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
   test "should render textarea with errors", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.textarea errors={["required"]} field={{f, :description}} />
     </.form>
     """
@@ -168,7 +168,7 @@ defmodule Phoenix.UI.Components.TextareaTest do
 
           def render(assigns) do
             ~H"""
-            <.form :let={f} for={:user}>
+            <.form :let={f} for={%{}} as={:user}>
               <.textarea field={{f, :description}} margin="undefined" variant="undefined" />
             </.form>
             """
