@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.8 (2023-03-06)
+
+### Enhancements
+
+- Fixes Phoenix LiveView v0.18.16 form warnings
+
 ## 0.1.7 (2022-11-30)
 
 ### Enhancements

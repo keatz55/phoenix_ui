@@ -26,7 +26,8 @@ defmodule Phoenix.UI.Components.TextFilter do
     <div>
       <.form
         :let={f}
-        for={:filter}
+        as={:filter}
+        for={%{}}
         id={"#{@id}_form"}
         phx-change={@handle_change}
         phx-submit={@handle_change}

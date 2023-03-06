@@ -1,7 +1,7 @@
 defmodule Phoenix.UI.MixProject do
   use Mix.Project
 
-  @version "0.1.7"
+  @version "0.1.8"
 
   def project do
     [
@@ -46,8 +46,8 @@ defmodule Phoenix.UI.MixProject do
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:excoveralls, "~> 0.14", only: :test, runtime: false},
       {:jason, "~> 1.2", optional: true},
-      {:phoenix_live_view, "~> 0.18.3", optional: true},
-      {:phoenix, "~> 1.6", optional: true}
+      {:phoenix_live_view, "~> 0.18.16", optional: true},
+      {:phoenix, "~> 1.7", optional: true}
     ]
   end
 

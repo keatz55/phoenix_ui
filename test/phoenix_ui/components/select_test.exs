@@ -11,7 +11,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with defaults", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} />
     </.form>
     """
@@ -25,7 +25,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select that is full width of container", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} full_width />
     </.form>
     """
@@ -35,7 +35,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select that is not full width of container", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} />
     </.form>
     """
@@ -45,7 +45,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with class override", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} class="override" />
     </.form>
     """
@@ -55,7 +55,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select class w/ extend_class", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} extend_class="extension" />
     </.form>
     """
@@ -65,7 +65,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with phx-debounce override", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} phx-debounce={300} />
     </.form>
     """
@@ -75,7 +75,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with value", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} value="dog" />
     </.form>
     """
@@ -85,7 +85,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with \"none\" margin", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} margin="none" />
     </.form>
     """
@@ -95,7 +95,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with start icon", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} start_icon={%{name: "currency-dollar"}} />
     </.form>
     """
@@ -107,7 +107,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with end icon", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} end_icon={%{name: "x-mark"}} />
     </.form>
     """
@@ -119,7 +119,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with label and helper_text", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select field={{f, :pet}} options={@options} helper_text="Helper text" label="Pet Label" />
     </.form>
     """
@@ -134,7 +134,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
   test "should render select with errors", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.select errors={["required"]} field={{f, :pet}} options={@options} />
     </.form>
     """
@@ -150,7 +150,7 @@ defmodule Phoenix.UI.Components.SelectTest do
 
           def render(assigns) do
             ~H"""
-            <.form :let={f} for={:user}>
+            <.form :let={f} for={%{}} as={:user}>
               <.select field={{f, :pet}} options={@options} margin="undefined" variant="undefined" />
             </.form>
             """

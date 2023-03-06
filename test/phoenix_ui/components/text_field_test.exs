@@ -9,7 +9,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with defaults", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} />
     </.form>
     """
@@ -24,7 +24,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input \"password\" type", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} type="password" />
     </.form>
     """
@@ -34,7 +34,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input that is full width of container", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} full_width />
     </.form>
     """
@@ -44,7 +44,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input that is not full width of container", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} />
     </.form>
     """
@@ -54,7 +54,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with class override", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} class="override" />
     </.form>
     """
@@ -64,7 +64,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input class w/ extend_class", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} extend_class="extension" />
     </.form>
     """
@@ -74,7 +74,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with placeholder", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} placeholder="Email" />
     </.form>
     """
@@ -84,7 +84,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with phx-debounce override", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} phx-debounce={300} />
     </.form>
     """
@@ -94,7 +94,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with value", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} value="Value" />
     </.form>
     """
@@ -104,7 +104,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with \"none\" margin", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} margin="none" />
     </.form>
     """
@@ -114,7 +114,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with start icon", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} start_icon={%{name: "currency-dollar"}} />
     </.form>
     """
@@ -126,7 +126,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with end icon", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} end_icon={%{name: "x-mark"}} />
     </.form>
     """
@@ -138,7 +138,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with label and helper_text", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field field={{f, :email}} helper_text="Helper text" label="Email Label" />
     </.form>
     """
@@ -153,7 +153,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
   test "should render input with errors", %{assigns: assigns} do
     markup = ~H"""
-    <.form :let={f} for={:user}>
+    <.form :let={f} for={%{}} as={:user}>
       <.text_field errors={["required"]} field={{f, :email}} />
     </.form>
     """
@@ -169,7 +169,7 @@ defmodule Phoenix.UI.Components.TextFieldTest do
 
           def render(assigns) do
             ~H"""
-            <.form :let={f} for={:user}>
+            <.form :let={f} for={%{}} as={:user}>
               <.text_field field={{f, :email}} margin="undefined" variant="undefined" />
             </.form>
             """

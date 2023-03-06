@@ -58,12 +58,12 @@ defmodule Phoenix.UI.Components.ProgressTest do
   end
 
   test "should render radial progress with set value", %{assigns: assigns} do
-    markup = ~H[<.progress value="100" />]
+    markup = ~H[<.progress value={100} />]
     assert rendered_to_string(markup) =~ "stroke-dasharray=\"100, 100\""
   end
 
   test "should render linear progress with set value", %{assigns: assigns} do
-    markup = ~H[<.progress variant="linear" value="100" />]
+    markup = ~H[<.progress variant="linear" value={100} />]
     assert rendered_to_string(markup) =~ "style=\"width: 100%\""
   end
 
