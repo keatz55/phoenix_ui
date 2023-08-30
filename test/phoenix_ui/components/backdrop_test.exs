@@ -13,7 +13,7 @@ defmodule Phoenix.UI.Components.BackdropTest do
 
       html = rendered_to_string(markup)
 
-      assert html =~ "<div class=\"backdrop "
+      assert html =~ "<div id=\"basic-backdrop\" class=\"backdrop "
     end
   end
 end
