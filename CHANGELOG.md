@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9 (2023-10-16)
+
+### Enhancements
+
+- Upgrade LiveView version to 0.20.1 
+
 ## 0.1.8 (2023-03-06)
 
 ### Enhancements

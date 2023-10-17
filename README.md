@@ -17,7 +17,7 @@ Follow the [official guide](https://tailwindcss.com/docs/guides/phoenix) for set
 ```elixir
 def deps do
   [
-    {:phoenix_ui, "~> 0.1.7"},
+    {:phoenix_ui, "~> 0.1.9"},
   ]
 end
 ```
