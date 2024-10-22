@@ -32,7 +32,6 @@ defmodule Phoenix.UI do
         Grid,
         HelperText,
         Heroicon,
-        HiddenInput,
         Label,
         Link,
         List,
