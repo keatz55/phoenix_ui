@@ -1,5 +1,7 @@
 # Phoenix UI
 
+> **Note (2024-11-22):** I've been out of the Elixir ecosystem for well over a year. However, I recently returned and upon revisiting this library, I've decided to shift the scope of this OSS project. Future updates will adopt a model similar to [ui.shadcdn.com](https://ui.shadcn.com/), focusing on components designed for easy copy-and-paste integration into your apps.
+
 A complimentary UI library for the Phoenix Framework and Phoenix LiveView.
 
 ## Installation
