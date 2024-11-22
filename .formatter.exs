@@ -1,5 +1,5 @@
-# Used by "mix format"
 [
-  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"],
-  plugins: [Phoenix.LiveView.HTMLFormatter]
+  import_deps: [:phoenix],
+  plugins: [Phoenix.LiveView.HTMLFormatter],
+  inputs: ["{config,lib,test}/**/*.{heex,ex,exs}", "*.{heex,ex,exs}", "storybook/**/*.exs"]
 ]
