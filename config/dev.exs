@@ -16,6 +16,7 @@ config :phoenix_ui, PhoenixUIWeb.Endpoint,
   secret_key_base: "8NKDJcAT1h9iNgeKVypfS62hc8j1SZ8G5Z5gFzGqK3Hp2UQHu08bkNX0VsoXjGhn",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:phoenix_ui, ~w(--sourcemap=inline --watch)]},
+    storybook_tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]},
     tailwind: {Tailwind, :install_and_run, [:phoenix_ui, ~w(--watch)]}
   ]
 
@@ -46,9 +47,10 @@ config :phoenix_ui, PhoenixUIWeb.Endpoint,
 config :phoenix_ui, PhoenixUIWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"lib/phoenix_ui_web/(controllers|live|components)/.*(ex|heex)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/phoenix_ui_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"storybook/.*(exs)$"
     ]
   ]
 

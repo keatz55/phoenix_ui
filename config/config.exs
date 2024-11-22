@@ -36,7 +36,7 @@ config :esbuild,
   version: "0.17.11",
   phoenix_ui: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/app.js js/storybook.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
@@ -49,6 +49,14 @@ config :tailwind,
       --config=tailwind.config.js
       --input=css/app.css
       --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ],
+  storybook: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/storybook.css
+      --output=../priv/static/assets/storybook.css
     ),
     cd: Path.expand("../assets", __DIR__)
   ]
