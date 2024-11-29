@@ -8,6 +8,9 @@ ci.test:
 	mix test --trace --slowest 10
 	mix dialyzer
 
+iex.server:
+	iex -S mix phx.server
+
 install:
 	mix deps.get
 	mix compile

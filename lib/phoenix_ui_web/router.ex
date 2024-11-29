@@ -23,9 +23,7 @@ defmodule PhoenixUIWeb.Router do
   scope "/", PhoenixUIWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-
-    live_storybook("/storybook", backend_module: PhoenixUIWeb.Storybook)
+    live_storybook("/", backend_module: PhoenixUIWeb.Storybook)
   end
 
   # Other scopes may use custom stacks.

@@ -11,6 +11,7 @@ module.exports = {
     "./js/**/*.js",
     "../lib/phoenix_ui_web.ex",
     "../lib/phoenix_ui_web/**/*.*ex",
+    "../storybook/**/*.*exs",
   ],
   theme: {
     extend: {

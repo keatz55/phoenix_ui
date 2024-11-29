@@ -5,11 +5,11 @@ defmodule Storybook.Root do
   use PhoenixStorybook.Index
 
   def folder_icon, do: {:fa, "book-open", :light, "psb-mr-1"}
-  def folder_name, do: "Storybook"
+  def folder_name, do: "Phoenix UI"
 
   def entry("welcome") do
     [
-      name: "Welcome Page",
+      name: "Getting started",
       icon: {:fa, "hand-wave", :thin}
     ]
   end
