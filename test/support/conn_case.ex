@@ -22,12 +22,14 @@ defmodule PhoenixUIWeb.ConnCase do
       # The default endpoint for testing
       @endpoint PhoenixUIWeb.Endpoint
 
+      use Phoenix.Component
       use PhoenixUIWeb, :verified_routes
 
       # Import conveniences for testing with connections
-      import Plug.Conn
       import Phoenix.ConnTest
+      import Phoenix.LiveViewTest
       import PhoenixUIWeb.ConnCase
+      import Plug.Conn
     end
   end
 
