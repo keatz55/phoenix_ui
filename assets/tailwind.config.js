@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
+  darkMode: "selector",
   important: ".phoenix-ui-web",
   content: [
     "./js/**/*.js",
