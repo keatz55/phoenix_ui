@@ -1,4 +1,5 @@
 defmodule PhoenixUIWeb.Storybook do
+  @moduledoc false
   use PhoenixStorybook,
     color_mode: true,
     color_mode_icons: [

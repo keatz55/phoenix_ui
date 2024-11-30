@@ -1,12 +1,14 @@
 defmodule Storybook.Root do
-  # See https://hexdocs.pm/phoenix_storybook/PhoenixStorybook.Index.html for full index
-  # documentation.
-
+  @moduledoc """
+  Storybook root index file
+  """
   use PhoenixStorybook.Index
 
+  @impl true
   def folder_icon, do: {:fa, "book-open", :light, "psb-mr-1"}
   def folder_name, do: "Phoenix UI"
 
+  @impl true
   def entry("welcome") do
     [
       name: "Getting started",

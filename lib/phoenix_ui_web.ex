@@ -17,8 +17,14 @@ defmodule PhoenixUIWeb do
   those modules here.
   """
 
+  @doc """
+  references static paths found in priv
+  """
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
+  @doc """
+  import router functionality
+  """
   def router do
     quote do
       use Phoenix.Router, helpers: false
@@ -30,12 +36,18 @@ defmodule PhoenixUIWeb do
     end
   end
 
+  @doc """
+  import channel functionality
+  """
   def channel do
     quote do
       use Phoenix.Channel
     end
   end
 
+  @doc """
+  import controller functionality
+  """
   def controller do
     quote do
       use Phoenix.Controller,
@@ -49,6 +61,9 @@ defmodule PhoenixUIWeb do
     end
   end
 
+  @doc """
+  import liveview functionality
+  """
   def live_view do
     quote do
       use Phoenix.LiveView,
@@ -58,6 +73,9 @@ defmodule PhoenixUIWeb do
     end
   end
 
+  @doc """
+  import live component functionality
+  """
   def live_component do
     quote do
       use Phoenix.LiveComponent
@@ -65,6 +83,10 @@ defmodule PhoenixUIWeb do
       unquote(html_helpers())
     end
   end
+
+  @doc """
+  import html functionality
+  """
 
   def html do
     quote do

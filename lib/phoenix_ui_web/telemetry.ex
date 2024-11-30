@@ -1,5 +1,9 @@
 defmodule PhoenixUIWeb.Telemetry do
+  @moduledoc """
+  Telemetry configuration
+  """
   use Supervisor
+
   import Telemetry.Metrics
 
   def start_link(arg) do
@@ -19,6 +23,9 @@ defmodule PhoenixUIWeb.Telemetry do
     Supervisor.init(children, strategy: :one_for_one)
   end
 
+  @doc """
+  Returns list of metrics to collect
+  """
   def metrics do
     [
       # Phoenix Metrics

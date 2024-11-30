@@ -1,4 +1,7 @@
 defmodule PhoenixUIWeb.Router do
+  @moduledoc """
+  Router module
+  """
   use PhoenixUIWeb, :router
 
   import PhoenixStorybook.Router
@@ -38,13 +41,13 @@ defmodule PhoenixUIWeb.Router do
     # If your application does not have an admins-only section yet,
     # you can use Plug.BasicAuth to set up some basic authentication
     # as long as you are also using SSL (which you should anyway).
-    import Phoenix.LiveDashboard.Router
+    # import Phoenix.LiveDashboard.Router
 
-    scope "/dev" do
-      pipe_through :browser
+    # scope "/dev" do
+    #   pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: PhoenixUIWeb.Telemetry
-      forward "/mailbox", Plug.Swoosh.MailboxPreview
-    end
+    #   live_dashboard "/dashboardafdas", metrics: PhoenixUIWeb.Telemetry
+    #   forward "/mailbox", Plug.Swoosh.MailboxPreview
+    # end
   end
 end
