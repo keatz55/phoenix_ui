@@ -91,9 +91,11 @@ defmodule PhoenixUIWeb.Components.Accordion do
     if controlled do
       op
       |> JS.set_attribute({"aria-expanded", "false"},
-        to: ".accordion-trigger:not(##{trigger_id(id, idx)})"
+        to: "##{id} .accordion-trigger:not(##{trigger_id(id, idx)})"
       )
-      |> JS.remove_attribute("data-expanded", to: ".accordion-panel:not(##{panel_id(id, idx)})")
+      |> JS.remove_attribute("data-expanded",
+        to: "##{id} .accordion-panel:not(##{panel_id(id, idx)})"
+      )
     else
       op
     end
