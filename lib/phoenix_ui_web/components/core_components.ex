@@ -14,9 +14,8 @@ defmodule PhoenixUIWeb.CoreComponents do
 
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
+  use Gettext, backend: PhoenixUIWeb.Gettext
   use Phoenix.Component
-
-  import PhoenixUIWeb.Gettext
 
   alias Phoenix.HTML
   alias Phoenix.LiveView.JS
