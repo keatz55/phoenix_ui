@@ -1,5 +1,7 @@
 defmodule PhoenixUIWeb.Components.Accordion do
-  @moduledoc false
+  @moduledoc """
+  Provides accordion-related components and helper functions.
+  """
   use Phoenix.Component
 
   import PhoenixUIWeb.CoreComponents, only: [icon: 1]
