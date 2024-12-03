@@ -1,6 +1,6 @@
 defmodule PhoenixUIWeb.Components.AvatarGroup do
   @moduledoc """
-  Provides avatar group component.
+  Provides avatar-group-related components.
   """
   use Phoenix.Component
 

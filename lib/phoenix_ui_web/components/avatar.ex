@@ -1,5 +1,7 @@
 defmodule PhoenixUIWeb.Components.Avatar do
-  @moduledoc false
+  @moduledoc """
+  Provides avatar-related components.
+  """
   use Phoenix.Component
 
   import PhoenixUIWeb.CoreComponents, only: [icon: 1]
