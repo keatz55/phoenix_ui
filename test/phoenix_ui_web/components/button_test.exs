@@ -11,7 +11,9 @@ defmodule PhoenixUIWeb.Components.ButtonTest do
   test "should render with defaults", %{assigns: assigns} do
     markup = ~H(<.button type="button"><%= @text %></.button>)
     html = rendered_to_string(markup)
-    assert html =~ ~s(<button type="button" class="button )
+    assert html =~ ~s(<button )
+    assert html =~ ~s(type="button")
+    assert html =~ ~s(class="button )
     assert html =~ "blue"
     assert html =~ "rounded-lg"
     assert html =~ assigns.text
