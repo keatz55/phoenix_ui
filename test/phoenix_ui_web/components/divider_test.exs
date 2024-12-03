@@ -7,7 +7,7 @@ defmodule PhoenixUIWeb.Components.DividerTest do
     [assigns: %{}]
   end
 
-  describe "backdrop/1" do
+  describe "divider/1" do
     test "should render with defaults", %{assigns: assigns} do
       markup = ~H(<.divider />)
       html = rendered_to_string(markup)
