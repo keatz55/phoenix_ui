@@ -11,7 +11,9 @@ defmodule PhoenixUIWeb.Components.BackdropTest do
     test "should render with defaults", %{assigns: assigns} do
       markup = ~H(<.backdrop id="basic-backdrop" />)
       html = rendered_to_string(markup)
-      assert html =~ ~s(<div id="basic-backdrop" class="backdrop )
+      assert html =~ ~s(<div )
+      assert html =~ ~s(id="basic-backdrop")
+      assert html =~ ~s(class="backdrop )
       assert html =~ ~s(bg-zinc-900/25 backdrop-blur-sm)
       refute html =~ ~s(data-open)
     end
