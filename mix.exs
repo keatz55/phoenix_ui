@@ -48,7 +48,7 @@ defmodule PhoenixUI.MixProject do
        github: "tailwindlabs/heroicons",
        override: true,
        sparse: "optimized",
-       tag: "v2.1.1"},
+       tag: "v2.2.0"},
       {:jason, "~> 1.2"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
