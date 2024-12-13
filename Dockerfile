@@ -21,11 +21,8 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 FROM ${BUILDER_IMAGE} as builder
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git curl \
+RUN apt-get update -y && apt-get install -y build-essential git \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
-
-RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash -
-RUN apt-get update && apt-get install -y nodejs
 
 # prepare build dir
 WORKDIR /app
@@ -57,11 +54,6 @@ COPY storybook storybook
 
 # compile assets
 RUN mix assets.deploy
-
-# compile phoenix_storybook assets
-RUN cd deps/phoenix_storybook && mix deps.get
-RUN cd deps/phoenix_storybook && npm ci --prefix assets
-RUN cd deps/phoenix_storybook && MIX_ENV=dev mix assets.build
 
 # Compile the release
 RUN mix compile
