@@ -58,7 +58,7 @@ defmodule PhoenixUIWeb.Components.Button do
       type={@element == "button" && @type}
       {@rest}
     >
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </.dynamic_tag>
     """
   end

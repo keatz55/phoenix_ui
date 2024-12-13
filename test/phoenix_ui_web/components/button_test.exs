@@ -10,7 +10,7 @@ defmodule PhoenixUIWeb.Components.ButtonTest do
 
   describe "button/1" do
     test "should render with defaults", %{assigns: assigns} do
-      markup = ~H(<.button type="button"><%= @text %></.button>)
+      markup = ~H(<.button type="button">{@text}</.button>)
       html = rendered_to_string(markup)
       assert html =~ ~s(<button )
       assert html =~ ~s(type="button")
@@ -25,32 +25,32 @@ defmodule PhoenixUIWeb.Components.ButtonTest do
     test "should render button variants", %{assigns: assigns} do
       for variant <- ~w(plain solid outline)a do
         assigns = Map.put(assigns, :variant, variant)
-        markup = ~H(<.button variant={@variant}><%= @text %></.button>)
+        markup = ~H(<.button variant={@variant}>{@text}</.button>)
         assert rendered_to_string(markup) =~ "button-#{variant}"
       end
     end
 
     test "should render button that is full width of container", %{assigns: assigns} do
-      markup = ~H(<.button full_width><%= @text %></.button>)
+      markup = ~H(<.button full_width>{@text}</.button>)
       assert rendered_to_string(markup) =~ "w-full"
     end
 
     test "should render button with square corners", %{assigns: assigns} do
-      markup = ~H(<.button square><%= @text %></.button>)
+      markup = ~H(<.button square>{@text}</.button>)
       html = rendered_to_string(markup)
       refute html =~ "rounded-lg"
     end
 
     test "should render button with passed HTML element override", %{assigns: assigns} do
-      markup = ~H(<.button element="label"><%= @text %></.button>)
+      markup = ~H(<.button element="label">{@text}</.button>)
       assert rendered_to_string(markup) =~ ~s(<label class="button)
     end
 
     test "should render button with sizes", %{assigns: assigns} do
-      m1 = ~H(<.button size="xs"><%= @text %></.button>)
-      m2 = ~H(<.button size="sm"><%= @text %></.button>)
-      m3 = ~H(<.button size="md"><%= @text %></.button>)
-      m4 = ~H(<.button size="lg"><%= @text %></.button>)
+      m1 = ~H(<.button size="xs">{@text}</.button>)
+      m2 = ~H(<.button size="sm">{@text}</.button>)
+      m3 = ~H(<.button size="md">{@text}</.button>)
+      m4 = ~H(<.button size="lg">{@text}</.button>)
 
       assert rendered_to_string(m1) =~ "px-1.5"
       assert rendered_to_string(m2) =~ "px-3"
@@ -59,7 +59,7 @@ defmodule PhoenixUIWeb.Components.ButtonTest do
     end
 
     test "should render override color when passed color attr", %{assigns: assigns} do
-      markup = ~H(<.button color="red" variant="outline"><%= @text %></.button>)
+      markup = ~H(<.button color="red" variant="outline">{@text}</.button>)
       assert rendered_to_string(markup) =~ "red"
     end
 
@@ -70,7 +70,7 @@ defmodule PhoenixUIWeb.Components.ButtonTest do
             use Phoenix.Component
 
             def render(assigns) do
-              ~H(<.button variant="undefined"><%= @text %></.button>)
+              ~H(<.button variant="undefined">{@text}</.button>)
             end
           end
         end)

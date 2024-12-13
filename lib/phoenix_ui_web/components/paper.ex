@@ -20,7 +20,7 @@ defmodule PhoenixUIWeb.Components.Paper do
   """
 
   attr :blur, :boolean, default: true
-  attr :class, :any
+  attr :class, :any, doc: "Extend existing component styles"
   attr :element, :string, default: "div"
   attr :elevation, :integer, default: 2, values: 1..5
   attr :rest, :global
@@ -50,7 +50,7 @@ defmodule PhoenixUIWeb.Components.Paper do
       tag_name={@element}
       {@rest}
     >
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </.dynamic_tag>
     """
   end

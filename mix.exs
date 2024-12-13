@@ -53,7 +53,7 @@ defmodule PhoenixUI.MixProject do
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
+      {:phoenix_live_view, "~> 1.0"},
       {:phoenix_storybook,
        git: "https://github.com/keatz55/phoenix_storybook", branch: "jw/increase-icon-flexibility"},
       {:phoenix, "~> 1.7.14"},

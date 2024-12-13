@@ -51,7 +51,7 @@ defmodule PhoenixUIWeb.Components.AccordionTest do
     assert html =~ ~s(<div class="accordion ")
 
     assert html =~
-             ~s(<button aria-controls="basic_accordion_panel0" aria-expanded="false" class="accordion-trigger)
+             ~s(<button aria-controls="basic_accordion_panel0" aria-expanded="true" class="accordion-trigger)
 
     assert html =~ "Trigger"
     assert html =~ ~s(<div class="accordion-panel )
