@@ -82,6 +82,16 @@ defmodule Storybook.Components.Badge do
             ]
           }
         ]
+      },
+      %Variation{
+        attributes: %{border: true},
+        id: :border,
+        slots: [
+          """
+          <.icon name="hero-envelope"/>
+          <:badge>99+</:badge>
+          """
+        ]
       }
     ]
   end

@@ -12,7 +12,7 @@ defmodule PhoenixUIWeb.Components.Badge do
    ```heex
   <.badge>
     Emails
-    <:badge>99+<:badge>
+    <:badge>99+</:badge>
   </.badge>
   ```
   """
@@ -63,7 +63,7 @@ defmodule PhoenixUIWeb.Components.Badge do
   ### Styles ##########################
 
   # Border
-  defp styles(:border, %{border: true}), do: "border-2 border-white dark:border-slate-900"
+  defp styles(:border, %{border: true}), do: "border-2 border-zinc-100 dark:border-zinc-900"
 
   # Color
   defp styles(:color, %{color: "blue"}), do: "bg-blue-600"
