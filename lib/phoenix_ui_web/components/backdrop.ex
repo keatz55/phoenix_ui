@@ -2,11 +2,7 @@ defmodule PhoenixUIWeb.Components.Backdrop do
   @moduledoc """
   Provides backdrop-related components and helper functions.
   """
-  use Phoenix.Component
-
-  alias Phoenix.LiveView.JS
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
+  use PhoenixUIWeb, :component
 
   @doc """
   The Backdrop component narrows the user's focus to a particular element on the screen.

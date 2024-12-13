@@ -46,6 +46,19 @@ defmodule PhoenixUIWeb do
   end
 
   @doc """
+  import component functionality
+  """
+  def component(_opts \\ []) do
+    quote do
+      use Phoenix.Component
+
+      alias Phoenix.LiveView.JS
+      alias Phoenix.LiveView.Rendered
+      alias Phoenix.LiveView.Socket
+    end
+  end
+
+  @doc """
   import controller functionality
   """
   def controller do

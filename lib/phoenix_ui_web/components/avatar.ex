@@ -2,12 +2,9 @@ defmodule PhoenixUIWeb.Components.Avatar do
   @moduledoc """
   Provides avatar-related components.
   """
-  use Phoenix.Component
+  use PhoenixUIWeb, :component
 
   import PhoenixUIWeb.CoreComponents, only: [icon: 1]
-
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
 
   @doc """
   Avatar components are used to represent a user, and displays the profile picture, initials or fallback icon.
