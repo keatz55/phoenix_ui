@@ -9,7 +9,7 @@ defmodule Storybook.Root do
   def folder_name, do: "Phoenix UI"
 
   @impl true
-  def entry("welcome") do
+  def entry("getting_started") do
     [
       name: "Getting started",
       icon: {:fa, "hand-wave", :thin}
