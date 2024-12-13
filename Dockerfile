@@ -58,11 +58,6 @@ COPY storybook storybook
 # compile assets
 RUN mix assets.deploy
 
-# compile phoenix_storybook assets
-RUN cd deps/phoenix_storybook && mix deps.get
-RUN cd deps/phoenix_storybook && npm ci --prefix assets
-RUN cd deps/phoenix_storybook && MIX_ENV=dev mix assets.build
-
 # Compile the release
 RUN mix compile
 
