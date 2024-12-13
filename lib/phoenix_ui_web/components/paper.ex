@@ -2,10 +2,7 @@ defmodule PhoenixUIWeb.Components.Paper do
   @moduledoc """
   Provides paper-related components.
   """
-  use Phoenix.Component
-
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
+  use PhoenixUIWeb, :component
 
   @doc """
   The Paper component is a container for displaying content on an elevated surface.

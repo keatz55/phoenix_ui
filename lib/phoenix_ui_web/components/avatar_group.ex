@@ -2,12 +2,9 @@ defmodule PhoenixUIWeb.Components.AvatarGroup do
   @moduledoc """
   Provides avatar-group-related components.
   """
-  use Phoenix.Component
+  use PhoenixUIWeb, :component
 
   import PhoenixUIWeb.Components.Avatar, only: [avatar: 1]
-
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
 
   @doc """
   Renders its avatar children as a stack. Use the max prop to limit the number of avatars.

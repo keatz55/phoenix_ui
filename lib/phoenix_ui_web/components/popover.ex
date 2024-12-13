@@ -2,14 +2,10 @@ defmodule PhoenixUIWeb.Components.Popover do
   @moduledoc """
   Provides popover-related components and helper functions.
   """
-  use Phoenix.Component
+  use PhoenixUIWeb, :component
 
   import PhoenixUIWeb.Components.Backdrop, only: [backdrop: 1]
   import PhoenixUIWeb.Components.Paper, only: [paper: 1]
-
-  alias Phoenix.LiveView.JS
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
 
   @doc """
   A Popover can be used to display some content on top of another.

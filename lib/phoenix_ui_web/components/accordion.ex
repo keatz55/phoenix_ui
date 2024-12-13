@@ -2,13 +2,9 @@ defmodule PhoenixUIWeb.Components.Accordion do
   @moduledoc """
   Provides accordion-related components and helper functions.
   """
-  use Phoenix.Component
+  use PhoenixUIWeb, :component
 
   import PhoenixUIWeb.CoreComponents, only: [icon: 1]
-
-  alias Phoenix.LiveView.JS
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
 
   @doc """
   Accordion components allows users to show and hide sections of related panel on a page.

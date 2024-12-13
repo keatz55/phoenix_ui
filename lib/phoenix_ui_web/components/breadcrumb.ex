@@ -2,12 +2,9 @@ defmodule PhoenixUIWeb.Components.Breadcrumb do
   @moduledoc """
   Provides breadcrumb-related components.
   """
-  use Phoenix.Component
+  use PhoenixUIWeb, :component
 
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
-
-  import PhoenixUIWeb.CoreComponents
+  import PhoenixUIWeb.CoreComponents, only: [icon: 1]
 
   @doc """
   A breadcrumbs is a list of links that help visualize a page's location

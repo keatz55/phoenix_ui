@@ -2,10 +2,7 @@ defmodule PhoenixUIWeb.Components.Button do
   @moduledoc """
   Provides button-related components.
   """
-  use Phoenix.Component
-
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
+  use PhoenixUIWeb, :component
 
   @doc """
   Buttons allow users to take actions, and make choices, with a single tap.

@@ -2,10 +2,7 @@ defmodule PhoenixUIWeb.Components.Divider do
   @moduledoc """
   Provides divider-related components.
   """
-  use Phoenix.Component
-
-  alias Phoenix.LiveView.Rendered
-  alias Phoenix.LiveView.Socket
+  use PhoenixUIWeb, :component
 
   @doc """
   Provides a thin, unobtrusive line for grouping elements to reinforce visual hierarchy.
