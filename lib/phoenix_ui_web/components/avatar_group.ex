@@ -26,6 +26,7 @@ defmodule PhoenixUIWeb.Components.AvatarGroup do
   """
 
   attr :border, :boolean, default: true
+  attr :class, :any, doc: "Extend existing component styles"
   attr :color, :string, default: "zinc"
   attr :element, :string, default: "div"
   attr :max, :integer, default: 5
@@ -43,19 +44,16 @@ defmodule PhoenixUIWeb.Components.AvatarGroup do
 
     ~H"""
     <.dynamic_tag
-      class={
-        assigns[:class] ||
-          [
-            "avatar-group inline-flex flex-row-reverse items-center",
-            spacing_styles(@spacing),
-            assigns[:extend_class]
-          ]
-      }
+      class={[
+        "avatar-group inline-flex flex-row-reverse items-center",
+        spacing_styles(@spacing),
+        assigns[:class]
+      ]}
       tag_name={@element}
       {@rest}
     >
       <.avatar :if={@extra > 0} border={@border} color={@color} size={@size} variant={@variant}>
-        +<%= @extra %>
+        +{@extra}
       </.avatar>
       <.avatar
         :for={avatar <- Enum.take(@avatar, @max)}

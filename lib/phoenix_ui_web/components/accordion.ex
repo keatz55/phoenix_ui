@@ -16,20 +16,15 @@ defmodule PhoenixUIWeb.Components.Accordion do
   ## Examples
 
   ```heex
-  <.accordion class="w-2 h-2">
-    <:trigger>
-      Accordion
-    </:trigger>
-    <:panel>
-      Content
-    </:panel>
+  <.accordion>
+    <:trigger>Accordion</:trigger>
+    <:panel>Content</:panel>
   </.accordion>
   ```
   """
 
-  attr :class, :any
+  attr :class, :any, doc: "Extend existing component styles"
   attr :controlled, :boolean, default: false
-  attr :default_expanded, :boolean, default: false
   attr :id, :string, required: true
   attr :rest, :global
 
@@ -44,7 +39,7 @@ defmodule PhoenixUIWeb.Components.Accordion do
         <h3>
           <button
             aria-controls={panel_id(@id, idx)}
-            aria-expanded={to_string(@default_expanded)}
+            aria-expanded={to_string(panel[:default_expanded] == true)}
             class={[
               "accordion-trigger relative w-full [&_.accordion-trigger-icon]:aria-expanded:rotate-180",
               trigger[:class]
@@ -54,7 +49,7 @@ defmodule PhoenixUIWeb.Components.Accordion do
             type="button"
             {assigns_to_attributes(trigger, [:class, :icon_name])}
           >
-            <%= render_slot(trigger) %>
+            {render_slot(trigger)}
             <.icon
               class="accordion-trigger-icon h-5 w-5 absolute right-4 transition-all ease-in-out duration-300 top-1/2 -translate-y-1/2"
               name={trigger[:icon_name] || "hero-chevron-down"}
@@ -72,7 +67,7 @@ defmodule PhoenixUIWeb.Components.Accordion do
               class={["accordion-panel-content", panel[:class]]}
               {assigns_to_attributes(panel, [:class, :default_expanded ])}
             >
-              <%= render_slot(panel) %>
+              {render_slot(panel)}
             </div>
           </div>
         </div>

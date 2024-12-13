@@ -21,9 +21,9 @@ defmodule PhoenixUIWeb.Components.Avatar do
 
   attr :alt, :string
   attr :border, :boolean, default: false
+  attr :class, :any, doc: "Extend existing component styles"
   attr :color, :string, default: "zinc"
   attr :element, :string, default: "div"
-  attr :extend_class, :string
   attr :rest, :global
   attr :size, :string, default: "md"
   attr :src, :string
@@ -34,21 +34,17 @@ defmodule PhoenixUIWeb.Components.Avatar do
   @spec avatar(Socket.assigns()) :: Rendered.t()
   def avatar(assigns) do
     assigns
-    |> assign(
-      :class,
-      assigns[:class] ||
-        [
-          # Default styles
-          "avatar relative overflow-hidden font-semibold inline-flex items-center justify-center",
-          # Icon default styles
-          "[&_.icon]:absolute [&_.icon]:scale-125 [&_.icon]:top-[15%]",
-          styles(:border, assigns),
-          styles(:color, assigns),
-          styles(:size, assigns),
-          styles(:variant, assigns),
-          assigns[:extend_class]
-        ]
-    )
+    |> assign(:class, [
+      # Default styles
+      "avatar relative overflow-hidden font-semibold inline-flex items-center justify-center",
+      # Icon default styles
+      "[&_.icon]:absolute [&_.icon]:scale-125 [&_.icon]:top-[15%]",
+      styles(:border, assigns),
+      styles(:color, assigns),
+      styles(:size, assigns),
+      styles(:variant, assigns),
+      assigns[:class]
+    ])
     |> generate_markup()
   end
 
@@ -63,7 +59,7 @@ defmodule PhoenixUIWeb.Components.Avatar do
   defp generate_markup(%{alt: alt, inner_block: []} = assigns) when not is_nil(alt) do
     ~H"""
     <.dynamic_tag class={@class} tag_name={@element} {@rest}>
-      <%= build_initials(@alt) %>
+      {build_initials(@alt)}
     </.dynamic_tag>
     """
   end
@@ -79,7 +75,7 @@ defmodule PhoenixUIWeb.Components.Avatar do
   defp generate_markup(assigns) do
     ~H"""
     <.dynamic_tag class={@class} tag_name={@element} {@rest}>
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </.dynamic_tag>
     """
   end

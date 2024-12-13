@@ -41,7 +41,7 @@ defmodule PhoenixUIWeb.Components.Backdrop do
       tag_name={@element}
       {@rest}
     >
-      <%= render_slot(@inner_block) %>
+      {render_slot(@inner_block)}
     </.dynamic_tag>
     """
   end
